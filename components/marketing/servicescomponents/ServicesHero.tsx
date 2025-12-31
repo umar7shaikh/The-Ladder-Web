@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export default function ServicesHero() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-white flex items-center">
+    <section className="relative overflow-hidden bg-white">
       {/* Blurred Yellow Ellipse */}
       <div 
         className="absolute top-1/2 -translate-y-1/2 pointer-events-none hidden lg:block"
@@ -23,8 +23,8 @@ export default function ServicesHero() {
       />
 
       {/* Content Container */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 xl:px-[120px] py-20 lg:py-0">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 xl:px-[120px] py-12 md:py-16 lg:min-h-screen lg:flex lg:items-center">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8 w-full">
           
           {/* Left Content */}
           <div className="w-full lg:w-1/2 space-y-6 lg:space-y-8 flex flex-col z-20">
