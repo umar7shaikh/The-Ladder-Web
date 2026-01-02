@@ -20,24 +20,24 @@ const marqueeLogos = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
 
 export default function ClientShowcase() {
   return (
-    <section className="w-full bg-white py-16 md:py-24 overflow-hidden">
-      <div className="container mx-auto px-6 mb-12 text-center">
-        <div className="inline-flex items-center justify-center px-4 py-1.5 mb-4 bg-[#FFE000] rounded-full">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#363A43]">
+    <section className="w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 mb-10 sm:mb-12 text-center">
+        <div className="inline-flex items-center justify-center px-4 py-1.5 mb-3 sm:mb-4 bg-[#FFE000] rounded-full">
+          <span className="text-[clamp(10px,2.5vw,12px)] font-bold uppercase tracking-wider text-[#363A43]">
             Our Clients
           </span>
         </div>
         
-        <h2 className="text-4xl md:text-5xl font-bold text-[#363A43] mb-4 font-poppins">
+        <h2 className="text-[clamp(28px,5vw,48px)] font-bold text-[#363A43] mb-3 sm:mb-4 font-poppins">
           Our Esteemed Clients
         </h2>
         
-        <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+        <p className="text-gray-500 text-[clamp(14px,3.5vw,18px)] leading-relaxed max-w-2xl mx-auto">
           Partnerships Built on Results & Reliability
         </p>
       </div>
 
-      <div className="slider h-20 md:h-24">
+      <div className="slider h-16 sm:h-20 md:h-24">
         <div className="slide-track">
           {marqueeLogos.map((logo, index) => (
             <div 
@@ -49,7 +49,7 @@ export default function ClientShowcase() {
                 alt={logo.alt}
                 width={160}
                 height={80}
-                className="h-12 md:h-16 w-auto object-contain block"
+                className="h-10 sm:h-12 md:h-16 w-auto object-contain block"
               />
             </div>
           ))}
@@ -58,7 +58,7 @@ export default function ClientShowcase() {
 
       <style jsx global>{`
         .slider {
-          height: 80px;
+          height: clamp(64px, 15vw, 96px);
           position: relative;
           width: 100%;
           display: grid;
@@ -78,7 +78,6 @@ export default function ClientShowcase() {
         .slider::before { left: 0; top: 0; }
         .slider::after { right: 0; top: 0; transform: rotateZ(180deg); }
 
-        /* FIXED: MORE SPACING - 250px per slide */
         .slide-track {
           width: calc(250px * 20);
           display: flex;
@@ -88,7 +87,7 @@ export default function ClientShowcase() {
 
         .slide {
           width: 250px;
-          height: 80px;
+          height: clamp(64px, 15vw, 96px);
           display: grid;
           place-items: center;
           transition: 0.5s;

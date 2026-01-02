@@ -36,20 +36,20 @@ const features = [
 
 export default function WhyLadder() {
   return (
-    <section className="relative w-full bg-white py-16 md:py-24 overflow-hidden font-poppins">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden font-poppins">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Header */}
-        <div className="text-center space-y-4 mb-16">
+        <div className="text-center space-y-3 sm:space-y-4 mb-12 sm:mb-14 lg:mb-16">
           <div className="inline-flex items-center justify-center px-4 py-1.5 bg-[#FFE000] rounded-full">
-            <span className="text-[10px] uppercase tracking-wider font-bold text-[#363A43]">
+            <span className="text-[clamp(10px,2.5vw,12px)] uppercase tracking-wider font-bold text-[#363A43]">
               Why Choose The Ladder
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#363A43]">
+          <h2 className="text-[clamp(28px,5vw,56px)] font-bold text-[#363A43]">
             Your Shortcut to the Top
           </h2>
-          <p className="text-lg text-[#363A43]/80 max-w-2xl mx-auto">
+          <p className="text-[clamp(14px,3.5vw,18px)] text-[#363A43]/80 max-w-2xl mx-auto leading-relaxed">
             We're not just another agency — we're the ladder you climb to reach digital success, one step at a time.
           </p>
         </div>
@@ -86,7 +86,7 @@ export default function WhyLadder() {
                 transform: 'translateY(-50%)'
               }}
             >
-              <div className="w-16 md:w-20 lg:w-24 h-16 md:h-20 lg:h-24 rounded-full bg-[#FFF9CE] flex items-center justify-center 
+              <div className="w-16 md:w-[clamp(64px,5vw,80px)] lg:w-[clamp(80px,6vw,96px)] h-16 md:h-[clamp(64px,5vw,80px)] lg:h-[clamp(80px,6vw,96px)] rounded-full bg-[#FFF9CE] flex items-center justify-center 
                               shadow-2xl border-4 border-white">
                 <div className="text-[#363A43]">
                   {feature.icon}
@@ -100,16 +100,16 @@ export default function WhyLadder() {
             feature.position === 'left' && (
               <div
                 key={`text-left-${index}`}
-                className="absolute -left-34 w-80 lg:w-104 text-right pr-12 lg:pr-16 z-10"
+                className="absolute -left-34 w-80 lg:w-[clamp(320px,25vw,416px)] text-right pr-12 lg:pr-16 z-10"
                 style={{
                   top: `${feature.topPct}%`,
                   transform: 'translateY(-50%)'
                 }}
               >
-                <h3 className="text-lg lg:text-xl font-bold text-[#363A43] mb-1 leading-tight">
+                <h3 className="text-[clamp(16px,1.5vw,20px)] font-bold text-[#363A43] mb-1 leading-tight">
                   {feature.title}
                 </h3>
-                <p className="text-sm lg:text-base text-[#363A43]/70 leading-relaxed">
+                <p className="text-[clamp(13px,1.2vw,16px)] text-[#363A43]/70 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -121,16 +121,16 @@ export default function WhyLadder() {
             feature.position === 'right' && (
               <div
                 key={`text-right-${index}`}
-                className="absolute -right-44 w-80 lg:w-104 text-left pl-12 lg:pl-16 z-10"
+                className="absolute -right-44 w-80 lg:w-[clamp(320px,25vw,416px)] text-left pl-12 lg:pl-16 z-10"
                 style={{
                   top: `${feature.topPct}%`,
                   transform: 'translateY(-50%)'
                 }}
               >
-                <h3 className="text-lg lg:text-xl font-bold text-[#363A43] mb-1 leading-tight">
+                <h3 className="text-[clamp(16px,1.5vw,20px)] font-bold text-[#363A43] mb-1 leading-tight">
                   {feature.title}
                 </h3>
-                <p className="text-sm lg:text-base text-[#363A43]/70 leading-relaxed">
+                <p className="text-[clamp(13px,1.2vw,16px)] text-[#363A43]/70 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -139,18 +139,18 @@ export default function WhyLadder() {
         </div>
 
         {/* MOBILE - CLEAN CARD LAYOUT (NO LADDER) */}
-        <div className="md:hidden space-y-8 px-4 pt-12">
+        <div className="md:hidden space-y-6 sm:space-y-8 px-2 sm:px-4 pt-8 sm:pt-12">
           {features.map((feature, index) => (
-            <div key={index} className="max-w-md mx-auto p-8 bg-white rounded-3xl shadow-2xl border border-gray-100 hover:shadow-3xl transition-all duration-300">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#FFF9CE] flex items-center justify-center shadow-2xl border-4 border-white">
-                <div className="w-9 h-9 text-[#363A43]">
+            <div key={index} className="max-w-md mx-auto p-6 sm:p-8 bg-white rounded-3xl shadow-2xl border border-gray-100 hover:shadow-3xl transition-all duration-300">
+              <div className="w-[clamp(72px,18vw,80px)] h-[clamp(72px,18vw,80px)] mx-auto mb-5 sm:mb-6 rounded-full bg-[#FFF9CE] flex items-center justify-center shadow-2xl border-4 border-white">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 text-[#363A43]">
                   {feature.icon}
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-[#363A43] mb-4 leading-tight">
+              <h3 className="text-[clamp(18px,4.5vw,24px)] font-bold text-[#363A43] mb-3 sm:mb-4 leading-tight">
                 {feature.title}
               </h3>
-              <p className="text-base text-[#363A43]/80 leading-relaxed">
+              <p className="text-[clamp(14px,3.5vw,16px)] text-[#363A43]/80 leading-relaxed">
                 {feature.description}
               </p>
             </div>

@@ -28,40 +28,40 @@ export default function OurServices() {
   ];
 
   return (
-    <section className="relative w-full bg-[#363A43] py-16 md:py-20 lg:py-24">
-      <div className="w-full max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20 xl:px-32">
+    <section className="relative w-full bg-[#363A43] py-12 sm:py-16 md:py-20 lg:py-24">
+      <div className="w-full max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32">
         
         {/* Header Container */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12 mb-12 lg:mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12 mb-10 sm:mb-12 lg:mb-16">
           {/* Left - Title Section */}
-          <div className="space-y-4 flex-1">
+          <div className="space-y-3 sm:space-y-4 flex-1">
             {/* Badge */}
             <div className="inline-flex items-center justify-center px-4 py-1.5 bg-[#FFE000] rounded-full">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#363A43]">Step Up Your Marketing Game</span>
+              <span className="text-[clamp(10px,2.5vw,12px)] font-bold uppercase tracking-wider text-[#363A43]">Step Up Your Marketing Game</span>
             </div>
 
             {/* H2 Title */}
-            <h2 className="text-[clamp(2rem,4vw+0.5rem,3.5rem)] leading-tight font-bold text-[#FFE000] font-poppins">
+            <h2 className="text-[clamp(28px,5vw,56px)] leading-tight font-bold text-[#FFE000] font-poppins">
               Services to Help You Climb Higher
             </h2>
 
             {/* Subtitle */}
-            <p className="text-[clamp(1rem,1vw+0.5rem,1.125rem)] leading-relaxed text-[#FFF9CE]">
+            <p className="text-[clamp(14px,3.5vw,18px)] leading-relaxed text-[#FFF9CE]">
               From strategy to execution, we provide every step you need to grow your online presence.
             </p>
           </div>
 
           {/* Right - CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0 lg:self-start lg:pt-8">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-shrink-0 lg:self-start lg:pt-8">
             <Link
               href="/marketing/services"
-              className="inline-flex items-center justify-center px-6 py-3 h-12 bg-[#FFE000] text-[#363A43] rounded-lg text-base font-semibold hover:bg-[#E6CA00] transition-all duration-300 shadow-md hover:shadow-lg whitespace-nowrap"
+              className="inline-flex items-center justify-center px-5 sm:px-6 py-3 h-[clamp(44px,10vw,48px)] bg-[#FFE000] text-[#363A43] rounded-lg text-[clamp(14px,3.5vw,16px)] font-semibold hover:bg-[#E6CA00] transition-all duration-300 shadow-md hover:shadow-lg whitespace-nowrap"
             >
               View All Services
             </Link>
             <Link
               href="/marketing/contact"
-              className="inline-flex items-center justify-center px-6 py-3 h-12 bg-transparent border-2 border-[#FFE000] text-[#FFE000] rounded-lg text-base font-semibold hover:bg-[#FFE000] hover:text-[#363A43] transition-all duration-300 whitespace-nowrap"
+              className="inline-flex items-center justify-center px-5 sm:px-6 py-3 h-[clamp(44px,10vw,48px)] bg-transparent border-2 border-[#FFE000] text-[#FFE000] rounded-lg text-[clamp(14px,3.5vw,16px)] font-semibold hover:bg-[#FFE000] hover:text-[#363A43] transition-all duration-300 whitespace-nowrap"
             >
               Contact Us
             </Link>
@@ -69,24 +69,24 @@ export default function OurServices() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
           {services.map((service, index) => (
             <div 
               key={index}
-              className="relative flex flex-col items-start text-left p-6 md:p-8 rounded-2xl bg-[#4A4F5A] hover:bg-[#525861] transition-all duration-300 group space-y-4"
+              className="relative flex flex-col items-start text-left p-5 sm:p-6 md:p-8 rounded-2xl bg-[#4A4F5A] hover:bg-[#525861] transition-all duration-300 group space-y-3 sm:space-y-4"
             >
               {/* Icon Circle - Yellow Background */}
-              <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-[#FFE000] rounded-full text-[#363A43] p-3.5 md:p-4 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-[clamp(52px,11vw,64px)] h-[clamp(52px,11vw,64px)] flex items-center justify-center bg-[#FFE000] rounded-full text-[#363A43] p-3.5 md:p-4 group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
               </div>
 
               {/* Title */}
-              <h3 className="text-lg md:text-xl font-bold text-[#FFE000] font-poppins">
+              <h3 className="text-[clamp(16px,4vw,20px)] font-bold text-[#FFE000] font-poppins">
                 {service.title}
               </h3>
 
               {/* Description */}
-              <p className="text-sm md:text-base leading-relaxed text-[#FFF9CE]">
+              <p className="text-[clamp(13px,3vw,16px)] leading-relaxed text-[#FFF9CE]">
                 {service.description}
               </p>
             </div>

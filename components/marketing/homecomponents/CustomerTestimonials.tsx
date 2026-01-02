@@ -6,42 +6,50 @@ const TESTIMONIALS = [
   {
     id: 1,
     rating: 5,
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
-    name: "Name Surname",
-    position: "Position, Company name",
+    text: "I never felt the need to hire an in-house marketing team because The Ladders Media handles everything I need. From social media management to detailed documentation like white papers and case studies, they understand the requirements and deliver exactly what we expect.",
+    name: "Moiz. J",
+    position: "CEO, CloudSharks",
     avatar: "/avatar1.webp"
   },
   {
     id: 2,
     rating: 5,
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
-    name: "Name Surname",
-    position: "Position, Company name",
+    text: "In the pet grooming industry, turning your work into a steady business is tough. The Ladders Media helped me build a clear strategy with ads, social media setup and proper guidelines that pushed my brand in the right direction.",
+    name: "Umer. K",
+    position: "Founder, Meet My Pets",
     avatar: "/avatar2.webp"
   },
   {
     id: 3,
     rating: 5,
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
-    name: "Name Surname",
-    position: "Position, Company name",
+    text: "The Ladders Media supported us with a complete marketing setup and helped identify the gaps we were missing in our business. Their guidance made a real difference in how we operate today.",
+    name: "Saber. S",
+    position: "Founder, Skytech Technologies",
     avatar: "/avatar3.webp"
   },
   {
     id: 4,
-    rating: 4,
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
-    name: "Name Surname",
-    position: "Position, Company name",
+    rating: 5,
+    text: "When you're starting a company from scratch, you need the right digital marketing support. The Ladders Media helped me with logo design, brand identity, documentation and more. They stand out in every area.",
+    name: "Farhan. K",
+    position: "Founder, FranzCo & Farhan Films",
     avatar: "/avatar4.webp"
   },
   {
     id: 5,
     rating: 5,
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
-    name: "Name Surname",
-    position: "Position, Company name",
+    text: "I was searching for a logo that could truly represent my brand. The Ladders Media delivered exactly what I had in mind because they take the time to understand you and your business.",
+    name: "Sidhesh. H",
+    position: "Founder, Cake Layers",
     avatar: "/avatar5.webp"
+  },
+  {
+    id: 6,
+    rating: 5,
+    text: "Sometimes you have a design in your mind, but can't explain it clearly. The Ladders Media stepped in, asked the right questions and turned my ideas into exactly what I imagined.",
+    name: "Atik. S",
+    position: "Founder, VMIT Consulting",
+    avatar: "/avatar6.webp"
   }
 ];
 
@@ -118,22 +126,22 @@ export default function CustomerTestimonials() {
   };
 
   return (
-    <section className="relative w-full bg-[#363A43] py-16 md:py-20 lg:py-24 overflow-hidden">
-      <div className="w-full max-w-7xl 2xl:max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20 xl:px-32">
+    <section className="relative w-full bg-[#363A43] py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden">
+      <div className="w-full max-w-7xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32">
         
         {/* Header */}
-        <div className="text-center mb-12 lg:mb-16">
-          <div className="inline-flex items-center justify-center px-4 py-1.5 mb-4 bg-[#FFE000] rounded-full">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#363A43]">
+        <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+          <div className="inline-flex items-center justify-center px-4 py-1.5 mb-3 sm:mb-4 bg-[#FFE000] rounded-full">
+            <span className="text-[clamp(10px,2.5vw,12px)] font-bold uppercase tracking-wider text-[#363A43]">
               TESTIMONIALS
             </span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold text-[#FFE000] mb-4 font-poppins">
+          <h2 className="text-[clamp(28px,5vw,48px)] font-bold text-[#FFE000] mb-3 sm:mb-4 font-poppins">
             Customer Testimonials
           </h2>
           
-          <p className="text-[#FFF9CE] text-lg max-w-2xl mx-auto">
+          <p className="text-[#FFF9CE] text-[clamp(14px,3.5vw,18px)] leading-relaxed max-w-2xl mx-auto">
             Hear What Our Clients Say
           </p>
         </div>
@@ -174,18 +182,16 @@ export default function CustomerTestimonials() {
                     <div
                       key={testimonial.id}
                       ref={(el) => { cardRefs.current[index] = el; }}
-                      className="bg-[#4A4F5A] rounded-2xl p-6 md:p-8 flex flex-col gap-4 shadow-xl transition-all duration-300 hover:shadow-2xl shrink-0 carousel-card snap-start"
+                      className="bg-[#4A4F5A] rounded-2xl p-5 sm:p-6 md:p-8 flex flex-col gap-3 sm:gap-4 shadow-xl transition-all duration-300 hover:shadow-2xl shrink-0 carousel-card snap-start"
                     >
                       {/* Stars */}
                       <div className="flex gap-1">
                         {[...Array(5)].map((_, i) => (
                           <svg
                             key={i}
-                            width="20"
-                            height="20"
+                            className="w-[clamp(16px,4vw,20px)] h-[clamp(16px,4vw,20px)]"
                             viewBox="0 0 24 24"
                             fill={i < testimonial.rating ? "#FFE000" : "#6B7280"}
-                            className="transition-colors"
                           >
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                           </svg>
@@ -193,22 +199,22 @@ export default function CustomerTestimonials() {
                       </div>
 
                       {/* Testimonial Text */}
-                      <p className="text-[#FFF9CE] text-sm md:text-base leading-relaxed grow">
+                      <p className="text-[#FFF9CE] text-[clamp(13px,3vw,16px)] leading-relaxed grow">
                         &ldquo;{testimonial.text}&rdquo;
                       </p>
 
                       {/* Author Info */}
                       <div className="flex items-center gap-3 pt-2">
-                        <div className="w-12 h-12 rounded-full bg-[#FFE000]/20 flex items-center justify-center overflow-hidden shrink-0">
-                          <div className="w-10 h-10 rounded-full bg-[#FFE000]/40 flex items-center justify-center text-[#363A43] font-bold text-lg">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#FFE000]/20 flex items-center justify-center overflow-hidden shrink-0">
+                          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#FFE000]/40 flex items-center justify-center text-[#363A43] font-bold text-base sm:text-lg">
                             {testimonial.name.charAt(0)}
                           </div>
                         </div>
                         <div className="flex flex-col min-w-0">
-                          <span className="text-[#FFE000] font-semibold text-sm md:text-base truncate">
+                          <span className="text-[#FFE000] font-semibold text-[clamp(13px,3vw,16px)] truncate">
                             {testimonial.name}
                           </span>
-                          <span className="text-[#FFF9CE]/70 text-xs md:text-sm truncate">
+                          <span className="text-[#FFF9CE]/70 text-[clamp(11px,2.5vw,14px)] truncate">
                             {testimonial.position}
                           </span>
                         </div>
@@ -227,18 +233,16 @@ export default function CustomerTestimonials() {
                 {TESTIMONIALS.map((testimonial) => (
                   <div
                     key={testimonial.id}
-                    className="bg-[#4A4F5A] rounded-2xl p-6 md:p-8 flex flex-col gap-4 shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 shrink-0 carousel-card"
+                    className="bg-[#4A4F5A] rounded-2xl p-5 sm:p-6 md:p-8 flex flex-col gap-3 sm:gap-4 shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 shrink-0 carousel-card"
                   >
                     {/* Stars */}
                     <div className="flex gap-1">
                       {[...Array(5)].map((_, i) => (
                         <svg
                           key={i}
-                          width="20"
-                          height="20"
+                          className="w-[clamp(16px,4vw,20px)] h-[clamp(16px,4vw,20px)]"
                           viewBox="0 0 24 24"
                           fill={i < testimonial.rating ? "#FFE000" : "#6B7280"}
-                          className="transition-colors"
                         >
                           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                         </svg>
@@ -246,22 +250,22 @@ export default function CustomerTestimonials() {
                     </div>
 
                     {/* Testimonial Text */}
-                    <p className="text-[#FFF9CE] text-sm md:text-base leading-relaxed grow">
+                    <p className="text-[#FFF9CE] text-[clamp(13px,3vw,16px)] leading-relaxed grow">
                       &ldquo;{testimonial.text}&rdquo;
                     </p>
 
                     {/* Author Info */}
                     <div className="flex items-center gap-3 pt-2">
-                      <div className="w-12 h-12 rounded-full bg-[#FFE000]/20 flex items-center justify-center overflow-hidden shrink-0">
-                        <div className="w-10 h-10 rounded-full bg-[#FFE000]/40 flex items-center justify-center text-[#363A43] font-bold text-lg">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#FFE000]/20 flex items-center justify-center overflow-hidden shrink-0">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#FFE000]/40 flex items-center justify-center text-[#363A43] font-bold text-base sm:text-lg">
                           {testimonial.name.charAt(0)}
                         </div>
                       </div>
                       <div className="flex flex-col min-w-0">
-                        <span className="text-[#FFE000] font-semibold text-sm md:text-base truncate">
+                        <span className="text-[#FFE000] font-semibold text-[clamp(13px,3vw,16px)] truncate">
                           {testimonial.name}
                         </span>
-                        <span className="text-[#FFF9CE]/70 text-xs md:text-sm truncate">
+                        <span className="text-[#FFF9CE]/70 text-[clamp(11px,2.5vw,14px)] truncate">
                           {testimonial.position}
                         </span>
                       </div>
@@ -285,7 +289,7 @@ export default function CustomerTestimonials() {
         </div>
 
         {/* Dots Indicator */}
-        <div className="flex items-center justify-center gap-2 mt-8 lg:mt-12">
+        <div className="flex items-center justify-center gap-2 mt-6 sm:mt-8 lg:mt-12">
           {TESTIMONIALS.map((_, index) => (
             <button
               key={index}
