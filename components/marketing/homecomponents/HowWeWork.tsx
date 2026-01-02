@@ -47,7 +47,7 @@ const AnimatedCard = ({ step, index, progress }: { step: any; index: number; pro
 
 const StaticCard = ({ step }: { step: any }) => {
   return (
-    <div className="w-full bg-[#FFE000] p-8 rounded-[24px] border border-black shadow-2xl flex flex-col justify-center gap-4 text-[#363A43]">
+    <div className="w-full bg-[#FFE000] p-6 rounded-[24px] border border-black shadow-2xl flex flex-col justify-center gap-4 text-[#363A43]">
       <div className="mb-2">
         <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
