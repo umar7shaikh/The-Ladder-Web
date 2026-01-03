@@ -40,8 +40,8 @@ export default function ServiceDetails() {
   ];
 
   return (
-    <section className="relative w-full bg-white py-16 md:py-20 lg:py-24">
-      <div className="w-full max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20 xl:px-32 space-y-20 lg:space-y-32">
+    <section className="relative w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24">
+      <div className="w-full max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32 space-y-16 sm:space-y-20 lg:space-y-24 xl:space-y-32">
         
         {services.map((service, index) => {
           const isEven = index % 2 === 0;
@@ -49,24 +49,24 @@ export default function ServiceDetails() {
           return (
             <div 
               key={service.id}
-              className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 lg:gap-12 xl:gap-16`}
+              className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-6 sm:gap-8 lg:gap-12 xl:gap-16`}
             >
               {/* Text Content */}
-              <div className="w-full lg:w-1/2 space-y-4 lg:space-y-6">
+              <div className="w-full lg:w-1/2 space-y-3 sm:space-y-4 lg:space-y-6">
                 {/* Badge */}
                 <div className="inline-flex items-center justify-center px-4 py-1.5 bg-[#FFE000] rounded-full">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#363A43]">
+                  <span className="text-[clamp(10px,2.5vw,12px)] font-bold uppercase tracking-wider text-[#363A43]">
                     {service.badge}
                   </span>
                 </div>
 
                 {/* Title */}
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#363A43] font-poppins leading-tight">
+                <h2 className="text-[clamp(24px,5vw,48px)] font-bold text-[#363A43] font-poppins leading-tight">
                   {service.title}
                 </h2>
 
                 {/* Description */}
-                <p className="text-base md:text-lg text-[#363A43]/80 leading-relaxed max-w-xl">
+                <p className="text-[clamp(14px,3.5vw,18px)] text-[#363A43]/80 leading-relaxed max-w-xl">
                   {service.description}
                 </p>
               </div>
@@ -74,12 +74,11 @@ export default function ServiceDetails() {
               {/* Image */}
               <div className="w-full lg:w-1/2 relative">
                 <div className="relative w-full aspect-[4/3]">
-
                   <Image
                     src={service.image}
                     alt={service.imageAlt}
                     fill
-                    className="object-cover"
+                    className="object-cover rounded-2xl"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>

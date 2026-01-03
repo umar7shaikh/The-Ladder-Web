@@ -28,27 +28,27 @@ export default function TargetedAds() {
   ];
 
   return (
-    <section className="relative w-full bg-white py-16 md:py-20 lg:py-24">
-      <div className="w-full max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20 xl:px-32">
+    <section className="relative w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24">
+      <div className="w-full max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32">
         
-        <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-start gap-8 sm:gap-10 lg:gap-12 xl:gap-16">
           
           {/* Left Side - Header */}
-          <div className="w-full lg:w-2/5 space-y-4">
+          <div className="w-full lg:w-2/5 space-y-3 sm:space-y-4">
             {/* Badge */}
             <div className="inline-flex items-center justify-center px-4 py-1.5 bg-[#FFE000] rounded-full">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#363A43]">
+              <span className="text-[clamp(10px,2.5vw,12px)] font-bold uppercase tracking-wider text-[#363A43]">
                 Paid Ad Campaigns
               </span>
             </div>
 
             {/* Title */}
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#363A43] font-poppins leading-tight">
+            <h2 className="text-[clamp(24px,5vw,48px)] font-bold text-[#363A43] font-poppins leading-tight">
               Maximize ROI with Targeted Ads
             </h2>
 
             {/* Description */}
-            <p className="text-base md:text-lg text-[#363A43]/70 leading-relaxed">
+            <p className="text-[clamp(14px,3.5vw,18px)] text-[#363A43]/70 leading-relaxed">
               Drive measurable results across platforms with precision-focused ad strategies.
             </p>
           </div>
@@ -58,20 +58,20 @@ export default function TargetedAds() {
             {features.map((feature, index) => (
               <div 
                 key={index}
-                className="bg-[#FFE000] rounded-2xl p-6 md:p-8 space-y-3 hover:shadow-lg transition-shadow duration-300"
+                className="bg-[#FFE000] rounded-2xl p-5 sm:p-6 md:p-8 space-y-2 sm:space-y-3 hover:shadow-lg transition-shadow duration-300"
               >
                 {/* Icon */}
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-[#363A43] rounded-full flex items-center justify-center text-[#FFE000] p-3">
+                <div className="w-[clamp(44px,10vw,56px)] h-[clamp(44px,10vw,56px)] bg-[#363A43] rounded-full flex items-center justify-center text-[#FFE000] p-3">
                   {feature.icon}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl md:text-2xl font-bold text-[#363A43] font-poppins">
+                <h3 className="text-[clamp(18px,4vw,24px)] font-bold text-[#363A43] font-poppins">
                   {feature.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm md:text-base text-[#363A43]/80 leading-relaxed">
+                <p className="text-[clamp(13px,3vw,16px)] text-[#363A43]/80 leading-relaxed">
                   {feature.description}
                 </p>
               </div>

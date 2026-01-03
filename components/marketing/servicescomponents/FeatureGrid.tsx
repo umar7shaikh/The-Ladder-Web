@@ -9,7 +9,7 @@ interface FeatureProps {
 
 // Reusable Feature Card Component
 const FeatureCard = ({ icon, title, description }: FeatureProps) => (
-  <div className="relative flex flex-col items-center justify-center p-8 bg-white backdrop-blur-md border border-gray-200/30 rounded-[2.5rem] shadow-sm text-center w-full aspect-square max-w-[320px] transition-transform duration-300 hover:scale-[1.02] overflow-hidden">
+  <div className="relative flex flex-col items-center justify-center p-6 sm:p-8 bg-white backdrop-blur-md border border-gray-200/30 rounded-[2.5rem] shadow-sm text-center w-full aspect-square max-w-[280px] sm:max-w-[320px] transition-transform duration-300 hover:scale-[1.02] overflow-hidden">
     {/* Circuit-like pattern overlay */}
     <div className="absolute inset-0 opacity-[0.15] pointer-events-none">
       <svg className="w-full h-full" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,17 +38,17 @@ const FeatureCard = ({ icon, title, description }: FeatureProps) => (
     </div>
 
     {/* Decorative corner accents from original design */}
-    <div className="absolute top-6 left-6 w-3 h-3 border-t border-l border-gray-300 z-10" />
-    <div className="absolute top-6 right-6 w-1.5 h-1.5 bg-[#363A43] rounded-full z-10" />
-    <div className="absolute top-10 left-10 w-1 h-1 bg-gray-400 rounded-full opacity-50 z-10" />
+    <div className="absolute top-4 sm:top-6 left-4 sm:left-6 w-2.5 sm:w-3 h-2.5 sm:h-3 border-t border-l border-gray-300 z-10" />
+    <div className="absolute top-4 sm:top-6 right-4 sm:right-6 w-1.5 h-1.5 bg-[#363A43] rounded-full z-10" />
+    <div className="absolute top-8 sm:top-10 left-8 sm:left-10 w-1 h-1 bg-gray-400 rounded-full opacity-50 z-10" />
 
     {/* Icon Container */}
-    <div className="mb-6 p-4 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center relative z-10">
+    <div className="mb-4 sm:mb-6 p-3 sm:p-4 rounded-full border border-gray-200 bg-white shadow-sm flex items-center justify-center relative z-10">
       {icon}
     </div>
 
-    <h3 className="text-lg font-bold text-[#363A43] mb-2 relative z-10">{title}</h3>
-    <p className="text-[#363A43]/70 text-sm leading-relaxed max-w-[180px] relative z-10">
+    <h3 className="text-[clamp(16px,4vw,18px)] font-bold text-[#363A43] mb-2 relative z-10">{title}</h3>
+    <p className="text-[#363A43]/70 text-[clamp(12px,3vw,14px)] leading-relaxed max-w-[180px] relative z-10">
       {description}
     </p>
   </div>
@@ -71,7 +71,7 @@ const EmptyGridCell = ({ gradientPosition }: { gradientPosition: string }) => {
   };
 
   return (
-    <div className="hidden md:block w-full aspect-square max-w-[320px] rounded-[2.5rem] overflow-hidden relative">
+    <div className="hidden md:block w-full aspect-square max-w-[280px] lg:max-w-[320px] rounded-[2.5rem] overflow-hidden relative">
       {/* Yellow Gradient Background */}
       <div 
         className="w-full h-full absolute inset-0"
@@ -98,11 +98,11 @@ const EmptyGridCell = ({ gradientPosition }: { gradientPosition: string }) => {
 
 // The Specific Center Ladder Component using your SVG
 const CenterLadder = () => (
-  <div className="relative hidden md:flex items-center justify-center w-full aspect-square max-w-[320px]">
+  <div className="relative hidden md:flex items-center justify-center w-full aspect-square max-w-[280px] lg:max-w-[320px]">
     {/* Yellow blob gradient in center */}
     <div className="absolute inset-0 flex items-center justify-center">
       <div 
-        className="w-48 h-48 rounded-full blur-3xl opacity-40"
+        className="w-36 h-36 sm:w-48 sm:h-48 rounded-full blur-3xl opacity-40"
         style={{
           background: 'radial-gradient(circle, rgba(255, 224, 0, 0.6), rgba(255, 224, 0, 0.2) 50%, transparent 70%)'
         }}
@@ -116,7 +116,7 @@ const CenterLadder = () => (
       viewBox="0 0 180 180" 
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
-      className="drop-shadow-xl relative z-10"
+      className="drop-shadow-xl relative z-10 w-[clamp(140px,35vw,180px)] h-[clamp(140px,35vw,180px)]"
     >
       <g style={{ backdropFilter: 'blur(20px)' }}>
         <rect width="180" height="180" rx="90" fill="white" fillOpacity="0.02"/>
@@ -138,31 +138,31 @@ const CenterLadder = () => (
 
 export default function FeatureGrid() {
   return (
-    <section className="relative pt-48 pb-24 bg-white flex items-center justify-center min-h-screen overflow-hidden">
+    <section className="relative pt-32 sm:pt-40 md:pt-48 pb-16 sm:pb-20 md:pb-24 bg-white flex items-center justify-center min-h-screen overflow-hidden">
       {/* Header Section */}
-      <div className="absolute top-12 left-1/2 -translate-x-1/2 text-center space-y-2 px-4">
+      <div className="absolute top-8 sm:top-10 md:top-12 left-1/2 -translate-x-1/2 text-center space-y-2 px-4 w-full max-w-4xl">
         <div className="inline-flex items-center justify-center px-4 py-1.5 bg-[#FFE000] rounded-full mb-2">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#363A43]">
+          <span className="text-[clamp(10px,2.5vw,12px)] font-bold uppercase tracking-wider text-[#363A43]">
             Email Marketing
           </span>
         </div>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#363A43] font-poppins leading-tight">
+        <h2 className="text-[clamp(24px,5vw,48px)] font-bold text-[#363A43] font-poppins leading-tight">
           Convert Leads into Customers
         </h2>
-        <p className="text-base md:text-lg text-[#363A43]/70">
+        <p className="text-[clamp(14px,3.5vw,18px)] text-[#363A43]/70">
           Deliver the right message to the right audience at the right time.
         </p>
       </div>
 
       {/* 3x3 Layout Grid */}
-      <div className="container max-w-6xl mx-auto px-4 mt-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-y-12 items-center justify-items-center">
+      <div className="container max-w-6xl mx-auto px-4 mt-12 sm:mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-y-10 lg:gap-y-12 items-center justify-items-center">
           
           {/* Row 1 */}
           <EmptyGridCell gradientPosition="bottom-right" />
           
           <FeatureCard 
-            icon={<Mail className="w-8 h-8 text-[#363A43]" strokeWidth={1.5} />}
+            icon={<Mail className="w-6 h-6 sm:w-8 sm:h-8 text-[#363A43]" strokeWidth={1.5} />}
             title="Personalized Campaigns"
             description="Tailored emails that connect with your audience."
           />
@@ -171,7 +171,7 @@ export default function FeatureGrid() {
 
           {/* Row 2 */}
           <FeatureCard 
-            icon={<Target className="w-8 h-8 text-[#363A43]" strokeWidth={1.5} />}
+            icon={<Target className="w-6 h-6 sm:w-8 sm:h-8 text-[#363A43]" strokeWidth={1.5} />}
             title="Audience Segmentation"
             description="Reach the right people with targeted content."
           />
@@ -179,7 +179,7 @@ export default function FeatureGrid() {
           <CenterLadder />
 
           <FeatureCard 
-            icon={<Clock className="w-8 h-8 text-[#363A43]" strokeWidth={1.5} />}
+            icon={<Clock className="w-6 h-6 sm:w-8 sm:h-8 text-[#363A43]" strokeWidth={1.5} />}
             title="Automated Workflows"
             description="Save time with scheduled and triggered emails."
           />
@@ -188,7 +188,7 @@ export default function FeatureGrid() {
           <EmptyGridCell gradientPosition="top-right" />
           
           <FeatureCard 
-            icon={<BarChart3 className="w-8 h-8 text-[#363A43]" strokeWidth={1.5} />}
+            icon={<BarChart3 className="w-6 h-6 sm:w-8 sm:h-8 text-[#363A43]" strokeWidth={1.5} />}
             title="Performance Tracking"
             description="Optimize with open rates, clicks and conversions."
           />
