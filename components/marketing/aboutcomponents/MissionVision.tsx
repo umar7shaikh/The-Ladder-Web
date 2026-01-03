@@ -1,6 +1,7 @@
 // components/marketing/aboutcomponents/MissionVision.tsx
 'use client';
 
+
 export default function MissionVision() {
   return (
     <section className="relative w-full py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden">
@@ -10,6 +11,7 @@ export default function MissionVision() {
         <div className="w-full lg:w-1/2 bg-[#4A5058]"></div>
         <div className="hidden lg:block w-1/2 bg-white"></div>
       </div>
+
 
       <div className="relative z-10 w-full max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32">
         
@@ -24,10 +26,12 @@ export default function MissionVision() {
                 <span className="text-[clamp(11px,2.5vw,12px)] font-semibold text-[#363A43]">Our Mission and Vision</span>
               </div>
 
+
               {/* Heading */}
               <h2 className="text-[clamp(28px,5vw,56px)] leading-tight font-bold text-[#FFE000] font-poppins">
                 Digital Excellence for Growth
               </h2>
+
 
               {/* Description */}
               <p className="text-[clamp(14px,3.5vw,18px)] leading-relaxed font-normal text-[#FFF9CE]">
@@ -35,6 +39,7 @@ export default function MissionVision() {
               </p>
             </div>
           </div>
+
 
           {/* Center - Bullseye Target (Absolute Center) - 5 circles */}
           <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
@@ -51,6 +56,7 @@ export default function MissionVision() {
               <div className="absolute inset-[40%] rounded-full bg-[#FFE000]"></div>
             </div>
           </div>
+
 
           {/* Right Side - Value Cards (Moved more to the right) */}
           <div className="w-full lg:w-[52%] lg:pl-8 xl:pl-12 2xl:pl-16 flex flex-col gap-8 sm:gap-10 lg:gap-12 z-10">
@@ -69,9 +75,10 @@ export default function MissionVision() {
               </div>
             </div>
 
+
             {/* Card 2 - Data-Driven Growth (Icon and content shifted more right) */}
-            <div className="bg-[#FFE000] rounded-xl shadow-lg flex items-center gap-3 relative min-h-[120px] sm:min-h-[138px] pl-[160px] sm:pl-[180px] lg:pl-[220px] pr-4 py-5 sm:py-[22px]">
-              <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center absolute left-[100px] sm:left-[120px] lg:left-36 z-30">
+            <div className="bg-[#FFE000] rounded-xl shadow-lg flex items-center gap-3 relative min-h-[120px] sm:min-h-[138px] pl-[80px] sm:pl-[100px] lg:pl-[220px] pr-4 py-5 sm:py-[22px]">
+              <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center absolute left-4 sm:left-8 lg:left-36 z-30">
                 <svg className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="12" y1="20" x2="12" y2="10"></line>
                   <line x1="18" y1="20" x2="18" y2="4"></line>
@@ -83,6 +90,7 @@ export default function MissionVision() {
                 <p className="text-[clamp(12px,3vw,14px)] text-[#363A43]/70 leading-relaxed">Using insights and analytics to drive smarter decisions and better results.</p>
               </div>
             </div>
+
 
             {/* Card 3 - Trusted Partnerships (No shadow/border) */}
             <div className="bg-white rounded-xl flex items-center gap-3 relative min-h-[120px] sm:min-h-[138px] pl-[80px] sm:pl-[100px] pr-4 sm:pr-8 py-5 sm:py-[22px]">
@@ -97,7 +105,9 @@ export default function MissionVision() {
               </div>
             </div>
 
+
           </div>
+
 
         </div>
       </div>
