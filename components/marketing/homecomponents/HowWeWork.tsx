@@ -47,15 +47,15 @@ const AnimatedCard = ({ step, index, progress }: { step: any; index: number; pro
 
 const StaticCard = ({ step }: { step: any }) => {
   return (
-    <div className="w-full bg-[#FFE000] p-6 rounded-[24px] border border-black shadow-2xl flex flex-col justify-center gap-4 text-[#363A43]">
-      <div className="mb-2">
-        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <div className="w-full bg-[#FFE000] p-5 rounded-[24px] border border-black shadow-2xl flex flex-col justify-center gap-3 text-[#363A43]">
+      <div className="mb-1">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
         </svg>
       </div>
-      <div className="flex flex-col gap-2">
-        <h3 className="text-3xl md:text-4xl font-bold font-poppins tracking-tight">{step.title}</h3>
-        <p className="text-[#363A43]/90 text-base md:text-lg leading-relaxed max-w-sm font-medium">{step.description}</p>
+      <div className="flex flex-col gap-1.5">
+        <h3 className="text-2xl md:text-4xl font-bold font-poppins tracking-tight">{step.title}</h3>
+        <p className="text-[#363A43]/90 text-sm md:text-lg leading-relaxed max-w-sm font-medium">{step.description}</p>
       </div>
     </div>
   );
