@@ -28,22 +28,22 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="relative w-full bg-white py-16 md:py-20 lg:py-24">
-      <div className="w-full max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20 xl:px-32">
+    <section className="relative w-full bg-white py-12 sm:py-16 md:py-20 lg:py-24">
+      <div className="w-full max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32">
         
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row gap-8 sm:gap-10 lg:gap-12 xl:gap-16">
           
           {/* Left Side - Contact Form */}
           <div className="w-full lg:w-1/2">
-            <h2 className="text-[clamp(1.75rem,3vw+0.5rem,2.5rem)] leading-tight font-bold text-[#363A43] font-poppins mb-8">
+            <h2 className="text-[clamp(24px,4.5vw,40px)] leading-tight font-bold text-[#363A43] font-poppins mb-6 sm:mb-8">
               Get In Touch
             </h2>
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5 sm:gap-6">
               
               {/* Name Field */}
               <div className="flex flex-col gap-2">
-                <label htmlFor="name" className="text-sm font-medium text-[#363A43]">
+                <label htmlFor="name" className="text-[clamp(13px,3vw,14px)] font-medium text-[#363A43]">
                   Name
                 </label>
                 <input
@@ -53,14 +53,14 @@ export default function ContactForm() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Enter your full name"
-                  className="w-full px-4 py-3 border-2 border-[#FFE000] rounded-lg focus:outline-none focus:border-[#FFE000] focus:ring-2 focus:ring-[#FFE000]/20 text-[#363A43] placeholder:text-[#363A43]/40"
+                  className="w-full px-4 py-3 border-2 border-[#FFE000] rounded-lg focus:outline-none focus:border-[#FFE000] focus:ring-2 focus:ring-[#FFE000]/20 text-[clamp(14px,3.5vw,16px)] text-[#363A43] placeholder:text-[#363A43]/40"
                   required
                 />
               </div>
 
               {/* Company Name Field */}
               <div className="flex flex-col gap-2">
-                <label htmlFor="companyName" className="text-sm font-medium text-[#363A43]">
+                <label htmlFor="companyName" className="text-[clamp(13px,3vw,14px)] font-medium text-[#363A43]">
                   Company Name *
                 </label>
                 <input
@@ -70,16 +70,16 @@ export default function ContactForm() {
                   value={formData.companyName}
                   onChange={handleChange}
                   placeholder="Enter your company name"
-                  className="w-full px-4 py-3 border border-[#363A43]/20 rounded-lg focus:outline-none focus:border-[#FFE000] focus:ring-2 focus:ring-[#FFE000]/20 text-[#363A43] placeholder:text-[#363A43]/40 bg-[#F5F5F5]"
+                  className="w-full px-4 py-3 border border-[#363A43]/20 rounded-lg focus:outline-none focus:border-[#FFE000] focus:ring-2 focus:ring-[#FFE000]/20 text-[clamp(14px,3.5vw,16px)] text-[#363A43] placeholder:text-[#363A43]/40 bg-[#F5F5F5]"
                   required
                 />
               </div>
 
               {/* Email and Phone Fields - Side by Side */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
                 {/* Email Field */}
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="text-sm font-medium text-[#363A43]">
+                  <label htmlFor="email" className="text-[clamp(13px,3vw,14px)] font-medium text-[#363A43]">
                     Email *
                   </label>
                   <input
@@ -89,14 +89,14 @@ export default function ContactForm() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Enter email address"
-                    className="w-full px-4 py-3 border border-[#363A43]/20 rounded-lg focus:outline-none focus:border-[#FFE000] focus:ring-2 focus:ring-[#FFE000]/20 text-[#363A43] placeholder:text-[#363A43]/40 bg-[#F5F5F5]"
+                    className="w-full px-4 py-3 border border-[#363A43]/20 rounded-lg focus:outline-none focus:border-[#FFE000] focus:ring-2 focus:ring-[#FFE000]/20 text-[clamp(14px,3.5vw,16px)] text-[#363A43] placeholder:text-[#363A43]/40 bg-[#F5F5F5]"
                     required
                   />
                 </div>
 
                 {/* Phone Field */}
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="phone" className="text-sm font-medium text-[#363A43]">
+                  <label htmlFor="phone" className="text-[clamp(13px,3vw,14px)] font-medium text-[#363A43]">
                     Phone *
                   </label>
                   <input
@@ -106,7 +106,7 @@ export default function ContactForm() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="Enter contact number"
-                    className="w-full px-4 py-3 border border-[#363A43]/20 rounded-lg focus:outline-none focus:border-[#FFE000] focus:ring-2 focus:ring-[#FFE000]/20 text-[#363A43] placeholder:text-[#363A43]/40 bg-[#F5F5F5]"
+                    className="w-full px-4 py-3 border border-[#363A43]/20 rounded-lg focus:outline-none focus:border-[#FFE000] focus:ring-2 focus:ring-[#FFE000]/20 text-[clamp(14px,3.5vw,16px)] text-[#363A43] placeholder:text-[#363A43]/40 bg-[#F5F5F5]"
                     required
                   />
                 </div>
@@ -114,7 +114,7 @@ export default function ContactForm() {
 
               {/* Message Field */}
               <div className="flex flex-col gap-2">
-                <label htmlFor="message" className="text-sm font-medium text-[#363A43]">
+                <label htmlFor="message" className="text-[clamp(13px,3vw,14px)] font-medium text-[#363A43]">
                   Message
                 </label>
                 <textarea
@@ -124,7 +124,7 @@ export default function ContactForm() {
                   onChange={handleChange}
                   placeholder="Type your message..."
                   rows={6}
-                  className="w-full px-4 py-3 border border-[#363A43]/20 rounded-lg focus:outline-none focus:border-[#FFE000] focus:ring-2 focus:ring-[#FFE000]/20 text-[#363A43] placeholder:text-[#363A43]/40 bg-[#F5F5F5] resize-none"
+                  className="w-full px-4 py-3 border border-[#363A43]/20 rounded-lg focus:outline-none focus:border-[#FFE000] focus:ring-2 focus:ring-[#FFE000]/20 text-[clamp(14px,3.5vw,16px)] text-[#363A43] placeholder:text-[#363A43]/40 bg-[#F5F5F5] resize-none"
                 />
               </div>
 
@@ -139,7 +139,7 @@ export default function ContactForm() {
                   className="mt-1 w-4 h-4 accent-[#FFE000] cursor-pointer"
                   required
                 />
-                <label htmlFor="acceptTerms" className="text-sm text-[#363A43]/80 cursor-pointer">
+                <label htmlFor="acceptTerms" className="text-[clamp(12px,3vw,14px)] text-[#363A43]/80 cursor-pointer">
                   I accept the{' '}
                   <a href="/terms" className="text-[#363A43] underline hover:text-[#FFE000]">
                     Terms & Conditions
@@ -149,10 +149,10 @@ export default function ContactForm() {
               </div>
 
               {/* Submit Button */}
-              <div>
+              <div className="pt-2">
                 <button
                   type="submit"
-                  className="px-8 py-3 bg-[#FFE000] text-[#363A43] rounded-lg text-base font-semibold hover:bg-[#FFE000]/90 transition-all duration-300 shadow-md hover:shadow-lg"
+                  className="px-6 sm:px-8 py-3 h-[clamp(44px,10vw,48px)] bg-[#FFE000] text-[#363A43] rounded-lg text-[clamp(14px,3.5vw,16px)] font-semibold hover:bg-[#FFE000]/90 transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   Submit
                 </button>
@@ -163,10 +163,10 @@ export default function ContactForm() {
 
           {/* Right Side - Map */}
           <div className="w-full lg:w-1/2">
-            <div className="w-full h-[500px] lg:h-full min-h-[400px] bg-[#E5E5E5] rounded-2xl overflow-hidden relative">
+            <div className="w-full h-[400px] sm:h-[500px] lg:h-full lg:min-h-[500px] bg-[#E5E5E5] rounded-2xl overflow-hidden relative">
               {/* Placeholder Map - Replace with actual Google Maps embed */}
               <div className="w-full h-full flex items-center justify-center">
-                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-[#B0B0B0]">
+                <svg className="w-16 h-16 sm:w-20 sm:h-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
