@@ -1,4 +1,4 @@
-// components/ImpactStats.tsx
+// components\technical\techhomecomponents\ImpactStats.tsx
 'use client';
 
 import { useEffect, useRef, useState } from 'react';

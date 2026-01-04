@@ -1,4 +1,4 @@
-// components/Services.tsx
+// components\technical\techhomecomponents\TServices.tsx
 'use client';
 
 import { useState, useRef } from 'react';
