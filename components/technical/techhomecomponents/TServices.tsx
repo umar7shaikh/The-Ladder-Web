@@ -131,34 +131,35 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Tab Navigation - Desktop Only */}
-        <div className="hidden md:block relative mb-12 lg:mb-16 overflow-x-auto scrollbar-hide">
-          <div className="flex flex-nowrap justify-between items-center gap-2 relative pb-6">
-            {services.map((service, index) => (
-              <button
-                key={service.id}
-                onClick={() => handleServiceChange(index)}
-                disabled={isTransitioning}
-                className={`
-                  relative flex-shrink-0 px-3 sm:px-4 md:px-6 py-2 font-medium text-[clamp(11px,2.5vw,14px)] transition-all duration-300 whitespace-nowrap text-center
-                  ${activeService === index 
-                    ? 'text-[#D8F209]' 
-                    : 'text-[#FBFFDE]/50 hover:text-[#FBFFDE]/80'
-                  }
-                  ${isTransitioning ? 'pointer-events-none' : ''}
-                `}
-              >
-                {service.label}
-                
-                {activeService === index && (
-                  <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-2.5 h-2.5 bg-[#D8F209] rounded-full"></div>
-                )}
-              </button>
-            ))}
-          </div>
+{/* Tab Navigation - Desktop Only */}
+<div className="hidden md:block relative mb-12 lg:mb-16">
+  <div className="flex justify-between items-center gap-1 lg:gap-2 xl:gap-4 relative pb-6">
+    {services.map((service, index) => (
+      <button
+        key={service.id}
+        onClick={() => handleServiceChange(index)}
+        disabled={isTransitioning}
+        className={`
+          relative flex-shrink-1 flex-grow-0 px-1 md:px-2 lg:px-3 xl:px-4 2xl:px-6 py-2 font-medium text-[clamp(9px,1.2vw,14px)] transition-all duration-300 whitespace-nowrap text-center
+          ${activeService === index 
+            ? 'text-[#D8F209]' 
+            : 'text-[#FBFFDE]/50 hover:text-[#FBFFDE]/80'
+          }
+          ${isTransitioning ? 'pointer-events-none' : ''}
+        `}
+      >
+        {service.label}
+        
+        {activeService === index && (
+          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-2 h-2 lg:w-2.5 lg:h-2.5 bg-[#D8F209] rounded-full"></div>
+        )}
+      </button>
+    ))}
+  </div>
 
-          <div className="absolute bottom-[11px] left-0 right-0 h-px bg-[#FBFFDE]/10"></div>
-        </div>
+  <div className="absolute bottom-[11px] left-0 right-0 h-px bg-[#FBFFDE]/10"></div>
+</div>
+
 
         {/* Content Area with Swipe Support on Entire Section */}
         <div 
