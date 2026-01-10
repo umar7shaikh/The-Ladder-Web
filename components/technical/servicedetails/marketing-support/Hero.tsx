@@ -129,7 +129,7 @@ export default function Hero({
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative"
+            className="relative flex justify-center lg:justify-end"
           >
             <AnimatedGrowthChart />
           </motion.div>
@@ -140,7 +140,7 @@ export default function Hero({
   );
 }
 
-// Animated Growth Chart Component
+// Animated Growth Chart Component - SMALLER
 function AnimatedGrowthChart() {
   const [activeMetric, setActiveMetric] = useState(0);
 
@@ -162,28 +162,28 @@ function AnimatedGrowthChart() {
   }, []);
 
   return (
-    <div className="relative">
-      {/* Marketing Dashboard Window */}
+    <div className="relative w-full max-w-md">
+      {/* Marketing Dashboard Window - COMPACT */}
       <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 overflow-hidden shadow-2xl">
         
-        {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 bg-[#1A1A1A] border-b border-[#D8F209]/10">
-          <div className="flex items-center gap-3">
-            <TrendingUp className="w-5 h-5 text-[#D8F209]" />
-            <span className="text-white font-semibold">Marketing Performance</span>
-          </div>
+        {/* Header - Smaller */}
+        <div className="flex items-center justify-between px-4 py-3 bg-[#1A1A1A] border-b border-[#D8F209]/10">
           <div className="flex items-center gap-2">
+            <TrendingUp className="w-4 h-4 text-[#D8F209]" />
+            <span className="text-white font-semibold text-sm">Performance</span>
+          </div>
+          <div className="flex items-center gap-1.5">
             <motion.div
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="w-2 h-2 rounded-full bg-[#D8F209]"
+              className="w-1.5 h-1.5 rounded-full bg-[#D8F209]"
             />
-            <span className="text-[#FBFFDE]/40 text-xs font-mono">Live</span>
+            <span className="text-[#FBFFDE]/40 text-[10px] font-mono">LIVE</span>
           </div>
         </div>
 
-        {/* Metrics Grid */}
-        <div className="p-6 grid grid-cols-2 gap-4 border-b border-[#D8F209]/10">
+        {/* Metrics Grid - Compact */}
+        <div className="p-4 grid grid-cols-2 gap-2 border-b border-[#D8F209]/10">
           {metrics.map((metric, index) => (
             <motion.div
               key={index}
@@ -192,72 +192,71 @@ function AnimatedGrowthChart() {
                 scale: activeMetric === index ? 1.02 : 1
               }}
               transition={{ duration: 0.3 }}
-              className="bg-[#1A1A1A] rounded-lg p-4 border border-[#D8F209]/10"
+              className="bg-[#1A1A1A] rounded-lg p-2.5 border border-[#D8F209]/10"
             >
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[#FBFFDE]/60 text-xs">{metric.label}</span>
-                <TrendingUp className="w-4 h-4 text-[#D8F209]" />
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-[#FBFFDE]/60 text-[10px]">{metric.label}</span>
+                <TrendingUp className="w-3 h-3 text-[#D8F209]" />
               </div>
-              <div className="text-[#D8F209] text-xl font-bold">{metric.value}</div>
-              <div className="text-[#FBFFDE]/40 text-xs mt-1">vs last month</div>
+              <div className="text-[#D8F209] text-base font-bold">{metric.value}</div>
             </motion.div>
           ))}
         </div>
 
-        {/* Growth Chart Visualization */}
-        <div className="p-6 min-h-[300px]">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-white font-semibold text-sm">Growth Trend</h3>
-            <BarChart3 className="w-4 h-4 text-[#D8F209]" />
+        {/* Growth Chart Visualization - Smaller */}
+        <div className="p-4">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-white font-semibold text-xs">Growth Trend</h3>
+            <BarChart3 className="w-3 h-3 text-[#D8F209]" />
           </div>
 
-          {/* Chart */}
-          <div className="relative h-48 flex items-end justify-between gap-2">
+          {/* Chart - Reduced Height */}
+          <div className="relative h-32 flex items-end justify-between gap-1">
             {chartData.map((value, index) => (
               <motion.div
                 key={index}
                 initial={{ height: 0 }}
                 animate={{ height: `${(value / Math.max(...chartData)) * 100}%` }}
                 transition={{ duration: 0.8, delay: 0.5 + index * 0.05 }}
-                className="flex-1 bg-gradient-to-t from-[#D8F209] to-[#D8F209]/60 rounded-t min-h-[20px] relative group"
+                className="flex-1 bg-gradient-to-t from-[#D8F209] to-[#D8F209]/60 rounded-t min-h-[10px] relative group"
               >
-                <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[#FBFFDE]/40 text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-[#FBFFDE]/40 text-[9px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                   {value}%
                 </div>
               </motion.div>
             ))}
           </div>
 
-          {/* X-axis labels */}
-          <div className="flex justify-between mt-4 text-[#FBFFDE]/40 text-xs">
-            {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map((month) => (
-              <span key={month}>{month}</span>
+          {/* X-axis labels - Smaller */}
+          <div className="flex justify-between mt-2 text-[#FBFFDE]/40 text-[9px]">
+            {['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'].map((month, i) => (
+              <span key={i}>{month}</span>
             ))}
           </div>
 
-          {/* Marketing channels */}
-          <div className="mt-8 space-y-3">
-            <h4 className="text-white font-semibold text-sm mb-3">Top Channels</h4>
+          {/* Marketing channels - Compact */}
+          <div className="mt-5 space-y-2">
+            <h4 className="text-white font-semibold text-xs mb-2">Top Channels</h4>
             {[
-              { name: 'Organic Search', value: 45, icon: Target },
-              { name: 'Social Media', value: 32, icon: Users },
-              { name: 'Email Campaigns', value: 23, icon: TrendingUp },
+              { name: 'Organic', value: 45, icon: Target },
+              { name: 'Social', value: 32, icon: Users },
+              { name: 'Email', value: 23, icon: TrendingUp },
             ].map((channel, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-                className="space-y-2"
+                className="space-y-1"
               >
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <channel.icon className="w-4 h-4 text-[#D8F209]" />
-                    <span className="text-[#FBFFDE]/60 text-xs">{channel.name}</span>
+                  <div className="flex items-center gap-1.5">
+                    <channel.icon className="w-3 h-3 text-[#D8F209]" />
+                    <span className="text-[#FBFFDE]/60 text-[10px]">{channel.name}</span>
                   </div>
-                  <span className="text-[#D8F209] text-xs font-mono">{channel.value}%</span>
+                  <span className="text-[#D8F209] text-[10px] font-mono">{channel.value}%</span>
                 </div>
-                <div className="h-2 bg-[#1E1E1E] rounded-full overflow-hidden">
+                <div className="h-1.5 bg-[#1E1E1E] rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${channel.value}%` }}
@@ -272,7 +271,7 @@ function AnimatedGrowthChart() {
       </div>
 
       {/* Glow Effect */}
-      <div className="absolute -inset-1 bg-gradient-to-r from-[#D8F209]/20 to-[#D8F209]/0 rounded-xl blur-xl -z-10" />
+      <div className="absolute -inset-2 bg-gradient-to-br from-[#D8F209]/10 via-transparent to-[#D8F209]/5 rounded-xl blur-2xl -z-10 opacity-50" />
     </div>
   );
 }

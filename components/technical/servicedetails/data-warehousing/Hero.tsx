@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, Database, GitBranch, Activity } from 'lucide-react';
+import { ArrowRight, Database, GitBranch, Activity, Layers } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
 import React from 'react';
 
@@ -130,7 +130,7 @@ export default function Hero({
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative"
+            className="relative flex justify-center lg:justify-end"
           >
             <AnimatedDataFlow />
           </motion.div>
@@ -141,163 +141,149 @@ export default function Hero({
   );
 }
 
-// Animated Data Flow Component
+// Improved Animated Data Flow Component
 function AnimatedDataFlow() {
-  const [activeSource, setActiveSource] = useState(0);
-
-  const dataSources = [
-    { name: 'CRM', status: 'syncing', records: 12547 },
-    { name: 'Database', status: 'active', records: 89321 },
-    { name: 'API', status: 'syncing', records: 3456 },
-    { name: 'Files', status: 'queued', records: 2189 },
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveSource((prev) => (prev + 1) % dataSources.length);
-    }, 2500);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="relative">
-      {/* Data Flow Window */}
+    <div className="relative w-full max-w-md">
+      {/* Data Flow Window - Compact */}
       <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 overflow-hidden shadow-2xl">
         
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 bg-[#1A1A1A] border-b border-[#D8F209]/10">
-          <div className="flex items-center gap-3">
-            <Database className="w-5 h-5 text-[#D8F209]" />
-            <span className="text-white font-semibold">Data Integration Hub</span>
-          </div>
+        <div className="flex items-center justify-between px-4 py-3 bg-[#1A1A1A] border-b border-[#D8F209]/10">
           <div className="flex items-center gap-2">
+            <Layers className="w-4 h-4 text-[#D8F209]" />
+            <span className="text-white font-semibold text-sm">ETL Pipeline</span>
+          </div>
+          <div className="flex items-center gap-1.5">
             <motion.div
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="w-2 h-2 rounded-full bg-[#D8F209]"
+              className="w-1.5 h-1.5 rounded-full bg-[#D8F209]"
             />
-            <span className="text-[#FBFFDE]/40 text-xs font-mono">Live</span>
+            <span className="text-[#FBFFDE]/40 text-[10px] font-mono">ACTIVE</span>
           </div>
         </div>
 
-        {/* Data Sources */}
-        <div className="p-6 space-y-4 border-b border-[#D8F209]/10">
-          <h3 className="text-white font-semibold text-sm mb-4">Data Sources</h3>
-          {dataSources.map((source, index) => (
-            <motion.div
-              key={index}
-              animate={{ 
-                borderColor: activeSource === index ? 'rgba(216, 242, 9, 0.4)' : 'rgba(216, 242, 9, 0.1)',
-                scale: activeSource === index ? 1.02 : 1
-              }}
-              transition={{ duration: 0.3 }}
-              className="bg-[#1A1A1A] rounded-lg p-4 border border-[#D8F209]/10"
-            >
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-3">
-                  <Database className="w-4 h-4 text-[#D8F209]" />
-                  <span className="text-white text-sm font-medium">{source.name}</span>
-                </div>
-                <span className={`text-xs font-mono ${
-                  source.status === 'active' ? 'text-[#28CA42]' : 
-                  source.status === 'syncing' ? 'text-[#D8F209]' : 
-                  'text-[#FBFFDE]/40'
-                }`}>
-                  {source.status.toUpperCase()}
-                </span>
-              </div>
-              
-              {/* Progress bar */}
-              <div className="h-1 bg-[#0D0D0D] rounded-full overflow-hidden">
+        {/* Compact Pipeline Visualization */}
+        <div className="p-5 space-y-4">
+          
+          {/* Sources Row */}
+          <div className="space-y-2">
+            <div className="text-[#FBFFDE]/50 text-xs font-mono">Sources</div>
+            <div className="flex gap-2">
+              {['DB', 'API', 'CSV', 'Cloud'].map((source, i) => (
                 <motion.div
-                  animate={{ 
-                    width: source.status === 'active' ? '100%' : 
-                           source.status === 'syncing' ? ['0%', '100%', '0%'] : '0%'
-                  }}
-                  transition={{ 
-                    duration: 2, 
-                    repeat: source.status === 'syncing' ? Infinity : 0,
-                    ease: "linear"
-                  }}
-                  className="h-full bg-[#D8F209] rounded-full"
-                />
-              </div>
-              
-              <div className="mt-2 text-[#FBFFDE]/40 text-xs">
-                {source.records.toLocaleString()} records processed
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Data Flow Visualization */}
-        <div className="p-6 min-h-[300px]">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-white font-semibold text-sm">Integration Pipeline</h3>
-            <Activity className="w-4 h-4 text-[#D8F209]" />
+                  key={i}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.5 + i * 0.1 }}
+                  className="flex-1 bg-[#1A1A1A] border border-[#D8F209]/20 rounded-lg py-2 text-center"
+                >
+                  <span className="text-[#D8F209] text-xs font-mono">{source}</span>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
-          {/* Flow diagram */}
-          <div className="space-y-4">
-            {[
-              { label: 'Extract', icon: GitBranch, progress: 100 },
-              { label: 'Transform', icon: Database, progress: 85 },
-              { label: 'Load', icon: Activity, progress: 70 },
-            ].map((stage, index) => (
+          {/* Flowing arrows */}
+          <div className="flex justify-center gap-3">
+            {[0, 1, 2, 3].map((i) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.2 }}
-                className="space-y-2"
+                key={i}
+                animate={{ y: [0, 8, 0], opacity: [0.3, 1, 0.3] }}
+                transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
+                className="text-[#D8F209] text-sm"
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    {React.createElement(stage.icon, { className: "w-4 h-4 text-[#D8F209]" })}
-                    <span className="text-[#FBFFDE]/60 text-xs font-mono">{stage.label}</span>
-                  </div>
-                  <span className="text-[#D8F209] text-xs font-mono">{stage.progress}%</span>
-                </div>
-                <div className="h-2 bg-[#1E1E1E] rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${stage.progress}%` }}
-                    transition={{ duration: 1, delay: 0.7 + index * 0.2 }}
-                    className="h-full bg-[#D8F209] rounded-full"
-                  />
-                </div>
-                
-                {/* Arrow to next */}
-                {index < 2 && (
-                  <motion.div
-                    animate={{ opacity: [0.3, 1, 0.3] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="flex justify-center py-2"
-                  >
-                    <ArrowRight className="w-4 h-4 text-[#D8F209]" />
-                  </motion.div>
-                )}
+                ↓
               </motion.div>
             ))}
           </div>
 
-          {/* Central warehouse */}
+          {/* ETL Stages */}
+          <div className="space-y-2">
+            {[
+              { label: 'Extract', progress: 100, icon: GitBranch },
+              { label: 'Transform', progress: 75, icon: Activity },
+              { label: 'Load', progress: 60, icon: Database }
+            ].map((stage, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.8 + i * 0.15 }}
+                className="space-y-1"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    {React.createElement(stage.icon, { className: "w-3 h-3 text-[#D8F209]" })}
+                    <span className="text-[#FBFFDE]/70 text-xs">{stage.label}</span>
+                  </div>
+                  <span className="text-[#D8F209] text-xs font-mono">{stage.progress}%</span>
+                </div>
+                <div className="h-1.5 bg-[#1A1A1A] rounded-full overflow-hidden">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: `${stage.progress}%` }}
+                    transition={{ duration: 1, delay: 1 + i * 0.15 }}
+                    className="h-full bg-gradient-to-r from-[#D8F209]/60 to-[#D8F209] rounded-full"
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Arrow down */}
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="mt-8 bg-[#1A1A1A] rounded-lg p-4 border border-[#D8F209]/20 text-center"
+            animate={{ y: [0, 5, 0], opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+            className="flex justify-center text-[#D8F209] text-lg"
           >
-            <Database className="w-8 h-8 text-[#D8F209] mx-auto mb-2" />
-            <div className="text-white text-sm font-semibold">Data Warehouse</div>
-            <div className="text-[#FBFFDE]/40 text-xs mt-1">Ready for analytics</div>
+            ↓
           </motion.div>
+
+          {/* Warehouse Destination */}
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 1.5 }}
+            className="bg-[#D8F209]/10 border-2 border-[#D8F209]/30 rounded-lg p-4 text-center relative overflow-hidden"
+          >
+            {/* Shimmer effect */}
+            <motion.div
+              animate={{ x: [-100, 300] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0 w-20 bg-gradient-to-r from-transparent via-[#D8F209]/20 to-transparent skew-x-12"
+            />
+            
+            <Database className="w-6 h-6 text-[#D8F209] mx-auto mb-2" />
+            <div className="text-white text-sm font-bold">Data Warehouse</div>
+            <div className="text-[#D8F209] text-xs mt-1 font-mono">107.3K records</div>
+          </motion.div>
+
+          {/* Stats row */}
+          <div className="grid grid-cols-3 gap-2 pt-2">
+            {[
+              { label: 'Latency', value: '<5min' },
+              { label: 'Uptime', value: '99.9%' },
+              { label: 'Speed', value: '10TB/h' }
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 1.8 + i * 0.1 }}
+                className="bg-[#1A1A1A] rounded-lg p-2 text-center"
+              >
+                <div className="text-[#D8F209] text-xs font-bold">{stat.value}</div>
+                <div className="text-[#FBFFDE]/40 text-[9px]">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Glow Effect */}
-      <div className="absolute -inset-1 bg-gradient-to-r from-[#D8F209]/20 to-[#D8F209]/0 rounded-xl blur-xl -z-10" />
+      <div className="absolute -inset-2 bg-gradient-to-br from-[#D8F209]/10 via-transparent to-[#D8F209]/5 rounded-xl blur-2xl -z-10 opacity-50" />
     </div>
   );
 }
