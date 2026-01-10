@@ -2,7 +2,7 @@
 
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Shield, Zap, TrendingUp, Database, BarChart3, Activity } from 'lucide-react';
+import { Shield, Zap, TrendingUp, Database, BarChart3, Activity, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export default function TechStack() {
   const ref = useRef(null);
@@ -64,87 +64,112 @@ export default function TechStack() {
             className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#D8F209]/30 to-transparent"
           />
 
-{/* 1. PERFORMANCE - Left */}
-<motion.div
-  initial={{ opacity: 0, x: -100 }}
-  animate={isInView ? { opacity: 1, x: 0 } : {}}
-  transition={{ duration: 0.8, delay: 0.4 }}
-  className="relative mb-32 lg:mb-40"
->
-  <div className="grid lg:grid-cols-2 gap-12 items-center">
-    
-    {/* Content - Left side */}
-    <div className="lg:text-right space-y-6">
-      <div className="lg:flex lg:justify-end">
-        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#D8F209]/20 bg-[#D8F209]/5">
-          <Zap className="w-4 h-4 text-[#D8F209]" />
-          <span className="text-[#D8F209] text-sm font-medium">Real-Time</span>
-        </div>
-      </div>
-      
-      <h3 className="text-white font-bold text-4xl lg:text-5xl">
-        Instant Insights
-      </h3>
-      
-      <p className="text-[#FBFFDE]/60 text-lg leading-relaxed">
-        Process millions of data points in seconds. Decisions don't wait for batch jobs.
-      </p>
+          {/* 1. REAL-TIME - Left */}
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative mb-32 lg:mb-40"
+          >
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              
+              {/* Content - Left side */}
+              <div className="lg:text-right space-y-6">
+                <div className="lg:flex lg:justify-end">
+                  <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#D8F209]/20 bg-[#D8F209]/5">
+                    <Zap className="w-4 h-4 text-[#D8F209]" />
+                    <span className="text-[#D8F209] text-sm font-medium">Real-Time</span>
+                  </div>
+                </div>
+                
+                <h3 className="text-white font-bold text-4xl lg:text-5xl">
+                  Instant Insights
+                </h3>
+                
+                <p className="text-[#FBFFDE]/60 text-lg leading-relaxed">
+                  Process millions of data points in seconds. Decisions don't wait for batch jobs.
+                </p>
 
-      {/* Stats inline */}
-      <div className="flex lg:justify-end gap-8 pt-4">
-        <div>
-          <div className="text-[#D8F209] text-3xl font-bold">&lt;1s</div>
-          <div className="text-[#FBFFDE]/40 text-sm">query time</div>
-        </div>
-        <div>
-          <div className="text-[#D8F209] text-3xl font-bold">1M+</div>
-          <div className="text-[#FBFFDE]/40 text-sm">events/sec</div>
-        </div>
-      </div>
-    </div>
-
-    {/* Visual - Right side */}
-    <div className="relative lg:pl-12">
-      <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6">
-        {/* Real-time data flow */}
-        <div className="space-y-3">
-          {[1, 2, 3, 4].map((i) => (
-            <motion.div
-              key={i}
-              initial={{ x: -100, opacity: 0 }}
-              animate={isInView ? { 
-                x: [0, 300, 0],
-                opacity: [0, 1, 0]
-              } : {}}
-              transition={{
-                duration: 2,
-                delay: 0.6 + i * 0.2,
-                repeat: Infinity,
-                repeatDelay: 1
-              }}
-              className="flex items-center gap-2"
-            >
-              <div className="w-2 h-2 rounded-full bg-[#D8F209]" />
-              <div className="h-1 flex-1 bg-[#D8F209]/30 rounded-full overflow-hidden">
-                <motion.div
-                  animate={{ width: ['0%', '100%'] }}
-                  transition={{ duration: 0.5, repeat: Infinity }}
-                  className="h-full bg-[#D8F209] rounded-full"
-                />
+                {/* Stats inline */}
+                <div className="flex lg:justify-end gap-8 pt-4">
+                  <div>
+                    <div className="text-[#D8F209] text-3xl font-bold">&lt;1s</div>
+                    <div className="text-[#FBFFDE]/40 text-sm">query time</div>
+                  </div>
+                  <div>
+                    <div className="text-[#D8F209] text-3xl font-bold">1M+</div>
+                    <div className="text-[#FBFFDE]/40 text-sm">events/sec</div>
+                  </div>
+                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
-        <div className="mt-4 text-center text-[#FBFFDE]/40 text-xs">Streaming data pipeline</div>
-      </div>
-    </div>
 
-  </div>
-  
-  {/* Dot on timeline */}
-  <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#D8F209] border-4 border-[#1E1E1E]" />
-</motion.div>
+              {/* Visual - Right side: Live Dashboard */}
+              <div className="relative lg:pl-12">
+                <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6 h-48">
+                  
+                  {/* Live metrics cards */}
+                  <div className="grid grid-cols-2 gap-3 h-full">
+                    {[
+                      { label: 'Active Users', value: '2,847' },
+                      { label: 'Revenue', value: '$12.5K' },
+                      { label: 'Conversion', value: '3.8%' },
+                      { label: 'Page Views', value: '45.2K' }
+                    ].map((metric, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                        transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
+                        className="bg-[#1A1A1A] rounded-lg p-3 border border-[#D8F209]/10"
+                      >
+                        <div className="text-[#FBFFDE]/40 text-[10px] mb-1">{metric.label}</div>
+                        <motion.div 
+                          className="text-[#D8F209] text-xl font-bold"
+                          animate={{ opacity: [1, 0.7, 1] }}
+                          transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
+                        >
+                          {metric.value}
+                        </motion.div>
+                        {/* Sparkline */}
+                        <div className="flex items-end gap-[2px] mt-2 h-4">
+                          {[...Array(8)].map((_, j) => (
+                            <motion.div
+                              key={j}
+                              initial={{ height: 0 }}
+                              animate={isInView ? { 
+                                height: `${Math.random() * 100}%` 
+                              } : {}}
+                              transition={{ 
+                                duration: 0.5, 
+                                delay: 0.7 + i * 0.1 + j * 0.05,
+                                repeat: Infinity,
+                                repeatDelay: 2
+                              }}
+                              className="flex-1 bg-[#D8F209]/30 rounded-sm"
+                            />
+                          ))}
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
 
+                  {/* Live indicator */}
+                  <motion.div
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="absolute top-3 right-3 flex items-center gap-2"
+                  >
+                    <div className="w-2 h-2 rounded-full bg-[#D8F209]" />
+                    <span className="text-[#D8F209] text-[10px] font-mono">LIVE</span>
+                  </motion.div>
+                </div>
+              </div>
+
+            </div>
+            
+            {/* Dot on timeline */}
+            <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#D8F209] border-4 border-[#1E1E1E]" />
+          </motion.div>
 
           {/* 2. ACCURACY - Right */}
           <motion.div
@@ -155,37 +180,58 @@ export default function TechStack() {
           >
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               
-              {/* Visual - Left side */}
+              {/* Visual - Left side: Data Quality Pipeline */}
               <div className="relative lg:pr-12 order-2 lg:order-1">
                 <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6">
-                  {/* Data validation visualization */}
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[#FBFFDE]/60 text-xs">Data Quality</span>
-                      <span className="text-[#D8F209] text-xs font-bold">99.9%</span>
-                    </div>
-                    <div className="h-2 bg-[#1E1E1E] rounded-full overflow-hidden">
+                  {/* Data pipeline stages */}
+                  <div className="space-y-3">
+                    {[
+                      { stage: 'Data Collection', status: 'complete' },
+                      { stage: 'Validation', status: 'complete' },
+                      { stage: 'Cleaning', status: 'complete' },
+                      { stage: 'Transformation', status: 'processing' },
+                      { stage: 'Storage', status: 'queued' }
+                    ].map((item, i) => (
                       <motion.div
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: '99.9%' } : {}}
-                        transition={{ duration: 1, delay: 0.8 }}
-                        className="h-full bg-[#D8F209] rounded-full"
-                      />
-                    </div>
-                    
-                    <div className="flex items-center justify-between pt-2">
-                      <span className="text-[#FBFFDE]/60 text-xs">Validation Checks</span>
-                      <div className="flex gap-1">
-                        {[...Array(5)].map((_, i) => (
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.5, delay: 0.8 + i * 0.1 }}
+                        className="flex items-center gap-3"
+                      >
+                        {item.status === 'complete' ? (
+                          <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
+                        ) : item.status === 'processing' ? (
                           <motion.div
-                            key={i}
-                            initial={{ scale: 0 }}
-                            animate={isInView ? { scale: 1 } : {}}
-                            transition={{ duration: 0.3, delay: 0.9 + i * 0.1 }}
-                            className="w-2 h-2 rounded-full bg-[#D8F209]"
-                          />
-                        ))}
-                      </div>
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                          >
+                            <Activity className="w-4 h-4 text-[#D8F209]" />
+                          </motion.div>
+                        ) : (
+                          <div className="w-4 h-4 rounded-full border-2 border-[#FBFFDE]/20 flex-shrink-0" />
+                        )}
+                        <div className="flex-1">
+                          <div className={`text-xs font-mono ${
+                            item.status === 'complete' ? 'text-green-400' :
+                            item.status === 'processing' ? 'text-[#D8F209]' :
+                            'text-[#FBFFDE]/40'
+                          }`}>
+                            {item.stage}
+                          </div>
+                        </div>
+                        {item.status === 'complete' && (
+                          <div className="text-[10px] text-green-400/60">✓ Verified</div>
+                        )}
+                      </motion.div>
+                    ))}
+                  </div>
+                  
+                  {/* Quality score */}
+                  <div className="mt-4 pt-4 border-t border-[#D8F209]/10">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-[#FBFFDE]/60">Data Quality Score</span>
+                      <span className="text-[#D8F209] font-bold">99.9%</span>
                     </div>
                   </div>
                 </div>
@@ -223,7 +269,7 @@ export default function TechStack() {
             <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#D8F209] border-4 border-[#1E1E1E]" />
           </motion.div>
 
-{/* 3. SCALABILITY - Left */}
+          {/* 3. SCALABILITY - Left */}
 <motion.div
   initial={{ opacity: 0, x: -100 }}
   animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -261,22 +307,92 @@ export default function TechStack() {
       </div>
     </div>
 
-    {/* Visual - Right side */}
+    {/* Visual - Right side: Growth Line Chart */}
     <div className="relative lg:pl-12">
-      <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6">
-        {/* Scalable architecture visualization */}
-        <div className="space-y-2">
-          {[1, 2, 3, 4, 5].map((level) => (
-            <motion.div
-              key={level}
-              initial={{ width: 0 }}
-              animate={isInView ? { width: `${20 + level * 15}%` } : {}}
-              transition={{ duration: 0.8, delay: 1 + level * 0.1 }}
-              className="h-4 bg-gradient-to-r from-[#D8F209]/40 to-[#D8F209] rounded"
+      <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6 h-52">
+        
+        {/* Chart area with bars AND line */}
+        <div className="relative h-40 mb-4">
+          
+          {/* Background bars */}
+          <div className="absolute inset-0 flex items-end justify-between gap-2">
+            {[
+              { label: 'Jan', value: 30 },
+              { label: 'Feb', value: 45 },
+              { label: 'Mar', value: 38 },
+              { label: 'Apr', value: 65 },
+              { label: 'May', value: 55 },
+              { label: 'Jun', value: 80 },
+              { label: 'Jul', value: 75 },
+              { label: 'Aug', value: 95 }
+            ].map((bar, i) => (
+              <div key={i} className="flex-1 flex flex-col items-center gap-1 min-w-0">
+                <motion.div
+                  initial={{ height: 0 }}
+                  animate={isInView ? { height: `${bar.value}%` } : {}}
+                  transition={{ duration: 0.8, delay: 1 + i * 0.1, type: "spring" }}
+                  className="w-full bg-[#D8F209]/20 rounded-t-sm"
+                  style={{ minHeight: '8px' }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Animated growth line */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 160" preserveAspectRatio="none">
+            <motion.path
+              d="M 25 112, L 75 88, L 125 99.2, L 175 56, L 225 72, L 275 32, L 325 40, L 375 8"
+              stroke="#D8F209"
+              strokeWidth="3"
+              fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={isInView ? { pathLength: 1, opacity: 1 } : {}}
+              transition={{ duration: 2, delay: 1.2, ease: "easeInOut" }}
+              style={{
+                filter: 'drop-shadow(0 0 8px rgba(216, 242, 9, 0.6))'
+              }}
             />
-          ))}
+            
+            {/* Data points */}
+            {[
+              { x: 25, y: 112 },
+              { x: 75, y: 88 },
+              { x: 125, y: 99.2 },
+              { x: 175, y: 56 },
+              { x: 225, y: 72 },
+              { x: 275, y: 32 },
+              { x: 325, y: 40 },
+              { x: 375, y: 8 }
+            ].map((point, i) => (
+              <motion.circle
+                key={i}
+                cx={point.x}
+                cy={point.y}
+                r="4"
+                fill="#D8F209"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={isInView ? { scale: 1, opacity: 1 } : {}}
+                transition={{ duration: 0.3, delay: 1.2 + i * 0.1 }}
+                style={{
+                  filter: 'drop-shadow(0 0 4px rgba(216, 242, 9, 0.8))'
+                }}
+              />
+            ))}
+          </svg>
+
+          {/* Month labels */}
+          <div className="absolute -bottom-6 left-0 right-0 flex justify-between px-2">
+            {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'].map((label, i) => (
+              <span key={i} className="text-[10px] text-[#FBFFDE]/40">{label}</span>
+            ))}
+          </div>
         </div>
-        <div className="mt-4 text-center text-[#FBFFDE]/40 text-xs">Horizontal scaling</div>
+        
+        {/* Growth indicator */}
+        <div className="mt-6 flex items-center justify-center gap-2 text-[#D8F209] text-xs font-medium pt-3 border-t border-[#D8F209]/10">
+          <TrendingUp className="w-3 h-3" />
+          <span>216% growth YoY</span>
+        </div>
       </div>
     </div>
 

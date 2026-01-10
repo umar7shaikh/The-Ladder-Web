@@ -2,7 +2,7 @@
 
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Shield, Zap, TrendingUp, Bot, Brain, MessageSquare } from 'lucide-react';
+import { Shield, Zap, TrendingUp, Bot, Brain, MessageSquare, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export default function TechStack() {
   const ref = useRef(null);
@@ -64,87 +64,135 @@ export default function TechStack() {
             className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#D8F209]/30 to-transparent"
           />
 
-{/* 1. NLP - Left */}
-<motion.div
-  initial={{ opacity: 0, x: -100 }}
-  animate={isInView ? { opacity: 1, x: 0 } : {}}
-  transition={{ duration: 0.8, delay: 0.4 }}
-  className="relative mb-32 lg:mb-40"
->
-  <div className="grid lg:grid-cols-2 gap-12 items-center">
-    
-    {/* Content - Left side */}
-    <div className="lg:text-right space-y-6">
-      <div className="lg:flex lg:justify-end">
-        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#D8F209]/20 bg-[#D8F209]/5">
-          <Brain className="w-4 h-4 text-[#D8F209]" />
-          <span className="text-[#D8F209] text-sm font-medium">NLP</span>
-        </div>
-      </div>
-      
-      <h3 className="text-white font-bold text-4xl lg:text-5xl">
-        Natural Understanding
-      </h3>
-      
-      <p className="text-[#FBFFDE]/60 text-lg leading-relaxed">
-        Advanced NLP that understands intent, context, and nuance. Not just keyword matching—actual comprehension.
-      </p>
+          {/* 1. NLP - Left */}
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative mb-32 lg:mb-40"
+          >
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              
+              {/* Content - Left side */}
+              <div className="lg:text-right space-y-6">
+                <div className="lg:flex lg:justify-end">
+                  <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#D8F209]/20 bg-[#D8F209]/5">
+                    <Brain className="w-4 h-4 text-[#D8F209]" />
+                    <span className="text-[#D8F209] text-sm font-medium">NLP</span>
+                  </div>
+                </div>
+                
+                <h3 className="text-white font-bold text-4xl lg:text-5xl">
+                  Natural Understanding
+                </h3>
+                
+                <p className="text-[#FBFFDE]/60 text-lg leading-relaxed">
+                  Advanced NLP that understands intent, context, and nuance. Not just keyword matching—actual comprehension.
+                </p>
 
-      {/* Stats inline */}
-      <div className="flex lg:justify-end gap-8 pt-4">
-        <div>
-          <div className="text-[#D8F209] text-3xl font-bold">99%</div>
-          <div className="text-[#FBFFDE]/40 text-sm">accuracy</div>
-        </div>
-        <div>
-          <div className="text-[#D8F209] text-3xl font-bold">24/7</div>
-          <div className="text-[#FBFFDE]/40 text-sm">available</div>
-        </div>
-      </div>
-    </div>
-
-    {/* Visual - Right side */}
-    <div className="relative lg:pl-12">
-      <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6">
-        {/* NLP processing visualization */}
-        <div className="space-y-3">
-          {['User Intent', 'Context Analysis', 'Response Generation'].map((label, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { 
-                opacity: 1,
-                x: 0
-              } : {}}
-              transition={{
-                duration: 0.8,
-                delay: 0.6 + i * 0.2,
-                repeat: Infinity,
-                repeatDelay: 2
-              }}
-              className="space-y-2"
-            >
-              <div className="text-[#FBFFDE]/50 text-xs">{label}</div>
-              <div className="h-2 bg-[#1E1E1E] rounded-full overflow-hidden">
-                <motion.div
-                  animate={{ width: ['0%', '100%', '0%'] }}
-                  transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.3 }}
-                  className="h-full bg-[#D8F209] rounded-full"
-                />
+                {/* Stats inline */}
+                <div className="flex lg:justify-end gap-8 pt-4">
+                  <div>
+                    <div className="text-[#D8F209] text-3xl font-bold">99%</div>
+                    <div className="text-[#FBFFDE]/40 text-sm">accuracy</div>
+                  </div>
+                  <div>
+                    <div className="text-[#D8F209] text-3xl font-bold">24/7</div>
+                    <div className="text-[#FBFFDE]/40 text-sm">available</div>
+                  </div>
+                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
-        <div className="mt-4 text-center text-[#FBFFDE]/40 text-xs">AI processing pipeline</div>
-      </div>
-    </div>
 
-  </div>
-  
-  {/* Dot on timeline */}
-  <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#D8F209] border-4 border-[#1E1E1E]" />
-</motion.div>
+              {/* Visual - Right side: Chat Interface */}
+              <div className="relative lg:pl-12">
+                <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-4 h-64 overflow-hidden">
+                  
+                  {/* Chat messages */}
+                  <div className="space-y-3">
+                    {/* User message */}
+                    <motion.div
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.6 }}
+                      className="flex justify-end"
+                    >
+                      <div className="bg-[#D8F209]/10 border border-[#D8F209]/20 rounded-lg px-3 py-2 max-w-[80%]">
+                        <p className="text-[#FBFFDE]/80 text-xs">What's my total revenue this month?</p>
+                      </div>
+                    </motion.div>
 
+                    {/* AI typing indicator */}
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.8 }}
+                      className="flex justify-start"
+                    >
+                      <div className="bg-[#1A1A1A] border border-[#D8F209]/10 rounded-lg px-3 py-2">
+                        <div className="flex gap-1">
+                          {[0, 1, 2].map((i) => (
+                            <motion.div
+                              key={i}
+                              animate={{ opacity: [0.3, 1, 0.3] }}
+                              transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
+                              className="w-1.5 h-1.5 rounded-full bg-[#D8F209]"
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {/* AI response */}
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 1.2 }}
+                      className="flex justify-start"
+                    >
+                      <div className="bg-[#1A1A1A] border border-[#D8F209]/10 rounded-lg px-3 py-2 max-w-[85%]">
+                        <p className="text-[#FBFFDE]/80 text-xs mb-2">Your total revenue this month is <span className="text-[#D8F209] font-bold">$47,892</span></p>
+                        <p className="text-[#FBFFDE]/50 text-[10px]">↑ 23% from last month</p>
+                      </div>
+                    </motion.div>
+
+                    {/* Processing indicators */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={isInView ? { opacity: 1 } : {}}
+                      transition={{ duration: 0.5, delay: 1.5 }}
+                      className="flex gap-2 pt-2"
+                    >
+                      {['Intent Detected', 'Context Applied', 'Data Retrieved'].map((label, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ scale: 0 }}
+                          animate={isInView ? { scale: 1 } : {}}
+                          transition={{ duration: 0.3, delay: 1.6 + i * 0.1 }}
+                          className="flex items-center gap-1 bg-[#D8F209]/5 border border-[#D8F209]/20 rounded px-2 py-1"
+                        >
+                          <CheckCircle2 className="w-2 h-2 text-[#D8F209]" />
+                          <span className="text-[9px] text-[#D8F209]/80">{label}</span>
+                        </motion.div>
+                      ))}
+                    </motion.div>
+                  </div>
+
+                  {/* Typing indicator at bottom */}
+                  <motion.div
+                    animate={{ opacity: [0.3, 0.6, 0.3] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="absolute bottom-3 left-4 text-[10px] text-[#D8F209]/60 font-mono"
+                  >
+                    AI is typing...
+                  </motion.div>
+                </div>
+              </div>
+
+            </div>
+            
+            {/* Dot on timeline */}
+            <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#D8F209] border-4 border-[#1E1E1E]" />
+          </motion.div>
 
           {/* 2. LEARNING - Right */}
           <motion.div
@@ -155,45 +203,83 @@ export default function TechStack() {
           >
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               
-              {/* Visual - Left side */}
+              {/* Visual - Left side: Learning Curve */}
               <div className="relative lg:pr-12 order-2 lg:order-1">
-                <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6">
-                  {/* Learning curve visualization */}
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[#FBFFDE]/60 text-xs">AI Intelligence</span>
-                      <span className="text-[#D8F209] text-xs font-bold">Increasing</span>
-                    </div>
-                    <div className="h-16 bg-[#1E1E1E] rounded-lg overflow-hidden relative">
-                      <motion.svg
-                        className="w-full h-full"
-                        viewBox="0 0 200 60"
-                      >
-                        <motion.path
-                          d="M 10 50 Q 50 40, 90 30 T 170 10"
-                          stroke="#D8F209"
-                          strokeWidth="2"
-                          fill="none"
-                          initial={{ pathLength: 0 }}
-                          animate={isInView ? { pathLength: 1 } : {}}
-                          transition={{ duration: 2, delay: 0.8 }}
+                <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6 h-52">
+                  
+                  {/* Learning curve graph */}
+                  <div className="relative h-32 mb-4">
+                    <svg className="w-full h-full" viewBox="0 0 400 128" preserveAspectRatio="none">
+                      {/* Grid lines */}
+                      {[0, 25, 50, 75, 100].map((y) => (
+                        <line
+                          key={y}
+                          x1="0"
+                          y1={128 - (y * 1.28)}
+                          x2="400"
+                          y2={128 - (y * 1.28)}
+                          stroke="rgba(216, 242, 9, 0.05)"
+                          strokeWidth="1"
                         />
-                      </motion.svg>
-                    </div>
+                      ))}
+                      
+                      {/* Learning curve */}
+                      <motion.path
+                        d="M 0 120, Q 100 100, 200 60, T 400 20"
+                        stroke="#D8F209"
+                        strokeWidth="3"
+                        fill="none"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={isInView ? { pathLength: 1, opacity: 1 } : {}}
+                        transition={{ duration: 2, delay: 0.8, ease: "easeInOut" }}
+                        style={{
+                          filter: 'drop-shadow(0 0 8px rgba(216, 242, 9, 0.6))'
+                        }}
+                      />
+                      
+                      {/* Data points */}
+                      {[
+                        { x: 0, y: 120 },
+                        { x: 100, y: 100 },
+                        { x: 200, y: 60 },
+                        { x: 300, y: 40 },
+                        { x: 400, y: 20 }
+                      ].map((point, i) => (
+                        <motion.circle
+                          key={i}
+                          cx={point.x}
+                          cy={point.y}
+                          r="4"
+                          fill="#D8F209"
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={isInView ? { scale: 1, opacity: 1 } : {}}
+                          transition={{ duration: 0.3, delay: 0.8 + i * 0.2 }}
+                          style={{
+                            filter: 'drop-shadow(0 0 4px rgba(216, 242, 9, 0.8))'
+                          }}
+                        />
+                      ))}
+                    </svg>
                     
-                    <div className="flex items-center justify-between pt-2">
-                      <span className="text-[#FBFFDE]/60 text-xs">Learning Rate</span>
-                      <div className="flex gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ scale: 0 }}
-                            animate={isInView ? { scale: 1 } : {}}
-                            transition={{ duration: 0.3, delay: 0.9 + i * 0.1 }}
-                            className="w-2 h-2 rounded-full bg-[#D8F209]"
-                          />
-                        ))}
-                      </div>
+                    {/* Axis labels */}
+                    <div className="absolute -bottom-6 left-0 right-0 flex justify-between text-[10px] text-[#FBFFDE]/40">
+                      <span>Day 1</span>
+                      <span>Week 1</span>
+                      <span>Month 1</span>
+                      <span>Month 3</span>
+                      <span>Month 6</span>
+                    </div>
+                  </div>
+                  
+                  {/* Performance metrics */}
+                  <div className="mt-8 pt-4 border-t border-[#D8F209]/10 flex justify-around">
+                    <div className="text-center">
+                      <div className="text-[#D8F209] text-xl font-bold">+215%</div>
+                      <div className="text-[#FBFFDE]/40 text-[10px]">Accuracy gain</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-[#D8F209] text-xl font-bold">∞</div>
+                      <div className="text-[#FBFFDE]/40 text-[10px]">Learning</div>
                     </div>
                   </div>
                 </div>
@@ -269,24 +355,105 @@ export default function TechStack() {
       </div>
     </div>
 
-    {/* Visual - Right side */}
+    {/* Visual - Right side: Data Flow */}
     <div className="relative lg:pl-12">
-      <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6">
-        {/* Integration network visualization */}
-        <div className="grid grid-cols-3 gap-3">
-          {['CRM', 'Email', 'Website', 'Slack', 'API', 'DB'].map((sys, i) => (
+      <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-4 overflow-hidden">
+        
+        {/* Vertical flow with connections */}
+        <div className="space-y-3 py-2">
+          
+          {/* Input sources */}
+          <div className="flex items-center justify-between gap-2">
+            {['Website', 'Email', 'Chat'].map((source, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: -20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 1 + i * 0.1 }}
+                className="flex-1 bg-[#1A1A1A] border border-[#D8F209]/20 rounded-lg py-2 px-1 text-center"
+              >
+                <span className="text-[#D8F209] text-[10px] font-mono">{source}</span>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Animated arrows flowing down */}
+          <div className="flex justify-center gap-8 h-6">
+            {[0, 1, 2].map((i) => (
+              <motion.div
+                key={i}
+                animate={{ y: [0, 10, 0], opacity: [0.3, 1, 0.3] }}
+                transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.3 }}
+                className="text-[#D8F209] text-sm"
+              >
+                ↓
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Central AI processor */}
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={isInView ? { scale: 1 } : {}}
+            transition={{ duration: 0.5, delay: 1.3 }}
+            className="bg-[#D8F209] rounded-lg p-2 flex items-center justify-center gap-2 relative overflow-hidden"
+          >
+            <Bot className="w-4 h-4 text-[#1E1E1E]" />
+            <span className="text-[#1E1E1E] text-xs font-bold">AI Engine</span>
+            
+            {/* Processing animation */}
             <motion.div
-              key={i}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={isInView ? { scale: 1, opacity: 1 } : {}}
-              transition={{ duration: 0.5, delay: 1 + i * 0.1 }}
-              className="aspect-square bg-[#1E1E1A] border border-[#D8F209]/20 rounded-lg flex items-center justify-center"
-            >
-              <span className="text-[#D8F209] text-xs font-mono">{sys}</span>
-            </motion.div>
-          ))}
+              animate={{ x: [-100, 300] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0 w-20 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
+            />
+          </motion.div>
+
+          {/* Animated arrows flowing down */}
+          <div className="flex justify-center gap-8 h-6">
+            {[0, 1, 2].map((i) => (
+              <motion.div
+                key={i}
+                animate={{ y: [0, 10, 0], opacity: [0.3, 1, 0.3] }}
+                transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 + i * 0.3 }}
+                className="text-[#D8F209] text-sm"
+              >
+                ↓
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Output destinations */}
+          <div className="flex items-center justify-between gap-2">
+            {['CRM', 'Database', 'Dashboard'].map((dest, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 1.6 + i * 0.1 }}
+                className="flex-1 bg-[#1A1A1A] border border-[#D8F209]/20 rounded-lg py-2 px-1 text-center"
+              >
+                <span className="text-[#D8F209] text-[10px] font-mono">{dest}</span>
+              </motion.div>
+            ))}
+          </div>
+
         </div>
-        <div className="mt-4 text-center text-[#FBFFDE]/40 text-xs">Connected systems</div>
+
+        {/* Status indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 1.9 }}
+          className="mt-3 pt-3 border-t border-[#D8F209]/10 flex items-center justify-center gap-2"
+        >
+          <motion.div
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-1.5 h-1.5 rounded-full bg-[#D8F209]"
+          />
+          <span className="text-[#FBFFDE]/40 text-[10px] font-mono">Data flowing</span>
+        </motion.div>
       </div>
     </div>
 

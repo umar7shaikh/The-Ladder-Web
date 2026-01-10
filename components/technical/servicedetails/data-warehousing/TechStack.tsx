@@ -2,7 +2,7 @@
 
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { Shield, Zap, TrendingUp, Database, GitBranch, Activity } from 'lucide-react';
+import { Shield, Zap, TrendingUp, Database, GitBranch, Activity, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export default function TechStack() {
   const ref = useRef(null);
@@ -64,80 +64,145 @@ export default function TechStack() {
             className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#D8F209]/30 to-transparent"
           />
 
-{/* 1. INTEGRATION - Left */}
-<motion.div
-  initial={{ opacity: 0, x: -100 }}
-  animate={isInView ? { opacity: 1, x: 0 } : {}}
-  transition={{ duration: 0.8, delay: 0.4 }}
-  className="relative mb-32 lg:mb-40"
->
-  <div className="grid lg:grid-cols-2 gap-12 items-center">
-    
-    {/* Content - Left side */}
-    <div className="lg:text-right space-y-6">
-      <div className="lg:flex lg:justify-end">
-        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#D8F209]/20 bg-[#D8F209]/5">
-          <GitBranch className="w-4 h-4 text-[#D8F209]" />
-          <span className="text-[#D8F209] text-sm font-medium">Integration</span>
-        </div>
-      </div>
-      
-      <h3 className="text-white font-bold text-4xl lg:text-5xl">
-        Connect Everything
-      </h3>
-      
-      <p className="text-[#FBFFDE]/60 text-lg leading-relaxed">
-        Unified pipelines that sync data from all sources—databases, APIs, files, cloud services.
-      </p>
+          {/* 1. INTEGRATION - Left */}
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative mb-32 lg:mb-40"
+          >
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              
+              {/* Content - Left side */}
+              <div className="lg:text-right space-y-6">
+                <div className="lg:flex lg:justify-end">
+                  <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#D8F209]/20 bg-[#D8F209]/5">
+                    <GitBranch className="w-4 h-4 text-[#D8F209]" />
+                    <span className="text-[#D8F209] text-sm font-medium">Integration</span>
+                  </div>
+                </div>
+                
+                <h3 className="text-white font-bold text-4xl lg:text-5xl">
+                  Connect Everything
+                </h3>
+                
+                <p className="text-[#FBFFDE]/60 text-lg leading-relaxed">
+                  Unified pipelines that sync data from all sources—databases, APIs, files, cloud services.
+                </p>
 
-      {/* Stats inline */}
-      <div className="flex lg:justify-end gap-8 pt-4">
-        <div>
-          <div className="text-[#D8F209] text-3xl font-bold">100+</div>
-          <div className="text-[#FBFFDE]/40 text-sm">connectors</div>
-        </div>
-        <div>
-          <div className="text-[#D8F209] text-3xl font-bold">Real-time</div>
-          <div className="text-[#FBFFDE]/40 text-sm">sync</div>
-        </div>
-      </div>
-    </div>
+                {/* Stats inline */}
+                <div className="flex lg:justify-end gap-8 pt-4">
+                  <div>
+                    <div className="text-[#D8F209] text-3xl font-bold">100+</div>
+                    <div className="text-[#FBFFDE]/40 text-sm">connectors</div>
+                  </div>
+                  <div>
+                    <div className="text-[#D8F209] text-3xl font-bold">Real-time</div>
+                    <div className="text-[#FBFFDE]/40 text-sm">sync</div>
+                  </div>
+                </div>
+              </div>
 
-    {/* Visual - Right side */}
-    <div className="relative lg:pl-12">
-      <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6">
-        {/* Integration network */}
-        <div className="grid grid-cols-3 gap-3">
-          {['CRM', 'API', 'DB', 'Files', 'Cloud', 'ERP'].map((source, i) => (
-            <motion.div
-              key={i}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={isInView ? { 
-                scale: [1, 1.1, 1],
-                opacity: [0.5, 1, 0.5]
-              } : {}}
-              transition={{
-                duration: 2,
-                delay: 0.6 + i * 0.1,
-                repeat: Infinity,
-                repeatDelay: 2
-              }}
-              className="aspect-square bg-[#1E1E1A] border border-[#D8F209]/20 rounded-lg flex items-center justify-center"
-            >
-              <span className="text-[#D8F209] text-xs font-mono">{source}</span>
-            </motion.div>
-          ))}
-        </div>
-        <div className="mt-4 text-center text-[#FBFFDE]/40 text-xs">Connected sources</div>
-      </div>
-    </div>
+              {/* Visual - Right side: ETL Pipeline Flow */}
+              <div className="relative lg:pl-12">
+                <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-4 overflow-hidden">
+                  
+                  {/* ETL Flow: Extract → Transform → Load */}
+                  <div className="space-y-3">
+                    
+                    {/* Extract */}
+                    <div>
+                      <div className="text-[#FBFFDE]/50 text-xs mb-2">Extract</div>
+                      <div className="flex gap-2">
+                        {['DB', 'API', 'CSV'].map((source, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ scale: 0 }}
+                            animate={isInView ? { scale: 1 } : {}}
+                            transition={{ duration: 0.3, delay: 0.6 + i * 0.1 }}
+                            className="flex-1 bg-[#1A1A1A] border border-[#D8F209]/20 rounded py-1 text-center"
+                          >
+                            <span className="text-[#D8F209] text-[10px] font-mono">{source}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
 
-  </div>
-  
-  {/* Dot on timeline */}
-  <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#D8F209] border-4 border-[#1E1E1E]" />
-</motion.div>
+                    {/* Arrow */}
+                    <motion.div
+                      animate={{ y: [0, 5, 0], opacity: [0.5, 1, 0.5] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                      className="flex justify-center text-[#D8F209]"
+                    >
+                      ↓
+                    </motion.div>
 
+                    {/* Transform */}
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={isInView ? { scale: 1 } : {}}
+                      transition={{ duration: 0.5, delay: 0.9 }}
+                      className="bg-[#D8F209] rounded-lg p-2 relative overflow-hidden"
+                    >
+                      <div className="flex items-center justify-center gap-2">
+                        <Activity className="w-4 h-4 text-[#1E1E1E]" />
+                        <span className="text-[#1E1E1E] text-xs font-bold">Transform</span>
+                      </div>
+                      {/* Processing shimmer */}
+                      <motion.div
+                        animate={{ x: [-100, 200] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                        className="absolute inset-0 w-20 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
+                      />
+                    </motion.div>
+
+                    {/* Arrow */}
+                    <motion.div
+                      animate={{ y: [0, 5, 0], opacity: [0.5, 1, 0.5] }}
+                      transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
+                      className="flex justify-center text-[#D8F209]"
+                    >
+                      ↓
+                    </motion.div>
+
+                    {/* Load */}
+                    <div>
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={isInView ? { scale: 1 } : {}}
+                        transition={{ duration: 0.5, delay: 1.2 }}
+                        className="bg-[#1A1A1A] border border-[#D8F209]/20 rounded-lg p-2 flex items-center justify-center gap-2"
+                      >
+                        <Database className="w-4 h-4 text-[#D8F209]" />
+                        <span className="text-[#D8F209] text-xs font-bold">Data Warehouse</span>
+                      </motion.div>
+                      <div className="text-[#FBFFDE]/50 text-xs mt-2 text-center">Load</div>
+                    </div>
+
+                  </div>
+
+                  {/* Status */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 1.5 }}
+                    className="mt-3 pt-3 border-t border-[#D8F209]/10 flex items-center justify-center gap-2"
+                  >
+                    <motion.div
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="w-1.5 h-1.5 rounded-full bg-[#D8F209]"
+                    />
+                    <span className="text-[#FBFFDE]/40 text-[10px] font-mono">Pipeline active</span>
+                  </motion.div>
+                </div>
+              </div>
+
+            </div>
+            
+            {/* Dot on timeline */}
+            <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#D8F209] border-4 border-[#1E1E1E]" />
+          </motion.div>
 
           {/* 2. PERFORMANCE - Right */}
           <motion.div
@@ -148,39 +213,43 @@ export default function TechStack() {
           >
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               
-              {/* Visual - Left side */}
+              {/* Visual - Left side: Real-time Processing */}
               <div className="relative lg:pr-12 order-2 lg:order-1">
-                <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6">
-                  {/* Data throughput visualization */}
+                <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6 h-48">
+                  
+                  {/* Processing metrics */}
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[#FBFFDE]/60 text-xs">Processing Speed</span>
-                      <span className="text-[#D8F209] text-xs font-bold">10TB/hr</span>
-                    </div>
-                    <div className="h-2 bg-[#1E1E1E] rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: '100%' } : {}}
-                        transition={{ duration: 1, delay: 0.8, repeat: Infinity, repeatType: "reverse" }}
-                        className="h-full bg-[#D8F209] rounded-full"
-                      />
-                    </div>
-                    
-                    <div className="flex items-center justify-between pt-2">
-                      <span className="text-[#FBFFDE]/60 text-xs">Active Pipelines</span>
-                      <div className="flex gap-1">
-                        {[...Array(5)].map((_, i) => (
+                    {[
+                      { label: 'Records Processed', value: '2.4M', progress: 85 },
+                      { label: 'Query Performance', value: '<100ms', progress: 95 },
+                      { label: 'Data Latency', value: '< 5min', progress: 90 }
+                    ].map((metric, i) => (
+                      <div key={i} className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[#FBFFDE]/60 text-xs">{metric.label}</span>
+                          <span className="text-[#D8F209] text-xs font-bold">{metric.value}</span>
+                        </div>
+                        <div className="h-1.5 bg-[#1E1E1E] rounded-full overflow-hidden">
                           <motion.div
-                            key={i}
-                            initial={{ scale: 0 }}
-                            animate={isInView ? { scale: 1 } : {}}
-                            transition={{ duration: 0.3, delay: 0.9 + i * 0.1 }}
-                            className="w-2 h-2 rounded-full bg-[#D8F209]"
+                            initial={{ width: 0 }}
+                            animate={isInView ? { width: `${metric.progress}%` } : {}}
+                            transition={{ duration: 1, delay: 0.8 + i * 0.2 }}
+                            className="h-full bg-gradient-to-r from-[#D8F209]/60 to-[#D8F209] rounded-full"
                           />
-                        ))}
+                        </div>
                       </div>
-                    </div>
+                    ))}
                   </div>
+
+                  {/* Live indicator */}
+                  <motion.div
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="absolute bottom-4 right-4 flex items-center gap-2"
+                  >
+                    <div className="w-2 h-2 rounded-full bg-[#D8F209]" />
+                    <span className="text-[#D8F209] text-[10px] font-mono">LIVE</span>
+                  </motion.div>
                 </div>
               </div>
 
@@ -216,68 +285,77 @@ export default function TechStack() {
             <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#D8F209] border-4 border-[#1E1E1E]" />
           </motion.div>
 
-{/* 3. SCALABILITY - Left */}
-<motion.div
-  initial={{ opacity: 0, x: -100 }}
-  animate={isInView ? { opacity: 1, x: 0 } : {}}
-  transition={{ duration: 0.8, delay: 0.8 }}
-  className="relative"
->
-  <div className="grid lg:grid-cols-2 gap-12 items-center">
-    
-    {/* Content - Left side */}
-    <div className="lg:text-right space-y-6">
-      <div className="lg:flex lg:justify-end">
-        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#D8F209]/20 bg-[#D8F209]/5">
-          <TrendingUp className="w-4 h-4 text-[#D8F209]" />
-          <span className="text-[#D8F209] text-sm font-medium">Scalability</span>
-        </div>
-      </div>
-      
-      <h3 className="text-white font-bold text-4xl lg:text-5xl">
-        Infinite Scale
-      </h3>
-      
-      <p className="text-[#FBFFDE]/60 text-lg leading-relaxed">
-        Handle petabytes today, exabytes tomorrow. Your data warehouse grows seamlessly with your business.
-      </p>
+          {/* 3. SCALABILITY - Left */}
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="relative"
+          >
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              
+              {/* Content - Left side */}
+              <div className="lg:text-right space-y-6">
+                <div className="lg:flex lg:justify-end">
+                  <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-[#D8F209]/20 bg-[#D8F209]/5">
+                    <TrendingUp className="w-4 h-4 text-[#D8F209]" />
+                    <span className="text-[#D8F209] text-sm font-medium">Scalability</span>
+                  </div>
+                </div>
+                
+                <h3 className="text-white font-bold text-4xl lg:text-5xl">
+                  Infinite Scale
+                </h3>
+                
+                <p className="text-[#FBFFDE]/60 text-lg leading-relaxed">
+                  Handle petabytes today, exabytes tomorrow. Your data warehouse grows seamlessly with your business.
+                </p>
 
-      <div className="flex lg:justify-end gap-8 pt-4">
-        <div>
-          <div className="text-[#D8F209] text-3xl font-bold">PB+</div>
-          <div className="text-[#FBFFDE]/40 text-sm">capacity</div>
-        </div>
-        <div>
-          <div className="text-[#D8F209] text-3xl font-bold">∞</div>
-          <div className="text-[#FBFFDE]/40 text-sm">scalable</div>
-        </div>
-      </div>
-    </div>
+                <div className="flex lg:justify-end gap-8 pt-4">
+                  <div>
+                    <div className="text-[#D8F209] text-3xl font-bold">PB+</div>
+                    <div className="text-[#FBFFDE]/40 text-sm">capacity</div>
+                  </div>
+                  <div>
+                    <div className="text-[#D8F209] text-3xl font-bold">∞</div>
+                    <div className="text-[#FBFFDE]/40 text-sm">scalable</div>
+                  </div>
+                </div>
+              </div>
 
-    {/* Visual - Right side */}
-    <div className="relative lg:pl-12">
-      <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6">
-        {/* Scaling visualization */}
-        <div className="space-y-2">
-          {[1, 2, 3, 4, 5].map((level) => (
-            <motion.div
-              key={level}
-              initial={{ width: 0 }}
-              animate={isInView ? { width: `${20 + level * 15}%` } : {}}
-              transition={{ duration: 0.8, delay: 1 + level * 0.1 }}
-              className="h-4 bg-gradient-to-r from-[#D8F209]/40 to-[#D8F209] rounded"
-            />
-          ))}
-        </div>
-        <div className="mt-4 text-center text-[#FBFFDE]/40 text-xs">Horizontal scaling</div>
-      </div>
-    </div>
+              {/* Visual - Right side: Storage Growth */}
+              <div className="relative lg:pl-12">
+                <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6 h-48">
+                  
+                  {/* Stacked storage visualization */}
+                  <div className="space-y-2">
+                    {[
+                      { label: '1 TB', size: 20 },
+                      { label: '10 TB', size: 35 },
+                      { label: '100 TB', size: 55 },
+                      { label: '1 PB', size: 75 },
+                      { label: '10 PB+', size: 95 }
+                    ].map((level, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ width: 0, opacity: 0 }}
+                        animate={isInView ? { width: `${level.size}%`, opacity: 1 } : {}}
+                        transition={{ duration: 0.8, delay: 1 + i * 0.1 }}
+                        className="relative h-5 bg-gradient-to-r from-[#D8F209]/40 to-[#D8F209] rounded flex items-center justify-end pr-2"
+                      >
+                        <span className="text-[#1E1E1E] text-[10px] font-bold">{level.label}</span>
+                      </motion.div>
+                    ))}
+                  </div>
 
-  </div>
-  
-  <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#D8F209] border-4 border-[#1E1E1E]" />
-</motion.div>
+                  <div className="mt-4 text-center text-[#FBFFDE]/40 text-xs">Horizontal scaling capacity</div>
+                </div>
+              </div>
 
+            </div>
+            
+            <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#D8F209] border-4 border-[#1E1E1E]" />
+          </motion.div>
 
         </div>
 
