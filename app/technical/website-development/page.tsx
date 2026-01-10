@@ -1,13 +1,13 @@
 'use client';
 
-import Hero from '@/components/technical/servicedetails/Hero';
-import WhatMakesUsDifferent from '@/components/technical/servicedetails/WhatMakesUsDifferent';
-import WhatWeBuild from '@/components/technical/servicedetails/WhatWeBuild';
-import TechStack from '@/components/technical/servicedetails/TechStack';
-import DevelopmentProcess from '@/components/technical/servicedetails/DevelopmentProcess';
-import WhoThisIsFor from '@/components/technical/servicedetails/WhoThisIsFor';
-import WhatYouGet from '@/components/technical/servicedetails/WhatYouGet';
-import FinalCTA from '@/components/technical/servicedetails/FinalCTA';
+import Hero from '@/components/technical/servicedetails/website-dev/Hero';
+import WhatMakesUsDifferent from '@/components/technical/servicedetails/website-dev/WhatMakesUsDifferent';
+import WhatWeBuild from '@/components/technical/servicedetails/website-dev/WhatWeBuild';
+import TechStack from '@/components/technical/servicedetails/website-dev/TechStack';
+import DevelopmentProcess from '@/components/technical/servicedetails/website-dev/DevelopmentProcess';
+import WhoThisIsFor from '@/components/technical/servicedetails/website-dev/WhoThisIsFor';
+import WhatYouGet from '@/components/technical/servicedetails/website-dev/WhatYouGet';
+import FinalCTA from '@/components/technical/servicedetails/website-dev/FinalCTA';
 import TechFooter from '@/components/technical/TechCommonComponents/TechFooter';
 import { ShoppingCart, Building2, Rocket, Zap } from 'lucide-react';
 
