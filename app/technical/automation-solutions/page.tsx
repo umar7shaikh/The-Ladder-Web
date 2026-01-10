@@ -88,7 +88,7 @@ export default function AutomationSolutionsPage() {
     <main className="bg-[#1E1E1E]">
       {/* 1. Hero Section */}
       <Hero
-        number="03"
+        number="02"
         title="Automation Solutions"
         subtitle="INTELLIGENT AUTOMATION"
         description="Transform repetitive tasks into automated workflows. From data processing to business operations, we build intelligent automation systems that save time, reduce errors, and scale your business effortlessly."
