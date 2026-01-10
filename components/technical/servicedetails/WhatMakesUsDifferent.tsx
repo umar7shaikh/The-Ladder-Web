@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowRight, Zap, Shield, TrendingUp, Sparkles } from 'lucide-react';
+import { ArrowRight, Zap, Shield, TrendingUp, Sparkles, X, Check } from 'lucide-react';
 
 export default function WhatMakesUsDifferent() {
   const ref = useRef(null);
@@ -69,7 +69,7 @@ export default function WhatMakesUsDifferent() {
         </motion.div>
 
         {/* MAIN VISUAL: Comparison Timeline */}
-        <div className="mb-32">
+        <div className="mb-16 lg:mb-32">
           
           {/* Desktop: Side by Side */}
           <div className="hidden lg:grid lg:grid-cols-2 gap-16 items-start">
@@ -200,33 +200,110 @@ export default function WhatMakesUsDifferent() {
 
           </div>
 
-          {/* Mobile: Stacked */}
-          <div className="lg:hidden space-y-16">
-            {/* Mobile version - simplified */}
-            <div className="space-y-8">
+          {/* Mobile: Proper Timeline */}
+          <div className="lg:hidden space-y-12">
+            
+            {/* Typical Approach - Mobile */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="space-y-6"
+            >
               <div className="text-center">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/30 mb-4">
-                  <span className="text-red-400 text-sm font-bold">Typical</span>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/30 mb-3">
+                  <X className="w-4 h-4 text-red-400" />
+                  <span className="text-red-400 text-xs font-bold uppercase tracking-wider">
+                    Typical Approach
+                  </span>
                 </div>
-                <h3 className="text-white/40 text-2xl font-bold line-through">Built in Isolation</h3>
+                <h3 className="text-white/40 text-xl font-bold line-through">
+                  Built in Isolation
+                </h3>
               </div>
-              <p className="text-center text-red-400/70 text-sm">
-                Design → Dev → SEO → Performance issues → Expensive fixes
-              </p>
-            </div>
 
-            <div className="space-y-8">
-              <div className="text-center">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D8F209]/10 border border-[#D8F209]/30 mb-4">
-                  <Sparkles className="w-4 h-4 text-[#D8F209]" />
-                  <span className="text-[#D8F209] text-sm font-bold">Our Way</span>
-                </div>
-                <h3 className="text-white text-2xl font-bold">Built as a System</h3>
+              {/* Broken timeline - mobile */}
+              <div className="relative space-y-8 max-w-md mx-auto">
+                {[
+                  { label: 'Design', issue: 'No dev input' },
+                  { label: 'Development', issue: 'Design issues found' },
+                  { label: 'SEO Added', issue: 'Requires rebuild' },
+                  { label: 'Performance', issue: 'Too slow' }
+                ].map((step, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
+                    className="relative pl-6 border-l-2 border-dashed border-red-500/20"
+                  >
+                    <div className="absolute left-0 top-1 -translate-x-[5px] w-3 h-3 rounded-full bg-red-500/30 border-2 border-red-500/50" />
+                    <h4 className="text-white/50 font-bold text-base mb-1">{step.label}</h4>
+                    <p className="text-red-400/70 text-xs">⚠️ {step.issue}</p>
+                  </motion.div>
+                ))}
               </div>
-              <p className="text-center text-[#D8F209]/90 text-sm font-medium">
-                Everything working together from day one → No surprises
-              </p>
-            </div>
+            </motion.div>
+
+            {/* Our Approach - Mobile */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="space-y-6"
+            >
+              <div className="text-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D8F209]/10 border border-[#D8F209]/30 mb-3">
+                  <Check className="w-4 h-4 text-[#D8F209]" />
+                  <span className="text-[#D8F209] text-xs font-bold uppercase tracking-wider">
+                    Our Approach
+                  </span>
+                </div>
+                <h3 className="text-white text-xl font-bold">
+                  Built as a System
+                </h3>
+              </div>
+
+              {/* Connected timeline - mobile */}
+              <div className="relative space-y-8 max-w-md mx-auto">
+                <motion.div
+                  animate={{ opacity: [0.3, 0.6, 0.3] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#D8F209]/20 via-[#D8F209]/60 to-[#D8F209]/20"
+                />
+
+                {[
+                  { label: 'Discovery', benefit: 'All aligned' },
+                  { label: 'Design + Dev', benefit: 'Built together' },
+                  { label: 'SEO Built-in', benefit: 'Day one' },
+                  { label: 'Launch', benefit: 'No surprises' }
+                ].map((step, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.4, delay: 0.7 + i * 0.1 }}
+                    className="relative pl-6 border-l-2 border-[#D8F209]/30"
+                  >
+                    <motion.div
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        boxShadow: [
+                          '0 0 0 0 rgba(216, 242, 9, 0.4)',
+                          '0 0 0 6px rgba(216, 242, 9, 0)',
+                          '0 0 0 0 rgba(216, 242, 9, 0)'
+                        ]
+                      }}
+                      transition={{ duration: 2, delay: i * 0.3, repeat: Infinity }}
+                      className="absolute left-0 top-1 -translate-x-[5px] w-3 h-3 rounded-full bg-[#D8F209] border-2 border-[#1E1E1E]"
+                    />
+                    <h4 className="text-white font-bold text-base mb-1">{step.label}</h4>
+                    <p className="text-[#D8F209]/90 text-xs font-medium">✓ {step.benefit}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
           </div>
 
         </div>
