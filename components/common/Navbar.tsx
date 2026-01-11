@@ -67,14 +67,15 @@ export default function Navbar() {
         backgroundColor: colors.bg,
         borderBottom: `1px solid ${colors.primary}33`
       }}
+      aria-label="Main navigation"
     >
       <div className="w-full max-w-[1920px] mx-auto px-4 md:px-[64px] py-0 flex items-center justify-between">
         {/* Logo Only */}
         <div className="flex-shrink-0">
-          <Link href={`/${currentDept}`}>
+          <Link href={`/${currentDept}`} rel="home">
             <Image 
               src={logoSrc}
-              alt="The Ladder Logo" 
+              alt={`The Ladder ${currentDept === 'marketing' ? 'Marketing' : 'Technical'} - Home`}
               width={90} 
               height={90}
               className="rounded-full hover:scale-105 transition-transform duration-200"
@@ -99,10 +100,12 @@ export default function Navbar() {
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.color = colors.textHover}
                 onMouseLeave={(e) => e.currentTarget.style.color = pathname === link.href ? colors.primary : colors.text}
+                aria-current={pathname === link.href ? 'page' : undefined}
+                prefetch={true}
               >
                 {link.label}
               </Link>
-            ))}
+            ))
             
             {/* Vertical Divider */}
             <div 
@@ -118,6 +121,7 @@ export default function Navbar() {
                 backgroundColor: colors.buttonBg,
                 color: colors.buttonText,
               }}
+              aria-label={`View ${currentDept} portfolio`}
             >
               View Portfolio →
             </button>
@@ -166,6 +170,8 @@ export default function Navbar() {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="md:hidden flex flex-col gap-1.5 p-2"
           aria-label="Toggle menu"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
         >
           <span 
             className={`block w-6 h-0.5 transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}
@@ -187,6 +193,7 @@ export default function Navbar() {
         <div 
           className="md:hidden fixed inset-0 top-[72px] z-50 transition-colors duration-300"
           style={{ backgroundColor: colors.bg }}
+          id="mobile-menu"
         >
           <div className="flex flex-col items-center pt-8 gap-6">
             {navLinks.map((link) => (
@@ -200,6 +207,8 @@ export default function Navbar() {
                 style={{
                   color: pathname === link.href ? colors.primary : colors.text,
                 }}
+                aria-current={pathname === link.href ? 'page' : undefined}
+                prefetch={true}
               >
                 {link.label}
               </Link>
@@ -222,6 +231,7 @@ export default function Navbar() {
                 backgroundColor: colors.buttonBg,
                 color: colors.buttonText,
               }}
+              aria-label={`View ${currentDept} portfolio`}
             >
               View Portfolio →
             </button>

@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function HomeHero() {
   return (
-    <section className="relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-white" aria-label="Hero section">
       {/* Blurred Yellow Ellipse - Responsive sizing */}
       <div 
         className="absolute top-1/2 -translate-y-1/2 pointer-events-none hidden lg:block"
@@ -19,6 +19,7 @@ export default function HomeHero() {
           right: '-10%',
           zIndex: 1,
         }}
+        aria-hidden="true"
       />
 
       {/* Content Container */}
@@ -47,6 +48,7 @@ export default function HomeHero() {
               <Link
                 href="/marketing/contact"
                 className="flex items-center justify-center w-full sm:w-auto sm:min-w-[200px] lg:min-w-[223px] h-[clamp(44px,10vw,48px)] px-6 bg-[#FFE000] text-[#363A43] rounded-lg text-[clamp(14px,3.5vw,16px)] font-semibold shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+                aria-label="Contact us to start climbing today"
               >
                 Start Climbing Today
               </Link>
@@ -54,6 +56,7 @@ export default function HomeHero() {
               <Link
                 href="/marketing/services"
                 className="flex items-center justify-center w-full sm:w-auto sm:min-w-[170px] lg:min-w-[185px] h-[clamp(44px,10vw,48px)] px-6 bg-white text-[#363A43] rounded-lg border border-[#363A43] text-[clamp(14px,3.5vw,16px)] font-semibold hover:bg-[#363A43] hover:text-white transition-all duration-300"
+                aria-label="View our marketing services"
               >
                 See Our Services
               </Link>
@@ -74,10 +77,10 @@ export default function HomeHero() {
               />
               
               {/* Sparkles - Relative to the image container */}
-              <div className="absolute bottom-[10%] right-[-5%] w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-[#FFE000] animate-pulse">
+              <div className="absolute bottom-[10%] right-[-5%] w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-[#FFE000] animate-pulse" aria-hidden="true">
                 <SparkleSVG />
               </div>
-              <div className="absolute bottom-[20%] right-[5%] w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 text-[#FFE000] animate-pulse delay-300">
+              <div className="absolute bottom-[20%] right-[5%] w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 text-[#FFE000] animate-pulse delay-300" aria-hidden="true">
                 <SparkleSVG />
               </div>
             </div>

@@ -1,0 +1,27 @@
+# robots.txt
+# The Ladder Website Robots Configuration
+
+# Allow all bots
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /private
+Disallow: /*.json$
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://theladder.com/sitemap.xml
+Sitemap: https://theladder.com/sitemap-marketing.xml
+Sitemap: https://theladder.com/sitemap-technical.xml
+
+# Request rate
+Request-rate: 30/60

@@ -14,8 +14,56 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The Ladder",
-  description: "The Ladder - Multi-Department Website",
+  title: "The Ladder | Digital Marketing & Technical Solutions",
+  description: "The Ladder offers premium digital marketing and technical solutions to help brands climb to success. Expert strategies, measurable results, and proven growth.",
+  keywords: ["digital marketing", "technical solutions", "web development", "business growth"],
+  authors: [{ name: "The Ladder" }],
+  creator: "The Ladder",
+  publisher: "The Ladder",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://theladder.com",
+    siteName: "The Ladder",
+    title: "The Ladder | Digital Marketing & Technical Solutions",
+    description: "Premium digital marketing and technical solutions for business growth",
+    images: [
+      {
+        url: "https://theladder.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "The Ladder - Digital Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Ladder | Digital Marketing & Technical Solutions",
+    description: "Premium digital marketing and technical solutions for business growth",
+    creator: "@theladder",
+    images: ["https://theladder.com/twitter-image.png"],
+  },
+  alternates: {
+    canonical: "https://theladder.com",
+  },
 };
 
 export default function RootLayout({

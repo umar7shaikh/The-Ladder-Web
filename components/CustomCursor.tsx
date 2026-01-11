@@ -54,13 +54,15 @@ export default function CustomCursor() {
         transform: `translate(${position.x}px, ${position.y}px)`,
         opacity: isVisible ? 1 : 0,
       }}
+      aria-hidden="true"
     >
       <Image 
         src="/ladder.svg" 
-        alt="cursor" 
+        alt="" 
         width={32} 
         height={32}
         className="-translate-x-1/2 -translate-y-1/2"
+        aria-hidden="true"
       />
     </div>
   );
