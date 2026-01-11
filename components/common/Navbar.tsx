@@ -105,7 +105,7 @@ export default function Navbar() {
               >
                 {link.label}
               </Link>
-            ))
+            ))}
             
             {/* Vertical Divider */}
             <div 
