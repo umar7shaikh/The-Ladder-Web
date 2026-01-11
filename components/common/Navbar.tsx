@@ -42,6 +42,9 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
   };
 
+  // Dynamic logo based on department
+  const logoSrc = currentDept === 'marketing' ? '/logo.png' : '/techlogo.png';
+
   // Navigation links based on department
   const navLinks = currentDept === 'marketing' 
     ? [
@@ -62,7 +65,7 @@ export default function Navbar() {
       className="sticky top-0 z-50 h-[72px] flex items-center transition-colors duration-300"
       style={{ 
         backgroundColor: colors.bg,
-        borderBottom: `1px solid ${colors.primary}33` // 33 = 20% opacity
+        borderBottom: `1px solid ${colors.primary}33`
       }}
     >
       <div className="w-full max-w-[1920px] mx-auto px-4 md:px-[64px] py-0 flex items-center justify-between">
@@ -70,7 +73,7 @@ export default function Navbar() {
         <div className="flex-shrink-0">
           <Link href={`/${currentDept}`}>
             <Image 
-              src="/logo.png" 
+              src={logoSrc}
               alt="The Ladder Logo" 
               width={90} 
               height={90}
@@ -103,27 +106,42 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Department Toggle Button (Desktop) */}
-        <div className="hidden md:block flex-shrink-0">
+        {/* Department Toggle Slider (Desktop) */}
+        <div className="hidden md:flex items-center gap-3 flex-shrink-0">
+          <span 
+            className={`text-sm font-medium transition-all duration-200 ${
+              currentDept === 'marketing' ? 'opacity-100' : 'opacity-50'
+            }`}
+            style={{ color: colors.text }}
+          >
+            Marketing
+          </span>
+          
           <button
             onClick={toggleDept}
-            className="px-6 py-2.5 border-2 rounded-full text-sm font-semibold leading-[22px] transition-all duration-200 h-[38px] flex items-center"
-            style={{
-              borderColor: colors.border,
-              backgroundColor: colors.buttonBg,
-              color: colors.buttonText,
+            className="relative w-14 h-7 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2"
+            style={{ 
+              backgroundColor: currentDept === 'marketing' ? colors.primary : colors.primary,
+              focusRingColor: colors.primary 
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent';
-              e.currentTarget.style.color = colors.border;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = colors.buttonBg;
-              e.currentTarget.style.color = colors.buttonText;
-            }}
+            aria-label="Toggle department"
           >
-            Switch to {currentDept === 'marketing' ? 'Technical' : 'Marketing'}
+            <span
+              className="absolute top-1 left-1 w-5 h-5 rounded-full bg-white shadow-md transform transition-transform duration-300 ease-in-out"
+              style={{
+                transform: currentDept === 'technical' ? 'translateX(28px)' : 'translateX(0)',
+              }}
+            />
           </button>
+          
+          <span 
+            className={`text-sm font-medium transition-all duration-200 ${
+              currentDept === 'technical' ? 'opacity-100' : 'opacity-50'
+            }`}
+            style={{ color: colors.text }}
+          >
+            Technical
+          </span>
         </div>
 
         {/* Hamburger Menu Button (Mobile) */}
@@ -169,17 +187,41 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <button
-              onClick={toggleDept}
-              className="mt-4 px-6 py-2.5 border-2 rounded-full text-sm font-semibold transition-all duration-200"
-              style={{
-                borderColor: colors.border,
-                backgroundColor: colors.buttonBg,
-                color: colors.buttonText,
-              }}
-            >
-              Switch to {currentDept === 'marketing' ? 'Technical' : 'Marketing'}
-            </button>
+            
+            {/* Mobile Toggle Slider */}
+            <div className="flex items-center gap-3 mt-4">
+              <span 
+                className={`text-sm font-medium ${
+                  currentDept === 'marketing' ? 'opacity-100' : 'opacity-50'
+                }`}
+                style={{ color: colors.text }}
+              >
+                Marketing
+              </span>
+              
+              <button
+                onClick={toggleDept}
+                className="relative w-14 h-7 rounded-full transition-all duration-300"
+                style={{ backgroundColor: colors.primary }}
+                aria-label="Toggle department"
+              >
+                <span
+                  className="absolute top-1 left-1 w-5 h-5 rounded-full bg-white shadow-md transform transition-transform duration-300 ease-in-out"
+                  style={{
+                    transform: currentDept === 'technical' ? 'translateX(28px)' : 'translateX(0)',
+                  }}
+                />
+              </button>
+              
+              <span 
+                className={`text-sm font-medium ${
+                  currentDept === 'technical' ? 'opacity-100' : 'opacity-50'
+                }`}
+                style={{ color: colors.text }}
+              >
+                Technical
+              </span>
+            </div>
           </div>
         </div>
       )}

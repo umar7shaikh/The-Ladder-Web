@@ -15,7 +15,6 @@ import {
   Step 
 } from '@/components/technical/blogcomponents/MDXComponents';
 
-// Custom components for MDX
 const components = {
   Callout,
   CodeTitle,
@@ -53,7 +52,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
       {/* Hero Section */}
       <section className="relative py-12 md:py-16">
-        <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 md:px-12">
+        <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
+          {/* ↑ Changed from max-w-4xl to max-w-6xl */}
           
           {/* Category Badge */}
           <div className="inline-block mb-4">

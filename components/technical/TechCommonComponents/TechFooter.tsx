@@ -16,7 +16,7 @@ export default function TechFooter() {
             {/* Logo */}
             <Link href="/" className="inline-block">
               <Image
-                src="/logo.png"
+                src="/techlogo.png"
                 alt="The Ladder Tech Logo"
                 width={120}
                 height={40}
