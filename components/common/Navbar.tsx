@@ -45,19 +45,17 @@ export default function Navbar() {
   // Dynamic logo based on department
   const logoSrc = currentDept === 'marketing' ? '/logo.png' : '/techlogo.png';
 
-  // Navigation links based on department
+  // Navigation links based on department (without Portfolio)
   const navLinks = currentDept === 'marketing' 
     ? [
         { label: 'Home', href: '/marketing' },
         { label: 'Services', href: '/marketing/services' },
-        { label: 'Portfolio', href: '/marketing/portfolio' },
         { label: 'About', href: '/marketing/about' },
         { label: 'Contact', href: '/marketing/contact' },
       ]
     : [
         { label: 'Home', href: '/technical' },
         { label: 'Services', href: '/technical/services' },
-        { label: 'Portfolio', href: '/technical/portfolio' },
         { label: 'Blogs', href: '/technical/blog' },
         { label: 'About Us', href: '/technical/about' },
       ];
@@ -86,7 +84,7 @@ export default function Navbar() {
 
         {/* Navigation Links - Centered (Desktop) */}
         <div className="flex-1 hidden md:flex justify-center px-16">
-          <div className="flex gap-8">
+          <div className="flex gap-8 items-center">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -105,6 +103,24 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            
+            {/* Vertical Divider */}
+            <div 
+              className="h-6 w-px"
+              style={{ backgroundColor: colors.primary, opacity: 0.4 }}
+            ></div>
+            
+            {/* Clean Portfolio CTA Button */}
+            <button
+              onClick={() => router.push(`/${currentDept}/portfolio`)}
+              className="px-5 py-2 rounded-lg font-semibold text-sm transition-all duration-200 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2"
+              style={{
+                backgroundColor: colors.buttonBg,
+                color: colors.buttonText,
+              }}
+            >
+              View Portfolio →
+            </button>
           </div>
         </div>
 
@@ -123,7 +139,7 @@ export default function Navbar() {
             onClick={toggleDept}
             className="relative w-14 h-7 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2"
             style={{ 
-              backgroundColor: currentDept === 'marketing' ? colors.primary : colors.primary,
+              backgroundColor: colors.primary,
               focusRingColor: colors.primary 
             }}
             aria-label="Toggle department"
@@ -189,6 +205,27 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            
+            {/* Mobile Divider */}
+            <div 
+              className="w-32 h-px my-2"
+              style={{ backgroundColor: colors.primary, opacity: 0.4 }}
+            ></div>
+            
+            {/* Mobile Portfolio Button */}
+            <button
+              onClick={() => {
+                router.push(`/${currentDept}/portfolio`);
+                setIsMobileMenuOpen(false);
+              }}
+              className="px-6 py-2.5 rounded-lg font-semibold text-base transition-all duration-200 active:scale-95"
+              style={{
+                backgroundColor: colors.buttonBg,
+                color: colors.buttonText,
+              }}
+            >
+              View Portfolio →
+            </button>
             
             {/* Mobile Toggle Slider */}
             <div className="flex items-center gap-3 mt-4">
