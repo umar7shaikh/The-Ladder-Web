@@ -140,7 +140,6 @@ export default function Navbar() {
             className="relative w-14 h-7 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2"
             style={{ 
               backgroundColor: colors.primary,
-              focusRingColor: colors.primary 
             }}
             aria-label="Toggle department"
           >
