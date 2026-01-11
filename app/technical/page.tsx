@@ -9,6 +9,7 @@ import CTAHero from '@/components/technical/techhomecomponents/CTAHero';
 import FAQSection from '@/components/technical/techhomecomponents/FAQSection';
 import ContactSection from '@/components/technical/techhomecomponents/TContactSection';
 import TechFooter from '@/components/technical/TechCommonComponents/TechFooter';
+import DesignShowcase from "@/components/technical/techhomecomponents/DesignShowcase";
 
 export const metadata: Metadata = {
   title: "Technical Solutions | AI, Automation & Analytics | The Ladder",
@@ -28,6 +29,7 @@ export default function TechnicalHome() {
       <ImpactStats />
       <TServices />
       <TWhyChooseUs />
+      <DesignShowcase />
       <TTestimonials />
       <CTAHero />
       <FAQSection />
