@@ -50,12 +50,14 @@ export default function Navbar() {
     ? [
         { label: 'Home', href: '/marketing' },
         { label: 'Services', href: '/marketing/services' },
+        { label: 'Portfolio', href: '/marketing/portfolio' },
         { label: 'About', href: '/marketing/about' },
         { label: 'Contact', href: '/marketing/contact' },
       ]
     : [
         { label: 'Home', href: '/technical' },
         { label: 'Services', href: '/technical/services' },
+        { label: 'Portfolio', href: '/technical/portfolio' },
         { label: 'Blogs', href: '/technical/blog' },
         { label: 'About Us', href: '/technical/about' },
       ];
