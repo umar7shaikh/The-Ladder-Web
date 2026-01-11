@@ -52,9 +52,9 @@ export default function Navbar() {
       ]
     : [
         { label: 'Home', href: '/technical' },
-        { label: 'Products', href: '/technical/products' },
-        { label: 'Solutions', href: '/technical/solutions' },
-        { label: 'Careers', href: '/technical/careers' },
+        { label: 'Services', href: '/technical/services' },
+        { label: 'Blogs', href: '/technical/blog' },
+        { label: 'About Us', href: '/technical/about' },
       ];
 
   return (
