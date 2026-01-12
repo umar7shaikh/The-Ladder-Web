@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export default function CTAHero() {
@@ -36,7 +37,8 @@ export default function CTAHero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-              <button
+              <Link
+                href="#contact-section"
                 className="group bg-[#D8F209] text-[#1E1E1E] px-6 sm:px-8 py-3 sm:py-4 
                          rounded-lg text-[clamp(14px,3.5vw,16px)] font-semibold
                          hover:bg-[#c4db08] transition-all duration-300
@@ -47,18 +49,19 @@ export default function CTAHero() {
               >
                 <span>Start a project</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
+              </Link>
 
-              <button
+              <Link
+                href="#contact-section"
                 className="border-2 border-[#D8F209] text-[#D8F209] px-6 sm:px-8 py-3 sm:py-4 
                          rounded-lg text-[clamp(14px,3.5vw,16px)] font-semibold
                          hover:bg-[#D8F209]/10 transition-all duration-300
                          focus:outline-none focus:ring-4 focus:ring-[#D8F209]/40
                          active:scale-95
-                         min-w-[200px]"
+                         min-w-[200px] text-center"
               >
                 Talk to us
-              </button>
+              </Link>
             </div>
           </div>
         </div>

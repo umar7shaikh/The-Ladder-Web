@@ -77,7 +77,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="relative h-auto bg-[#1E1E1E] overflow-hidden py-16 md:py-20 lg:py-24">
+    <section id="contact-section" className="relative h-auto bg-[#1E1E1E] overflow-hidden py-16 md:py-20 lg:py-24">
       {/* Container */}
       <div className="relative w-full max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20">

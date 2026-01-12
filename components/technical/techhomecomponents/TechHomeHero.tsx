@@ -1,5 +1,8 @@
 // components\technical\techhomecomponents\TechHomeHero.tsx
+'use client';
+
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
@@ -103,7 +106,7 @@ export default function Hero() {
           </p>
 
           {/* CTA Button */}
-          <button className="group inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 h-[clamp(44px,10vw,56px)] bg-[#D8F209] text-[#1E1E1E] font-semibold rounded-lg text-[clamp(14px,3.5vw,16px)] hover:bg-[#c4db08] transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#D8F209]/30 touch-manipulation">
+          <Link href="/technical/services" className="group inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 h-[clamp(44px,10vw,56px)] bg-[#D8F209] text-[#1E1E1E] font-semibold rounded-lg text-[clamp(14px,3.5vw,16px)] hover:bg-[#c4db08] transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#D8F209]/30 touch-manipulation">
             Our capabilities
             <svg
               className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300"
@@ -113,7 +116,7 @@ export default function Hero() {
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </button>
+          </Link>
         </div>
 
         {/* Animated Connection Diagram - SVG */}
