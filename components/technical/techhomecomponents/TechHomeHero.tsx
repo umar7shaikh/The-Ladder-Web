@@ -129,14 +129,14 @@ export default function Hero() {
 >
   {/* Define the paths for animation */}
   <defs>
-    {/* Left Top Path */}
-    <path id="leftTopPath" d="M 137.5 32 L 307.5 32 C 315 32 323.5 40 323.5 48 L 323.5 108.5 C 323.5 116 331 124.5 339.5 124.5 L 538.5 124.5" />
-    
-    {/* Left Middle Path */}
-    <path id="leftMiddlePath" d="M 68 160.5 H 233.772 Q 245 160.5 254 150 L 266.728 139.5 H 538.5" />
-    
-    {/* Left Bottom Path */}
-    <path id="leftBottomPath" d="M 137.5 245.5 L 307.5 245.5 C 315 245.5 323.5 237 323.5 229.5 L 323.5 169 C 323.5 161 331 153 339.5 153 L 538.5 153" />
+{/* Left Top Path - REVERSED */}
+<path id="leftTopPath" d="M 538.5 124.5 L 339.5 124.5 C 331 124.5 323.5 116 323.5 108.5 L 323.5 48 C 323.5 40 315 32 307.5 32 L 137.5 32" />
+
+{/* Left Middle Path - REVERSED */}
+<path id="leftMiddlePath" d="M 538.5 139.5 H 266.728 L 254 150 Q 245 160.5 233.772 160.5 H 68" />
+
+{/* Left Bottom Path - REVERSED */}
+<path id="leftBottomPath" d="M 538.5 153 L 339.5 153 C 331 153 323.5 161 323.5 169 L 323.5 229.5 C 323.5 237 315 245.5 307.5 245.5 L 137.5 245.5" />
     
     {/* Right Top Path */}
     <path id="rightTopPath" d="M 678.5 124.5 H 877.5 Q 893.5 124.5 893.5 108.5 V 48 Q 893.5 32 909.5 32 H 1079.5" />

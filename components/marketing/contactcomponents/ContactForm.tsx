@@ -2,6 +2,7 @@
 'use client';
 
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -12,11 +13,73 @@ export default function ContactForm() {
     message: '',
     acceptTerms: false,
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add your form submission logic here
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+
+    try {
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          name: formData.name,
+          companyName: formData.companyName,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message || 'No message provided',
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+
+      console.log('Email sent successfully:', result);
+      
+      // Show success message
+      setSubmitStatus({
+        type: 'success',
+        message: 'Thank you! Your message has been sent successfully. We will get back to you soon.',
+      });
+      
+      // Reset form
+      setFormData({
+        name: '',
+        companyName: '',
+        email: '',
+        phone: '',
+        message: '',
+        acceptTerms: false,
+      });
+      
+    } catch (error: any) {
+      console.error('Email send failed:', error);
+      
+      // More detailed error message
+      let errorMessage = 'Failed to send message. Please try again later.';
+      
+      if (error.text) {
+        errorMessage = `Error: ${error.text}`;
+      } else if (error.status === 400) {
+        errorMessage = 'Invalid configuration. Please contact support.';
+      } else if (error.status === 422) {
+        errorMessage = 'Please fill in all required fields correctly.';
+      }
+      
+      setSubmitStatus({
+        type: 'error',
+        message: errorMessage,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -39,12 +102,25 @@ export default function ContactForm() {
               Get In Touch
             </h2>
 
+            {/* Status Messages */}
+            {submitStatus.type && (
+              <div
+                className={`mb-6 p-4 rounded-lg ${
+                  submitStatus.type === 'success'
+                    ? 'bg-green-50 text-green-800 border border-green-200'
+                    : 'bg-red-50 text-red-800 border border-red-200'
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="flex flex-col gap-5 sm:gap-6">
               
               {/* Name Field */}
               <div className="flex flex-col gap-2">
                 <label htmlFor="name" className="text-[clamp(13px,3vw,14px)] font-medium text-[#363A43]">
-                  Name
+                  Name *
                 </label>
                 <input
                   type="text"
@@ -55,6 +131,7 @@ export default function ContactForm() {
                   placeholder="Enter your full name"
                   className="w-full px-4 py-3 border-2 border-[#FFE000] rounded-lg focus:outline-none focus:border-[#FFE000] focus:ring-2 focus:ring-[#FFE000]/20 text-[clamp(14px,3.5vw,16px)] text-[#363A43] placeholder:text-[#363A43]/40"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -72,6 +149,7 @@ export default function ContactForm() {
                   placeholder="Enter your company name"
                   className="w-full px-4 py-3 border border-[#363A43]/20 rounded-lg focus:outline-none focus:border-[#FFE000] focus:ring-2 focus:ring-[#FFE000]/20 text-[clamp(14px,3.5vw,16px)] text-[#363A43] placeholder:text-[#363A43]/40 bg-[#F5F5F5]"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -91,6 +169,7 @@ export default function ContactForm() {
                     placeholder="Enter email address"
                     className="w-full px-4 py-3 border border-[#363A43]/20 rounded-lg focus:outline-none focus:border-[#FFE000] focus:ring-2 focus:ring-[#FFE000]/20 text-[clamp(14px,3.5vw,16px)] text-[#363A43] placeholder:text-[#363A43]/40 bg-[#F5F5F5]"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -108,6 +187,7 @@ export default function ContactForm() {
                     placeholder="Enter contact number"
                     className="w-full px-4 py-3 border border-[#363A43]/20 rounded-lg focus:outline-none focus:border-[#FFE000] focus:ring-2 focus:ring-[#FFE000]/20 text-[clamp(14px,3.5vw,16px)] text-[#363A43] placeholder:text-[#363A43]/40 bg-[#F5F5F5]"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
@@ -125,6 +205,7 @@ export default function ContactForm() {
                   placeholder="Type your message..."
                   rows={6}
                   className="w-full px-4 py-3 border border-[#363A43]/20 rounded-lg focus:outline-none focus:border-[#FFE000] focus:ring-2 focus:ring-[#FFE000]/20 text-[clamp(14px,3.5vw,16px)] text-[#363A43] placeholder:text-[#363A43]/40 bg-[#F5F5F5] resize-none"
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -138,6 +219,7 @@ export default function ContactForm() {
                   onChange={handleChange}
                   className="mt-1 w-4 h-4 accent-[#FFE000] cursor-pointer"
                   required
+                  disabled={isSubmitting}
                 />
                 <label htmlFor="acceptTerms" className="text-[clamp(12px,3vw,14px)] text-[#363A43]/80 cursor-pointer">
                   I accept the{' '}
@@ -152,9 +234,10 @@ export default function ContactForm() {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="px-6 sm:px-8 py-3 h-[clamp(44px,10vw,48px)] bg-[#FFE000] text-[#363A43] rounded-lg text-[clamp(14px,3.5vw,16px)] font-semibold hover:bg-[#FFE000]/90 transition-all duration-300 shadow-md hover:shadow-lg"
+                  disabled={isSubmitting}
+                  className="px-6 sm:px-8 py-3 h-[clamp(44px,10vw,48px)] bg-[#FFE000] text-[#363A43] rounded-lg text-[clamp(14px,3.5vw,16px)] font-semibold hover:bg-[#FFE000]/90 transition-all duration-300 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Submit
+                  {isSubmitting ? 'Sending...' : 'Submit'}
                 </button>
               </div>
 

@@ -1,15 +1,25 @@
+// components/marketing/contactcomponents/ContactSection.tsx
 'use client';
 
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
+    companyName: '',
     email: '',
+    phone: '',
     message: '',
     acceptTerms: false,
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
@@ -19,10 +29,51 @@ export default function ContactSection() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add your form submission logic here
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          name: formData.name,
+          companyName: formData.companyName,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message || 'No message provided',
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+
+      console.log('Email sent successfully:', result);
+      
+      setSubmitStatus({
+        type: 'success',
+        message: 'Thank you! Your message has been sent successfully.',
+      });
+      
+      setFormData({
+        name: '',
+        companyName: '',
+        email: '',
+        phone: '',
+        message: '',
+        acceptTerms: false,
+      });
+      
+    } catch (error: any) {
+      console.error('Email send failed:', error);
+      
+      setSubmitStatus({
+        type: 'error',
+        message: 'Failed to send message. Please try again later.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -38,7 +89,7 @@ export default function ContactSection() {
             </h2>
 
             <p className="text-[#FBFFDE] text-[clamp(14px,3.5vw,16px)] leading-relaxed max-w-lg">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Ready to transform your digital presence? Get in touch with us today and let's discuss how we can help bring your vision to life.
             </p>
 
             {/* Contact Details */}
@@ -49,10 +100,10 @@ export default function ContactSection() {
                   <Mail className="w-full h-full text-[#D8F209]" />
                 </div>
                 <a 
-                  href="mailto:hello@relume.io" 
+                  href="mailto:contact@theladders.tech" 
                   className="text-[#FBFFDE] text-[clamp(14px,3.5vw,16px)] hover:text-[#D8F209] transition-colors duration-300"
                 >
-                  hello@relume.io
+                  contact@theladders.tech
                 </a>
               </div>
 
@@ -62,10 +113,10 @@ export default function ContactSection() {
                   <Phone className="w-full h-full text-[#D8F209]" />
                 </div>
                 <a 
-                  href="tel:+13551000000" 
+                  href="tel:+91 9325856501" 
                   className="text-[#FBFFDE] text-[clamp(14px,3.5vw,16px)] hover:text-[#D8F209] transition-colors duration-300"
                 >
-                  +1 (355) 000-0000
+                  +91 93258 56501
                 </a>
               </div>
 
@@ -75,7 +126,7 @@ export default function ContactSection() {
                   <MapPin className="w-full h-full text-[#D8F209]" />
                 </div>
                 <address className="text-[#FBFFDE] text-[clamp(14px,3.5vw,16px)] not-italic leading-relaxed">
-                  123 Sample St, Sydney NSW 2000 AU
+                  Pune, Maharashtra, India
                 </address>
               </div>
             </div>
@@ -83,6 +134,19 @@ export default function ContactSection() {
 
           {/* Right Side - Contact Form */}
           <div>
+            {/* Status Messages */}
+            {submitStatus.type && (
+              <div
+                className={`mb-6 p-4 rounded-lg ${
+                  submitStatus.type === 'success'
+                    ? 'bg-[#D8F209]/10 text-[#D8F209] border border-[#D8F209]/30'
+                    : 'bg-red-500/10 text-red-400 border border-red-500/30'
+                }`}
+              >
+                {submitStatus.message}
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name Field */}
               <div>
@@ -90,7 +154,7 @@ export default function ContactSection() {
                   htmlFor="name" 
                   className="block text-[#D8F209] text-[clamp(13px,3vw,14px)] font-medium mb-2"
                 >
-                  Name
+                  Name *
                 </label>
                 <input
                   type="text"
@@ -99,12 +163,40 @@ export default function ContactSection() {
                   value={formData.name}
                   onChange={handleChange}
                   required
+                  disabled={isSubmitting}
                   className="w-full bg-transparent border border-[#FBFFDE]/30 rounded-lg px-4 py-3
                            text-[#FBFFDE] text-[clamp(14px,3.5vw,16px)]
                            focus:outline-none focus:ring-2 focus:ring-[#D8F209]/40 focus:border-[#D8F209]
                            transition-all duration-300
-                           placeholder:text-[#FBFFDE]/40"
-                  placeholder=""
+                           placeholder:text-[#FBFFDE]/40
+                           disabled:opacity-50 disabled:cursor-not-allowed"
+                  placeholder="Enter your full name"
+                />
+              </div>
+
+              {/* Company Name Field */}
+              <div>
+                <label 
+                  htmlFor="companyName" 
+                  className="block text-[#D8F209] text-[clamp(13px,3vw,14px)] font-medium mb-2"
+                >
+                  Company Name *
+                </label>
+                <input
+                  type="text"
+                  id="companyName"
+                  name="companyName"
+                  value={formData.companyName}
+                  onChange={handleChange}
+                  required
+                  disabled={isSubmitting}
+                  className="w-full bg-transparent border border-[#FBFFDE]/30 rounded-lg px-4 py-3
+                           text-[#FBFFDE] text-[clamp(14px,3.5vw,16px)]
+                           focus:outline-none focus:ring-2 focus:ring-[#D8F209]/40 focus:border-[#D8F209]
+                           transition-all duration-300
+                           placeholder:text-[#FBFFDE]/40
+                           disabled:opacity-50 disabled:cursor-not-allowed"
+                  placeholder="Enter your company name"
                 />
               </div>
 
@@ -114,7 +206,7 @@ export default function ContactSection() {
                   htmlFor="email" 
                   className="block text-[#D8F209] text-[clamp(13px,3vw,14px)] font-medium mb-2"
                 >
-                  Email
+                  Email *
                 </label>
                 <input
                   type="email"
@@ -123,12 +215,40 @@ export default function ContactSection() {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  disabled={isSubmitting}
                   className="w-full bg-transparent border border-[#FBFFDE]/30 rounded-lg px-4 py-3
                            text-[#FBFFDE] text-[clamp(14px,3.5vw,16px)]
                            focus:outline-none focus:ring-2 focus:ring-[#D8F209]/40 focus:border-[#D8F209]
                            transition-all duration-300
-                           placeholder:text-[#FBFFDE]/40"
-                  placeholder=""
+                           placeholder:text-[#FBFFDE]/40
+                           disabled:opacity-50 disabled:cursor-not-allowed"
+                  placeholder="Enter your email address"
+                />
+              </div>
+
+              {/* Phone Field */}
+              <div>
+                <label 
+                  htmlFor="phone" 
+                  className="block text-[#D8F209] text-[clamp(13px,3vw,14px)] font-medium mb-2"
+                >
+                  Phone *
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  disabled={isSubmitting}
+                  className="w-full bg-transparent border border-[#FBFFDE]/30 rounded-lg px-4 py-3
+                           text-[#FBFFDE] text-[clamp(14px,3.5vw,16px)]
+                           focus:outline-none focus:ring-2 focus:ring-[#D8F209]/40 focus:border-[#D8F209]
+                           transition-all duration-300
+                           placeholder:text-[#FBFFDE]/40
+                           disabled:opacity-50 disabled:cursor-not-allowed"
+                  placeholder="Enter your phone number"
                 />
               </div>
 
@@ -145,13 +265,14 @@ export default function ContactSection() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  required
+                  disabled={isSubmitting}
                   rows={5}
                   className="w-full bg-transparent border border-[#FBFFDE]/30 rounded-lg px-4 py-3
                            text-[#FBFFDE] text-[clamp(14px,3.5vw,16px)]
                            focus:outline-none focus:ring-2 focus:ring-[#D8F209]/40 focus:border-[#D8F209]
                            transition-all duration-300 resize-none
-                           placeholder:text-[#FBFFDE]/40"
+                           placeholder:text-[#FBFFDE]/40
+                           disabled:opacity-50 disabled:cursor-not-allowed"
                   placeholder="Type your message..."
                 />
               </div>
@@ -165,29 +286,36 @@ export default function ContactSection() {
                   checked={formData.acceptTerms}
                   onChange={handleChange}
                   required
+                  disabled={isSubmitting}
                   className="mt-1 w-4 h-4 rounded border-[#FBFFDE]/30 
                            bg-transparent text-[#D8F209]
                            focus:ring-2 focus:ring-[#D8F209]/40 focus:ring-offset-0
-                           cursor-pointer"
+                           cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 />
                 <label 
                   htmlFor="acceptTerms" 
                   className="text-[#FBFFDE]/70 text-[clamp(13px,3vw,14px)] cursor-pointer"
                 >
-                  I accept the Terms
+                  I accept the{' '}
+                  <a href="/terms" className="text-[#D8F209] hover:underline">
+                    Terms & Conditions
+                  </a>
+                  {' '}*
                 </label>
               </div>
 
               {/* Submit Button */}
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className="bg-[#D8F209] text-[#1E1E1E] px-8 py-3 rounded-lg
                          text-[clamp(14px,3.5vw,16px)] font-semibold
                          hover:bg-[#c4db08] transition-all duration-300
                          focus:outline-none focus:ring-4 focus:ring-[#D8F209]/40
-                         active:scale-95 shadow-lg hover:shadow-xl"
+                         active:scale-95 shadow-lg hover:shadow-xl
+                         disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                Submit
+                {isSubmitting ? 'Sending...' : 'Submit'}
               </button>
             </form>
           </div>
