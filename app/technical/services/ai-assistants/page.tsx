@@ -65,9 +65,9 @@ export default function AIAssistantsPage() {
     <main className="bg-[#1E1E1E]">
       <Hero
         number="04"
-        title="AI & Intelligent Assistants"
-        subtitle="ARTIFICIAL INTELLIGENCE"
-        description="Intelligent AI assistants that understand context, learn from interactions, and deliver personalized experiences. From chatbots to voice agents, we build AI that actually helps."
+        title="What if your systems could think, respond, and assist like a real teammate?"
+        subtitle="AI & INTELLIGENT ASSISTANTS"
+        description="From smart chatbots to internal AI tools, we build intelligent assistants that understand context, learn from interactions, and genuinely make work easier for your team and customers."
         primaryCTA="Build Your AI"
         secondaryCTA="See Examples"
       />

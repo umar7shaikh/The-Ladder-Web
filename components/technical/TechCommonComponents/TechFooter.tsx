@@ -139,7 +139,7 @@ export default function TechFooter() {
                 AI & Intelligent Assistants
               </Link>
               <Link href="/technical/services/marketing-support" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
-                Free Marketing Support
+                Software Development
               </Link>
             </div>
           </div>

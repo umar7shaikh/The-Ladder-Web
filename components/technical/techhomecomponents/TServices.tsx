@@ -51,12 +51,12 @@ const services = [
     slug: '/technical/services/data-warehousing'
   },
   {
-    id: 'marketing',
+    id: 'software',
     number: '06',
-    title: 'Free Marketing Support',
-    description: 'Get expert marketing guidance to amplify your digital presence. From strategy to execution, we help you reach your audience.',
+    title: 'Software Development',
+    description: 'Custom software solutions built with clean code, scalability, and long-term maintainability in mind.',
     image: '/MarketingSupportVisual.png',
-    label: 'Free Marketing Support',
+    label: 'Software Development',
     slug: '/technical/services/marketing-support'
   }
 ];

@@ -67,11 +67,11 @@ export default function WebsiteDevelopmentPage() {
       {/* 1. Hero Section */}
       <Hero
         number="01"
-        title="Website Development"
-        subtitle="SERVICES"
-        description="High-performance websites built for speed, scale, and reliability. From concept to deployment, we create digital experiences that deliver results."
-        primaryCTA="Start Your Project"
-        secondaryCTA="View Our Work"
+        title="Is your website actually bringing you business, or just looking good?"
+        subtitle="WEBSITE DEVELOPMENT"
+        description="Most websites look fine but don't convert, load slowly, or confuse visitors. We build fast, clean, conversion-focused websites that help people understand your value and take action, without technical headaches."
+        primaryCTA="Let's Build Your Website"
+        secondaryCTA="See Our Work"
       />
       
       {/* 2. What Makes Us Different */}

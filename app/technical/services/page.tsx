@@ -53,9 +53,9 @@ const services: Service[] = [
   },
   {
     id: 6,
-    icon: <TrendingUp className="w-6 h-6" />,
-    title: 'Free Marketing Support',
-    description: 'SEO setup, indexing, and basic marketing support to help products gain early visibility.',
+    icon: <Code className="w-6 h-6" />,
+    title: 'Software Development',
+    description: 'Custom software solutions built with clean architecture, scalability, and performance in mind.',
     slug: '/technical/services/marketing-support',
   },
 ];

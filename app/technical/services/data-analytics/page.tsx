@@ -66,9 +66,9 @@ export default function DataAnalyticsPage() {
       {/* 1. Hero Section */}
       <Hero
         number="03"
-        title="Data & Analytics"
-        subtitle="BUSINESS INTELLIGENCE"
-        description="Transform raw data into actionable insights. From real-time dashboards to predictive analytics, we build intelligence systems that drive confident business decisions."
+        title="You have data. But do you really know what it's telling you?"
+        subtitle="DATA & ANALYTICS"
+        description="Spreadsheets and dashboards mean nothing without clarity. We turn raw data into simple insights that help you make confident decisions, track growth, and spot opportunities early."
         primaryCTA="Get Data Insights"
         secondaryCTA="View Examples"
       />

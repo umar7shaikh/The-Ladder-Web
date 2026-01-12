@@ -79,7 +79,7 @@ export default function Hero({
                 {number}
               </div>
               <h1 
-                className="text-white font-bold leading-tight text-[clamp(40px,7vw,64px)]"
+                className="text-white font-bold leading-tight text-[clamp(28px,5.5vw,48px)]"
               >
                 {title}
               </h1>

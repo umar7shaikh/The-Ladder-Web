@@ -9,54 +9,54 @@ import WhoThisIsFor from '@/components/technical/servicedetails/marketing-suppor
 import WhatYouGet from '@/components/technical/servicedetails/marketing-support/WhatYouGet';
 import FinalCTA from '@/components/technical/servicedetails/marketing-support/FinalCTA';
 import TechFooter from '@/components/technical/TechCommonComponents/TechFooter';
-import { Search, FileText, Instagram, Mail } from 'lucide-react';
+import { Code, GitBranch, Zap, Package } from 'lucide-react';
 
-export default function MarketingSupportPage() {
+export default function SoftwareDevelopmentPage() {
   const whatWeBuildCards = [
     {
-      icon: Search,
-      title: 'SEO Optimization',
-      description: 'Comprehensive SEO strategies that improve search rankings and drive organic traffic to your website',
+      icon: Code,
+      title: 'Web & Mobile Applications',
+      description: 'Full-stack applications built with modern frameworks and best practices',
       highlight: 'Most Popular',
       features: [
-        'Keyword research & optimization',
-        'Technical SEO audits',
-        'On-page & off-page SEO',
-        'Link building strategies'
+        'Frontend development',
+        'Backend APIs',
+        'Database design',
+        'Mobile apps'
       ]
     },
     {
-      icon: FileText,
-      title: 'Content Strategy',
-      description: 'Strategic content planning and creation that engages your audience and drives conversions',
-      highlight: 'High Impact',
+      icon: Package,
+      title: 'SaaS Platforms',
+      description: 'Multi-tenant software platforms designed for scalability and reliability',
+      highlight: 'Enterprise Ready',
       features: [
-        'Content calendar planning',
-        'Blog posts & articles',
-        'SEO-optimized content',
-        'Content performance tracking'
+        'Multi-tenant architecture',
+        'User authentication',
+        'Billing integration',
+        'Analytics dashboard'
       ]
     },
     {
-      icon: Instagram,
-      title: 'Social Media',
-      description: 'Platform-specific social media strategies that grow your audience and boost engagement',
+      icon: GitBranch,
+      title: 'System Integration',
+      description: 'Connect and integrate multiple systems with robust APIs and middleware',
       features: [
-        'Multi-platform management',
-        'Content scheduling',
-        'Community engagement',
-        'Growth tactics & campaigns'
+        'API development',
+        'Third-party integrations',
+        'Data migration',
+        'Legacy system modernization'
       ]
     },
     {
-      icon: Mail,
-      title: 'Email Campaigns',
-      description: 'Automated email marketing campaigns that nurture leads and drive conversions',
+      icon: Zap,
+      title: 'Performance Optimization',
+      description: 'Optimize existing applications for speed, efficiency, and reliability',
       features: [
-        'Email automation',
-        'Newsletter campaigns',
-        'Segmented audiences',
-        'Conversion tracking'
+        'Code refactoring',
+        'Database optimization',
+        'Caching strategies',
+        'Load testing'
       ]
     }
   ];
@@ -65,11 +65,11 @@ export default function MarketingSupportPage() {
     <main className="bg-[#1E1E1E]">
       <Hero
         number="06"
-        title="Free Marketing Support"
-        subtitle="GROWTH MARKETING"
-        description="Get expert marketing guidance to amplify your digital presence. From SEO to social media, we help you reach your audience and drive growth."
-        primaryCTA="Get Marketing Help"
-        secondaryCTA="View Services"
+        title="How do you build software that actually scales and evolves with your business?"
+        subtitle="SOFTWARE DEVELOPMENT"
+        description="We build custom software solutions that are fast, reliable, and built to last. From architecture to deployment, we focus on clean code, scalability, and long-term maintainability."
+        primaryCTA="Build Your Software"
+        secondaryCTA="View Projects"
       />
       
       <WhatMakesUsDifferent />

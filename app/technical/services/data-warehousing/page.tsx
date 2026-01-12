@@ -65,10 +65,10 @@ export default function DataWarehousingPage() {
     <main className="bg-[#1E1E1E]">
       <Hero
         number="05"
-        title="Data Warehousing & Integration"
-        subtitle="DATA INFRASTRUCTURE"
-        description="Unify scattered data into a powerful, centralized warehouse. From ETL pipelines to real-time synchronization, we build data infrastructure that enables true business intelligence."
-        primaryCTA="Build Your Warehouse"
+        title="Is your data scattered across tools, teams, and platforms?"
+        subtitle="DATA WAREHOUSING & INTEGRATION"
+        description="When data lives everywhere, decisions slow down. We bring everything into one reliable system so your business runs on clean, connected, and accessible information."
+        primaryCTA="Build Your Data Warehouse"
         secondaryCTA="View Architecture"
       />
       
