@@ -26,6 +26,11 @@ export const metadata: Metadata = {
   authors: [{ name: "The Ladder" }],
   creator: "The Ladder",
   publisher: "The Ladder",
+  icons: {
+    icon: '/techlogo.png',
+    shortcut: '/techlogo.png',
+    apple: '/techlogo.png',
+  },
   formatDetection: {
     email: false,
     address: false,
