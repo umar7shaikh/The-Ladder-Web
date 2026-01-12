@@ -16,7 +16,7 @@ export default function WhoThisIsFor() {
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
 
-  const text = "This service is ideal for businesses struggling with low website traffic, inconsistent social media presence, unclear marketing ROI, limited marketing budget, and ready to build a sustainable growth engine.";
+  const text = "This service is ideal for companies that need custom software solutions, lack internal development capacity, have technical debt from poor code, need to scale quickly, or want modern, maintainable systems built by experts.";
 
   const words = text.split(' ');
 

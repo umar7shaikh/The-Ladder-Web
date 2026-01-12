@@ -55,7 +55,7 @@ export default function Navbar() {
     { label: 'Data Analytics & Visualization', href: '/technical/services/data-analytics' },
     { label: 'Data Warehousing & Integration', href: '/technical/services/data-warehousing' },
     { label: 'AI & Intelligent Assistants', href: '/technical/services/ai-assistants' },
-    { label: 'Software Development', href: '/technical/services/marketing-support' },
+    { label: 'Free Marketing Support', href: '/technical/services/software-development' },
   ];
 
   // Navigation links based on department

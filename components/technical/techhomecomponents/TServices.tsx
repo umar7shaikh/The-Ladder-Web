@@ -57,7 +57,7 @@ const services = [
     description: 'Custom software solutions built with clean code, scalability, and long-term maintainability in mind.',
     image: '/MarketingSupportVisual.png',
     label: 'Software Development',
-    slug: '/technical/services/marketing-support'
+    slug: '/technical/services/software-development'
   }
 ];
 

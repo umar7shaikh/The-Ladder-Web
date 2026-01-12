@@ -56,7 +56,7 @@ const services: Service[] = [
     icon: <Code className="w-6 h-6" />,
     title: 'Software Development',
     description: 'Custom software solutions built with clean architecture, scalability, and performance in mind.',
-    slug: '/technical/services/marketing-support',
+    slug: '/technical/services/software-development',
   },
 ];
 
@@ -65,7 +65,7 @@ export default function OurServices() {
     <>
       {/* Services Section */}
       <section className="relative bg-[#1E1E1E] overflow-hidden py-16 md:py-20 lg:py-24">
-        <div className="relative w-full max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32">
+        <div className="relative w-full max-w-7xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32">
           
           {/* Header */}
           <div className="text-center mb-12 md:mb-16 lg:mb-20">
@@ -110,7 +110,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
     <div className="group relative">
       <div className="flex gap-4 pb-8 lg:pb-12">
         {/* Icon - Fixed width on left */}
-        <div className="flex-shrink-0 text-[#D8F209] pt-1">
+        <div className="shrink-0 text-[#D8F209] pt-1">
           {service.icon}
         </div>
 

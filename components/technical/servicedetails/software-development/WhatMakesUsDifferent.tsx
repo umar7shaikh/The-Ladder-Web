@@ -54,16 +54,16 @@ export default function WhatMakesUsDifferent() {
           </div>
           
           <h2 className="text-white font-bold text-[clamp(36px,6vw,56px)] leading-tight mb-4">
-            Marketing that drives growth,<br />
-            not just impressions
+            Software that works,<br />
+            not just compiles
           </h2>
           
           <div className="space-y-4 max-w-3xl mx-auto">
             <p className="text-[#FBFFDE]/60 text-xl leading-relaxed">
-              Most marketing agencies focus on vanity metrics and generic strategies.
+              Most developers focus on quick fixes and technical debt. We build for the long term.
             </p>
             <p className="text-[#FBFFDE]/80 text-2xl leading-relaxed font-medium">
-              We deliver <span className="text-[#D8F209]">strategic marketing support</span> that drives real results and measurable business growth.
+              We deliver <span className="text-[#D8F209]">scalable, maintainable software</span> with clean architecture, excellent documentation, and a focus on long-term success.
             </p>
           </div>
         </motion.div>
@@ -88,18 +88,18 @@ export default function WhatMakesUsDifferent() {
                   </span>
                 </div>
                 <h3 className="text-white/40 text-3xl font-bold line-through">
-                  Generic Marketing
+                  Quick & Cheap
                 </h3>
               </div>
 
               {/* Broken Timeline */}
               <div className="relative space-y-12">
                 {[
-                  { label: 'Template Strategies', time: 'Ongoing', issue: 'No personalization' },
-                  { label: 'Vanity Metrics', time: 'Monthly', issue: 'No real value' },
-                  { label: 'Random Posting', time: 'Daily', issue: 'No strategy' },
-                  { label: 'No Data Tracking', time: 'Never', issue: 'Can\'t optimize' },
-                  { label: 'One-Size-Fits-All', time: 'Always', issue: 'Doesn\'t work' }
+                  { label: 'No Architecture', time: 'Upfront', issue: 'Spaghetti code' },
+                  { label: 'Minimal Testing', time: 'Ongoing', issue: 'Breaks constantly' },
+                  { label: 'Poor Documentation', time: 'Never', issue: 'Can\'t maintain' },
+                  { label: 'Technical Debt', time: 'Builds quickly', issue: 'Gets worse' },
+                  { label: 'Hard to Scale', time: 'Always', issue: 'Rewrites needed' }
                 ].map((step, i) => (
                   <motion.div
                     key={i}
@@ -137,7 +137,7 @@ export default function WhatMakesUsDifferent() {
                   </span>
                 </div>
                 <h3 className="text-white text-3xl font-bold">
-                  Strategic & Results-Driven
+                  Built to Last
                 </h3>
               </div>
 
@@ -156,11 +156,11 @@ export default function WhatMakesUsDifferent() {
                 />
 
                 {[
-                  { label: 'Custom Strategy', benefit: 'Tailored to your business' },
-                  { label: 'Performance Metrics', benefit: 'ROI-focused tracking' },
-                  { label: 'Data-Driven Content', benefit: 'Strategic posting' },
-                  { label: 'Continuous Optimization', benefit: 'Always improving' },
-                  { label: 'Integrated Approach', benefit: 'All channels aligned' }
+                  { label: 'Solid Architecture', benefit: 'Designed for growth' },
+                  { label: 'Comprehensive Testing', benefit: 'Reliable & stable' },
+                  { label: 'Full Documentation', benefit: 'Easy to maintain' },
+                  { label: 'Clean Code', benefit: 'Easier to extend' },
+                  { label: 'Scalable Design', benefit: 'Grows with you' }
                 ].map((step, i) => (
                   <motion.div
                     key={i}
@@ -304,6 +304,7 @@ export default function WhatMakesUsDifferent() {
         </div>
 
         {/* Four Key Benefits */}
+        {/* COMMENTED OUT - Benefits section
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -337,6 +338,7 @@ export default function WhatMakesUsDifferent() {
             })}
           </div>
         </motion.div>
+        */}
 
       </div>
     </section>

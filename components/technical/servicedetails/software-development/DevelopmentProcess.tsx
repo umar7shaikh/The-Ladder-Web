@@ -14,59 +14,59 @@ export default function DevelopmentProcess() {
     {
       number: '01',
       icon: Search,
-      title: 'Audit',
-      subtitle: 'Analyzing Your Marketing',
-      description: 'We audit your current marketing performance, SEO status, content quality, and social media presence. We identify opportunities and gaps.',
+      title: 'Discovery',
+      subtitle: 'Understanding Your Vision',
+      description: 'We collaborate with you to understand requirements, architecture needs, scalability goals, and project timeline. We identify technical challenges early.',
       deliverables: [
-        'Marketing audit report',
-        'SEO analysis',
-        'Content assessment',
-        'Social media review',
-        'Competitor analysis'
-      ],
-      duration: '1 week'
-    },
-    {
-      number: '02',
-      icon: Target,
-      title: 'Strategy',
-      subtitle: 'Designing Your Plan',
-      description: 'We create a comprehensive marketing strategy aligned with your business goals. SEO roadmap, content calendar, and campaign plans.',
-      deliverables: [
-        'Marketing strategy document',
-        'SEO roadmap',
-        'Content calendar',
-        'Campaign plans',
-        'KPI framework'
+        'Requirements documentation',
+        'Architecture planning',
+        'Technology recommendations',
+        'Timeline & budget',
+        'Risk assessment'
       ],
       duration: '1-2 weeks'
     },
     {
+      number: '02',
+      icon: Target,
+      title: 'Design',
+      subtitle: 'Building the Blueprint',
+      description: 'We design system architecture, database schemas, API contracts, and user interfaces. All designs are reviewed and validated with you.',
+      deliverables: [
+        'System architecture',
+        'Database schema',
+        'API documentation',
+        'UI/UX designs',
+        'Tech stack selection'
+      ],
+      duration: '2-3 weeks'
+    },
+    {
       number: '03',
       icon: Zap,
-      title: 'Execution',
-      subtitle: 'Implementing Your Strategy',
-      description: 'We execute your marketing plan: SEO optimization, content creation, social media management, and email campaigns. Regular updates throughout.',
+      title: 'Development',
+      subtitle: 'Building Your Software',
+      description: 'We build using agile methodology with regular sprints, daily standups, and continuous integration. Code reviews ensure quality at every step.',
       deliverables: [
-        'SEO optimizations',
-        'Content creation',
-        'Social media posts',
-        'Email campaigns',
-        'Performance tracking'
+        'Clean, documented code',
+        'Unit tests (100% coverage)',
+        'Integration tests',
+        'API implementation',
+        'Database setup'
       ],
-      duration: 'Ongoing'
+      duration: '8-16 weeks'
     },
     {
       number: '04',
       icon: BarChart3,
-      title: 'Analytics',
-      subtitle: 'Optimizing Performance',
-      description: 'We track performance, analyze results, and continuously optimize. Monthly reports show what\'s working and what needs adjustment.',
+      title: 'Launch & Support',
+      subtitle: 'Deployment & Maintenance',
+      description: 'We deploy to production, monitor performance, provide documentation, and offer ongoing support. Your software is built to scale.',
       deliverables: [
-        'Performance dashboards',
-        'Monthly reports',
-        'Optimization recommendations',
-        'ROI analysis',
+        'Production deployment',
+        'Monitoring setup',
+        'Documentation',
+        'User training',
         'Ongoing support'
       ],
       duration: 'Ongoing'
@@ -98,16 +98,16 @@ export default function DevelopmentProcess() {
         >
           <div className="inline-flex items-center justify-center px-4 py-2 bg-[#D8F209] rounded-full mb-3">
             <span className="text-[#1E1E1E] text-xs font-bold uppercase tracking-wider">
-              MARKETING PROCESS
+              DEVELOPMENT PROCESS
             </span>
           </div>
           
           <h2 className="text-white font-bold text-[clamp(36px,6vw,56px)] leading-tight mb-3">
-            From Audit to Growth
+            From Concept to Launch
           </h2>
           
           <p className="text-[#FBFFDE]/50 text-lg">
-            A proven process that transforms your marketing into a growth engine
+            A proven methodology that delivers quality software on time and on budget
           </p>
         </motion.div>
 

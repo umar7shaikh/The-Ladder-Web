@@ -78,7 +78,7 @@ export default function FinalCTA() {
                 className="w-full lg:w-auto"
               >
                 <motion.a
-                  href="/technical/contact"
+                  href="/technical#contact-section"
                   whileHover={{ scale: 1.03, x: 5 }}
                   whileTap={{ scale: 0.97 }}
                   className="group flex items-center justify-center lg:justify-start gap-3 px-10 py-5 bg-[#D8F209] text-[#1E1E1E] font-bold text-lg rounded-xl transition-all duration-300 hover:shadow-[0_0_40px_rgba(216,242,9,0.4)]"
@@ -88,29 +88,18 @@ export default function FinalCTA() {
                 </motion.a>
               </motion.div>
 
-              {/* Trust signals - clean list */}
+              {/* Trust signals - inline, lighter */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="space-y-3 lg:text-right"
+                className="flex flex-wrap items-center justify-center lg:justify-end gap-x-4 gap-y-2 text-[#FBFFDE]/30 text-xs"
               >
-                {[
-                  'No commitment required',
-                  'Free analytics audit',
-                  'See what insights are possible'
-                ].map((item, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.4, delay: 0.7 + i * 0.1 }}
-                    className="flex items-center justify-center lg:justify-end gap-3 text-[#FBFFDE]/50 text-sm"
-                  >
-                    <span>{item}</span>
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#D8F209]" />
-                  </motion.div>
-                ))}
+                <span>No commitment required</span>
+                <span>•</span>
+                <span>Free data assessment</span>
+                <span>•</span>
+                <span>Custom recommendations</span>
               </motion.div>
 
             </div>

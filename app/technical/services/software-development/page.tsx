@@ -1,13 +1,13 @@
 'use client';
 
-import Hero from '@/components/technical/servicedetails/marketing-support/Hero';
-import WhatMakesUsDifferent from '@/components/technical/servicedetails/marketing-support/WhatMakesUsDifferent';
-import WhatWeBuild from '@/components/technical/servicedetails/marketing-support/WhatWeBuild';
-import TechStack from '@/components/technical/servicedetails/marketing-support/TechStack';
-import DevelopmentProcess from '@/components/technical/servicedetails/marketing-support/DevelopmentProcess';
-import WhoThisIsFor from '@/components/technical/servicedetails/marketing-support/WhoThisIsFor';
-import WhatYouGet from '@/components/technical/servicedetails/marketing-support/WhatYouGet';
-import FinalCTA from '@/components/technical/servicedetails/marketing-support/FinalCTA';
+import Hero from '@/components/technical/servicedetails/software-development/Hero';
+import WhatMakesUsDifferent from '@/components/technical/servicedetails/software-development/WhatMakesUsDifferent';
+import WhatWeBuild from '@/components/technical/servicedetails/software-development/WhatWeBuild';
+import TechStack from '@/components/technical/servicedetails/software-development/TechStack';
+import DevelopmentProcess from '@/components/technical/servicedetails/software-development/DevelopmentProcess';
+import WhoThisIsFor from '@/components/technical/servicedetails/software-development/WhoThisIsFor';
+import WhatYouGet from '@/components/technical/servicedetails/software-development/WhatYouGet';
+import FinalCTA from '@/components/technical/servicedetails/software-development/FinalCTA';
 import TechFooter from '@/components/technical/TechCommonComponents/TechFooter';
 import { Code, GitBranch, Zap, Package } from 'lucide-react';
 

@@ -10,28 +10,28 @@ export default function WhatYouGet() {
 
   const deliverables = [
     {
-      title: 'SEO optimization & strategy',
-      description: 'Technical SEO, keyword research, on-page optimization, and link building to improve rankings'
+      title: 'Custom software architecture',
+      description: 'Scalable, maintainable system design following industry best practices and standards'
     },
     {
-      title: 'Content strategy & creation',
-      description: 'Strategic content calendar, blog posts, social media content, and email campaigns'
+      title: 'Full-stack development',
+      description: 'Frontend, backend, database, and API development with modern frameworks and tools'
     },
     {
-      title: 'Social media management',
-      description: 'Platform-specific strategies, content scheduling, community engagement, and growth tactics'
+      title: 'Comprehensive testing',
+      description: 'Unit tests, integration tests, and QA ensuring 100% code coverage and reliability'
     },
     {
-      title: 'Email marketing campaigns',
-      description: 'Automated email sequences, newsletters, and targeted campaigns that drive conversions'
+      title: 'Cloud deployment & DevOps',
+      description: 'Production deployment, CI/CD pipelines, monitoring, and automated scaling'
     },
     {
-      title: 'Performance analytics & reporting',
-      description: 'Monthly reports tracking traffic, engagement, conversions, and ROI with actionable insights'
+      title: 'Complete documentation',
+      description: 'API documentation, architecture guides, deployment procedures, and user manuals'
     },
     {
-      title: 'Ongoing optimization & support',
-      description: 'Continuous monitoring, A/B testing, and strategy adjustments to maximize results'
+      title: 'Ongoing support & maintenance',
+      description: 'Post-launch support, security updates, performance optimization, and feature enhancements'
     }
   ];
 
@@ -61,11 +61,11 @@ export default function WhatYouGet() {
           </div>
           
           <h2 className="text-white font-bold text-[clamp(36px,6vw,56px)] leading-tight mb-3">
-            What You Get
+            Complete Software Delivery
           </h2>
           
           <p className="text-[#FBFFDE]/60 text-lg max-w-2xl mx-auto">
-            Everything you need for comprehensive marketing support that drives growth
+            Everything you need to launch and scale your software successfully
           </p>
         </motion.div>
 
@@ -125,7 +125,7 @@ export default function WhatYouGet() {
           className="text-center mt-16 pt-12 border-t border-[#D8F209]/10"
         >
           <p className="text-[#FBFFDE]/50 text-base max-w-2xl mx-auto">
-            Every component is documented, tracked, and delivered with full reporting and ongoing support.
+            Every system is built with clean code, full documentation, comprehensive testing, and backed by ongoing technical support.
           </p>
         </motion.div>
 

@@ -138,7 +138,7 @@ export default function TechFooter() {
               <Link href="/technical/services/ai-assistants" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
                 AI & Intelligent Assistants
               </Link>
-              <Link href="/technical/services/marketing-support" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
+              <Link href="/technical/services/software-development" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
                 Software Development
               </Link>
             </div>

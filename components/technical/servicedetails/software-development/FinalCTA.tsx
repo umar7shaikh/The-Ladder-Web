@@ -52,7 +52,7 @@ export default function FinalCTA() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-white font-bold text-[clamp(32px,5vw,56px)] leading-tight"
               >
-                Grow your business with strategic marketing
+                Build scalable software with expert developers
               </motion.h2>
 
               {/* Subtext */}
@@ -62,7 +62,7 @@ export default function FinalCTA() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-[#FBFFDE]/60 text-lg lg:text-xl leading-relaxed max-w-2xl"
               >
-                Whether you're struggling with low traffic or need a comprehensive marketing strategy, we'll help you build a growth engine that drives real results.
+                Whether you need a complete custom application, system integration, or help scaling your infrastructure, we deliver production-ready software with clean code and full documentation.
               </motion.p>
 
             </div>
@@ -83,7 +83,7 @@ export default function FinalCTA() {
                   whileTap={{ scale: 0.97 }}
                   className="group flex items-center justify-center lg:justify-start gap-3 px-10 py-5 bg-[#D8F209] text-[#1E1E1E] font-bold text-lg rounded-xl transition-all duration-300 hover:shadow-[0_0_40px_rgba(216,242,9,0.4)]"
                 >
-                  Get your free marketing audit
+                  Start your project today
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
                 </motion.a>
               </motion.div>
@@ -96,9 +96,9 @@ export default function FinalCTA() {
                 className="space-y-3 lg:text-right"
               >
                 {[
-                  'No commitment required',
-                  'Free marketing audit',
-                  'See what\'s possible'
+                  'Free consultation included',
+                  'No upfront commitment',
+                  'Custom proposal in 48 hours'
                 ].map((item, i) => (
                   <motion.div
                     key={i}
