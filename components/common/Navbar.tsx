@@ -3,12 +3,15 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Determine current department
   const isMarketing = pathname.startsWith('/marketing');
@@ -45,7 +48,17 @@ export default function Navbar() {
   // Dynamic logo based on department
   const logoSrc = currentDept === 'marketing' ? '/logo.png' : '/techlogo.png';
 
-  // Navigation links based on department (without Portfolio)
+  // Technical services for dropdown
+  const technicalServices = [
+    { label: 'Website Development', href: '/technical/services/website-development' },
+    { label: 'Automation Solutions', href: '/technical/services/automation-solutions' },
+    { label: 'Data Analytics & Visualization', href: '/technical/services/data-analytics' },
+    { label: 'Data Warehousing & Integration', href: '/technical/services/data-warehousing' },
+    { label: 'AI & Intelligent Assistants', href: '/technical/services/ai-assistants' },
+    { label: 'Free Marketing Support', href: '/technical/services/marketing-support' },
+  ];
+
+  // Navigation links based on department
   const navLinks = currentDept === 'marketing' 
     ? [
         { label: 'Home', href: '/marketing' },
@@ -55,10 +68,22 @@ export default function Navbar() {
       ]
     : [
         { label: 'Home', href: '/technical' },
-        { label: 'Services', href: '/technical/services' },
+        { label: 'Services', href: '/technical/services', hasDropdown: true },
         { label: 'Blogs', href: '/technical/blog' },
         { label: 'About Us', href: '/technical/about' },
       ];
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsServicesDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <nav 
@@ -87,24 +112,99 @@ export default function Navbar() {
         <div className="flex-1 hidden md:flex justify-center px-16">
           <div className="flex gap-8 items-center">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-base font-medium leading-[22px] transition-all duration-200 ${
-                  pathname === link.href 
-                    ? 'font-bold' 
-                    : ''
-                }`}
-                style={{
-                  color: pathname === link.href ? colors.primary : colors.text,
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.color = colors.textHover}
-                onMouseLeave={(e) => e.currentTarget.style.color = pathname === link.href ? colors.primary : colors.text}
-                aria-current={pathname === link.href ? 'page' : undefined}
-                prefetch={true}
+              <div 
+                key={link.href} 
+                className="relative" 
+                ref={link.hasDropdown ? dropdownRef : null}
               >
-                {link.label}
-              </Link>
+                {link.hasDropdown && currentDept === 'technical' ? (
+                  // Services with Dropdown for Technical
+                  <>
+                    <div className="flex items-center gap-1">
+                      <Link
+                        href={link.href}
+                        className={`text-base font-medium leading-[22px] transition-all duration-200 ${
+                          pathname === link.href ? 'font-bold' : ''
+                        }`}
+                        style={{
+                          color: pathname.startsWith('/technical/services') ? colors.primary : colors.text,
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.color = colors.textHover}
+                        onMouseLeave={(e) => e.currentTarget.style.color = pathname.startsWith('/technical/services') ? colors.primary : colors.text}
+                        aria-current={pathname === link.href ? 'page' : undefined}
+                      >
+                        {link.label}
+                      </Link>
+                      <button
+                        onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
+                        className="p-1 hover:opacity-70 transition-opacity"
+                        aria-label="Toggle services dropdown"
+                      >
+                        <svg 
+                          className={`w-4 h-4 transition-transform duration-200 ${isServicesDropdownOpen ? 'rotate-180' : ''}`}
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                          style={{ color: pathname.startsWith('/technical/services') ? colors.primary : colors.text }}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    </div>
+
+                    {/* Dropdown Menu */}
+                    {isServicesDropdownOpen && (
+                      <div 
+                        className="absolute top-full left-0 mt-2 py-2 rounded-lg shadow-xl min-w-[280px] border"
+                        style={{ 
+                          backgroundColor: colors.bg,
+                          borderColor: colors.primary + '40'
+                        }}
+                      >
+                        {technicalServices.map((service) => (
+                          <Link
+                            key={service.href}
+                            href={service.href}
+                            onClick={() => setIsServicesDropdownOpen(false)}
+                            className="block px-4 py-2.5 text-sm transition-all duration-200 hover:pl-6"
+                            style={{
+                              color: pathname === service.href ? colors.primary : colors.text,
+                              backgroundColor: pathname === service.href ? colors.primary + '10' : 'transparent',
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.backgroundColor = colors.primary + '10';
+                            }}
+                            onMouseLeave={(e) => {
+                              if (pathname !== service.href) {
+                                e.currentTarget.style.backgroundColor = 'transparent';
+                              }
+                            }}
+                          >
+                            {service.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  // Regular Link
+                  <Link
+                    href={link.href}
+                    className={`text-base font-medium leading-[22px] transition-all duration-200 ${
+                      pathname === link.href ? 'font-bold' : ''
+                    }`}
+                    style={{
+                      color: pathname === link.href ? colors.primary : colors.text,
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = colors.textHover}
+                    onMouseLeave={(e) => e.currentTarget.style.color = pathname === link.href ? colors.primary : colors.text}
+                    aria-current={pathname === link.href ? 'page' : undefined}
+                    prefetch={true}
+                  >
+                    {link.label}
+                  </Link>
+                )}
+              </div>
             ))}
             
             {/* Vertical Divider */}
@@ -191,27 +291,83 @@ export default function Navbar() {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div 
-          className="md:hidden fixed inset-0 top-[72px] z-50 transition-colors duration-300"
+          className="md:hidden fixed inset-0 top-[72px] z-50 transition-colors duration-300 overflow-y-auto"
           style={{ backgroundColor: colors.bg }}
           id="mobile-menu"
         >
-          <div className="flex flex-col items-center pt-8 gap-6">
+          <div className="flex flex-col items-center pt-8 gap-6 pb-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`text-lg font-medium transition-all duration-200 ${
-                  pathname === link.href ? 'font-bold' : ''
-                }`}
-                style={{
-                  color: pathname === link.href ? colors.primary : colors.text,
-                }}
-                aria-current={pathname === link.href ? 'page' : undefined}
-                prefetch={true}
-              >
-                {link.label}
-              </Link>
+              <div key={link.href} className="w-full flex flex-col items-center">
+                {link.hasDropdown && currentDept === 'technical' ? (
+                  <>
+                    <div className="flex items-center gap-3">
+                      <Link
+                        href={link.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={`text-lg font-medium transition-all duration-200 ${
+                          pathname === link.href ? 'font-bold' : ''
+                        }`}
+                        style={{
+                          color: pathname.startsWith('/technical/services') ? colors.primary : colors.text,
+                        }}
+                      >
+                        {link.label}
+                      </Link>
+                      <button
+                        onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                        className="p-1"
+                        aria-label="Toggle services dropdown"
+                      >
+                        <svg 
+                          className={`w-5 h-5 transition-transform duration-200 ${isMobileServicesOpen ? 'rotate-180' : ''}`}
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                          style={{ color: colors.primary }}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    </div>
+                    
+                    {isMobileServicesOpen && (
+                      <div className="flex flex-col items-center gap-3 mt-3 w-full px-4">
+                        {technicalServices.map((service) => (
+                          <Link
+                            key={service.href}
+                            href={service.href}
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              setIsMobileServicesOpen(false);
+                            }}
+                            className="text-sm transition-all duration-200"
+                            style={{
+                              color: pathname === service.href ? colors.primary : colors.text,
+                            }}
+                          >
+                            {service.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <Link
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`text-lg font-medium transition-all duration-200 ${
+                      pathname === link.href ? 'font-bold' : ''
+                    }`}
+                    style={{
+                      color: pathname === link.href ? colors.primary : colors.text,
+                    }}
+                    aria-current={pathname === link.href ? 'page' : undefined}
+                    prefetch={true}
+                  >
+                    {link.label}
+                  </Link>
+                )}
+              </div>
             ))}
             
             {/* Mobile Divider */}

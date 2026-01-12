@@ -7,9 +7,9 @@ export default function CTAHero() {
   return (
     <section className="bg-[#1E1E1E] py-8 sm:py-10 md:py-12 lg:py-16 relative overflow-hidden">
       {/* Blurred Yellow Ellipse - Centered around text - SMALLER */}
-      <div 
+      <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-        style={{ 
+        style={{
           width: 'clamp(300px, 40vw, 800px)',
           height: 'clamp(150px, 25vw, 200px)',
           backgroundColor: '#D8F209',
@@ -19,10 +19,10 @@ export default function CTAHero() {
           zIndex: 1,
         }}
       />
-      
+
       <div className="max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32">
         <div className="relative">
-          
+
           {/* Main Content */}
           <div className="relative z-20 text-center py-4 sm:py-6 lg:py-8">
             <h1 className="text-[#D8F209] font-bold text-[clamp(32px,6vw,64px)] leading-tight mb-4 sm:mb-6">

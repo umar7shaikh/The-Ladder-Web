@@ -1,0 +1,70 @@
+---
+title: "Web Performance 2026: Core Vitals & Beyond"
+excerpt: "Strategies for achieving perfect Lighthouse scores in an era of heavy JavaScript applications."
+category: "Engineering"
+author: "James Wilson"
+date: "28 Jan 2026"
+readTime: "16 min read"
+image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+---
+
+# Web Performance 2026: Core Vitals & Beyond
+
+Performance is a feature. It is the foundation of user experience. Amazon found that every 100ms of latency cost them 1% in sales. In 2026, with devices ranging from $1000 flagships to $50 budget phones, building a performant web app is an engineering discipline of its own.
+
+## Interaction to Next Paint (INP)
+
+Google's newest Core Web Vital, **INP**, measures responsiveness. It replaced First Input Delay (FID).
+*   **FID** measured the delay in processing the *first* tap.
+*   **INP** measures the responsiveness of *every* tap, click, and keyboard interaction throughout the page's life.
+
+<ComparisonTable 
+  items={[
+    { feature: "Metric", before: "First Input Delay (FID)", after: "Interaction to Next Paint (INP)" },
+    { feature: "Focus", before: "First impression", after: "Full lifespan responsiveness" },
+    { feature: "Target", before: "< 100ms", after: "< 200ms" }
+  ]}
+/>
+
+### How to Fix Poor INP
+The main culprit is the **Main Thread**. If the main thread is busy parsing 2MB of JSON or running a complex loop, it cannot paint the next frame. The user clicks, and nothing happens.
+
+1.  **Yield to Main Thread**: Break up long tasks using `setTimeout` or `scheduler.yield()`.
+2.  **Use Web Workers**: Offload heavy computation (image processing, encryption) to a background thread.
+3.  **Optimistic UI**: Update the interface *immediately* (e.g., set `isLiked` to true), then send the request. If it fails, roll back.
+
+```javascript
+// Breaking a long task to improve INP
+async function heavyTask() {
+  const chunks = splitIntoChunks(bigData);
+  
+  for (const chunk of chunks) {
+    process(chunk);
+    // Pause execution to let the browser paint/respond to inputs
+    await new Promise(resolve => setTimeout(resolve, 0)); 
+  }
+}
+```
+
+## React Server Components (RSC) and The Edge
+
+We are swinging back from "All Client" to "Hybrid". With RSC (in Next.js App Router), we render components on the server.
+*   **Benefit**: Huge reduction in bundle size. The logic to format a date stays on the server; only the HTML string is sent to the phone.
+*   **Benefit**: Database queries run right next to the data source (backend), eliminating waterfall network requests.
+
+### Caching at the Edge
+It's not just static HTML anymore. We are caching dynamic fragments.
+`stale-while-revalidate` is the golden standard.
+1.  Serve the cached (stale) content instantly.
+2.  Fetch new data in the background.
+3.  Update the UI seamlessly.
+
+## Third-Party Scripts: The Silent Killer
+
+Marketing analytics, chat widgets, session recorders. These scripts often download megabytes of code.
+*   **Strategy**: Defers loading using `next/script` with `strategy="lazyOnload"`.
+*   **Strategy**: Use "Partytown" to run these scripts in a Web Worker, freeing up the main thread for your actual application code.
+
+## Conclusion
+
+Performance optimization is an ongoing process of monitoring, analyzing, and refining. It requires vigilance. But the reward—happier users, better SEO, and higher conversion rates—is worth every optimized byte.

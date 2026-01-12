@@ -30,7 +30,7 @@ export default function TechnicalHome() {
       <TServices />
       <TWhyChooseUs />
       <DesignShowcase />
-      <TTestimonials />
+      {/* <TTestimonials /> */}
       <CTAHero />
       <FAQSection />
       <ContactSection />

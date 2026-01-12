@@ -1,0 +1,114 @@
+---
+title: "Scaling Real-Time Chat: Beyond WebSockets"
+excerpt: "A deep dive into the architecture required to support millions of concurrent connections in modern chat applications."
+category: "Engineering"
+author: "David Kim"
+date: "18 Jan 2026"
+readTime: "20 min read"
+image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop"
+---
+
+# Scaling Real-Time Chat: Beyond WebSockets
+
+Building a chat app for a hackathon is easy. A simple Node.js server with `socket.io` can handle a few hundred users. But scaling it to millions of concurrent connections? That's where the real engineering begins.
+
+At "The Ladder," we've tackled this challenge head-on. This post explores the journey from a single server to a globally distributed, fault-tolerant real-time infrastructure.
+
+## The Concurrency Challenge
+
+WebSockets are persistent connections (TCP). Unlike HTTP requests which are short-lived, a WebSocket stays open as long as the user is online. This creates two massive problems:
+1.  **Memory**: Each connection consumes RAM.
+2.  **File Descriptors**: A server has a hard limit on open sockets (often 65k by default).
+
+To scale, we need a **distributed system**. But if User A is on Server 1 and User B is on Server 2, how do they talk?
+
+### Architecture Overview
+
+<ComparisonTable 
+  items={[
+    { feature: "Connection Handling", before: "Single Monolith", after: "Distributed Edge Nodes" },
+    { feature: "State Sync", before: "In-Memory Variables", after: "Redis Pub/Sub" },
+    { feature: "Message History", before: "SQL Database", after: "Cassandra / ScyllaDB (Write-Heavy)" }
+  ]}
+/>
+
+## WebSockets vs. Server-Sent Events (SSE)
+
+Before we jump into architecture, let's talk protocols. Everyone defaults to WebSockets, but are they always the right choice?
+
+**WebSockets**:
+*   **Pros**: Full bi-directional communication. Low latency.
+*   **Cons**: Heavier protocol overhead. Firewall issues in some corporate environments.
+
+**Server-Sent Events (SSE)**:
+*   **Pros**: Simple HTTP connection. efficient for one-way (server-to-client) data. Reconnects automatically.
+*   **Cons**: Handling upstream (client-to-server) queries requires a separate POST request.
+
+For a chat app where users are constantly typing and reading, **WebSockets** remains the gold standard.
+
+## The Solution: Redis Pub/Sub
+
+We use Redis as a high-speed message bus to bridge our independent websocket servers.
+
+### The Flow
+1.  **User A** connects to **Server 1**.
+2.  **User B** connects to **Server 2**.
+3.  User A sends "Hello".
+4.  **Server 1** publishes the event to Redis channel `chat-room-1`.
+5.  **Server 2** (subscriber) hears the event on `chat-room-1`.
+6.  **Server 2** forwards the message to User B's open socket.
+
+```typescript
+// Publisher (Server 1)
+async function sendMessage(roomId: string, message: Message) {
+  // 1. Save to DB for history
+  await db.messages.create(message);
+  
+  // 2. Publish to live subscribers
+  await redis.publish(roomId, JSON.stringify({
+    type: 'NEW_MESSAGE',
+    payload: message
+  }));
+}
+
+// Subscriber (Server 2)
+redis.subscribe('chat-room-1', (channel, messageStr) => {
+  const event = JSON.parse(messageStr);
+  
+  // Get all local clients in this room
+  const localClients = socketServer.in(channel).fetchSockets();
+  
+  // Broadcast to them
+  localClients.forEach(client => {
+    client.emit('message', event.payload);
+  });
+});
+```
+
+<Callout type="warning">
+**Bottleneck Alert:** Redis Pub/Sub is fire-and-forget. If a server is momentarily down, it misses the message. For critical delivery guarantees, consider **Redis Streams** or a persistent queue like **Kafka**.
+</Callout>
+
+## Handling Offline States and Synchronization
+
+What happens if User B loses internet for 10 seconds?
+1.  The WebSocket disconnects.
+2.  They miss real-time messages.
+3.  They reconnect.
+
+We need a **Synchronization Protocol**.
+*   Each message has a monotonically increasing `sequenceId`.
+*   The client remembers the `lastKnownId`.
+*   On reconnect, the client sends: `HELLO { lastKnownId: 105 }`.
+*   The server queries the DB: `SELECT * FROM messages WHERE id > 105`.
+*   The server sends the "gap" messages before opening the live pipe.
+
+## Global Distribution (Edge)
+
+To reduce latency, we deploy WebSocket/Edge servers in multiple regions (US-East, EU-West, Asia-Pacific). User A connects to the closest edge node.
+
+However, Redis usually lives in one primary region. This introduces the "speed of light" problem. Creating a truly multi-region active-active chat system requires complex CRDTs (Conflict-free Replicated Data Types), a topic for another blog post!
+
+## Conclusion
+
+Real-time architecture requires a shift in thinking from "request-response" to "event-driven." By decoupling connection handling from application logic and using robust message brokers, we can build systems that scale infinitely.

@@ -110,8 +110,8 @@ export default function TechFooter() {
               <Link href="/technical/services" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
                 Services
               </Link>
-              <Link href="/technical/contact" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
-                Contact Us
+              <Link href="/technical/blog" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
+                Blogs
               </Link>
               <Link href="/technical/about" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
                 About Us
@@ -123,20 +123,23 @@ export default function TechFooter() {
           <div className="lg:col-span-4">
             <div className="flex flex-col gap-3">
               <h3 className="text-[#D8F209] font-semibold text-sm mb-1">Services</h3>
-              <Link href="/technical/services/web-development" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
-                Web Development
+              <Link href="/technical/services/website-development" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
+                Website Development
               </Link>
-              <Link href="/technical/services/mobile-apps" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
-                Mobile App Development
-              </Link>
-              <Link href="/technical/services/automation" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
+              <Link href="/technical/services/automation-solutions" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
                 Automation Solutions
               </Link>
-              <Link href="/technical/services/cloud" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
-                Cloud Services
+              <Link href="/technical/services/data-analytics" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
+                Data Analytics & Visualization
               </Link>
-              <Link href="/technical/services/consulting" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
-                Technical Consulting
+              <Link href="/technical/services/data-warehousing" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
+                Data Warehousing & Integration
+              </Link>
+              <Link href="/technical/services/ai-assistants" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
+                AI & Intelligent Assistants
+              </Link>
+              <Link href="/technical/services/marketing-support" className="text-[#FBFFDE] text-sm hover:text-[#D8F209] transition-colors duration-300">
+                Free Marketing Support
               </Link>
             </div>
           </div>
@@ -154,7 +157,7 @@ export default function TechFooter() {
             </p>
 
             {/* Legal Links */}
-            <div className="flex items-center gap-6">
+            {/* <div className="flex items-center gap-6">
               <Link href="/privacy-policy" className="hover:text-[#D8F209] transition-colors duration-300">
                 Privacy Policy
               </Link>
@@ -164,7 +167,7 @@ export default function TechFooter() {
               <Link href="/cookies-settings" className="hover:text-[#D8F209] transition-colors duration-300">
                 Cookies Settings
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -64,8 +64,8 @@ export default function ContactInfo() {
 
             {/* Phone Box */}
             <div className="w-full bg-[#FFF9CE] rounded-lg py-3 px-4">
-              <a href="tel:+917709818" className="text-[clamp(12px,3vw,14px)] font-medium text-[#363A43] hover:underline">
-                +91_709818
+              <a href="tel:+91 9325856501" className="text-[clamp(12px,3vw,14px)] font-medium text-[#363A43] hover:underline">
+                +91 9325856501
               </a>
             </div>
           </div>

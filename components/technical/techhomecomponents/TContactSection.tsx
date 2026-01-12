@@ -49,12 +49,12 @@ export default function ContactSection() {
       );
 
       console.log('Email sent successfully:', result);
-      
+
       setSubmitStatus({
         type: 'success',
         message: 'Thank you! Your message has been sent successfully.',
       });
-      
+
       setFormData({
         name: '',
         companyName: '',
@@ -63,10 +63,10 @@ export default function ContactSection() {
         message: '',
         acceptTerms: false,
       });
-      
+
     } catch (error: any) {
       console.error('Email send failed:', error);
-      
+
       setSubmitStatus({
         type: 'error',
         message: 'Failed to send message. Please try again later.',
@@ -81,7 +81,7 @@ export default function ContactSection() {
       {/* Container */}
       <div className="relative w-full max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20">
-          
+
           {/* Left Side - Contact Info */}
           <div className="space-y-6 lg:space-y-8">
             <h2 className="text-[#D8F209] font-bold text-[clamp(32px,5vw,56px)] leading-tight">
@@ -99,8 +99,8 @@ export default function ContactSection() {
                 <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6">
                   <Mail className="w-full h-full text-[#D8F209]" />
                 </div>
-                <a 
-                  href="mailto:contact@theladders.tech" 
+                <a
+                  href="mailto:contact@theladders.tech"
                   className="text-[#FBFFDE] text-[clamp(14px,3.5vw,16px)] hover:text-[#D8F209] transition-colors duration-300"
                 >
                   contact@theladders.tech
@@ -112,8 +112,8 @@ export default function ContactSection() {
                 <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6">
                   <Phone className="w-full h-full text-[#D8F209]" />
                 </div>
-                <a 
-                  href="tel:+91 9325856501" 
+                <a
+                  href="tel:+91 9325856501"
                   className="text-[#FBFFDE] text-[clamp(14px,3.5vw,16px)] hover:text-[#D8F209] transition-colors duration-300"
                 >
                   +91 93258 56501
@@ -137,11 +137,10 @@ export default function ContactSection() {
             {/* Status Messages */}
             {submitStatus.type && (
               <div
-                className={`mb-6 p-4 rounded-lg ${
-                  submitStatus.type === 'success'
+                className={`mb-6 p-4 rounded-lg ${submitStatus.type === 'success'
                     ? 'bg-[#D8F209]/10 text-[#D8F209] border border-[#D8F209]/30'
                     : 'bg-red-500/10 text-red-400 border border-red-500/30'
-                }`}
+                  }`}
               >
                 {submitStatus.message}
               </div>
@@ -150,8 +149,8 @@ export default function ContactSection() {
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name Field */}
               <div>
-                <label 
-                  htmlFor="name" 
+                <label
+                  htmlFor="name"
                   className="block text-[#D8F209] text-[clamp(13px,3vw,14px)] font-medium mb-2"
                 >
                   Name *
@@ -176,8 +175,8 @@ export default function ContactSection() {
 
               {/* Company Name Field */}
               <div>
-                <label 
-                  htmlFor="companyName" 
+                <label
+                  htmlFor="companyName"
                   className="block text-[#D8F209] text-[clamp(13px,3vw,14px)] font-medium mb-2"
                 >
                   Company Name *
@@ -202,8 +201,8 @@ export default function ContactSection() {
 
               {/* Email Field */}
               <div>
-                <label 
-                  htmlFor="email" 
+                <label
+                  htmlFor="email"
                   className="block text-[#D8F209] text-[clamp(13px,3vw,14px)] font-medium mb-2"
                 >
                   Email *
@@ -228,8 +227,8 @@ export default function ContactSection() {
 
               {/* Phone Field */}
               <div>
-                <label 
-                  htmlFor="phone" 
+                <label
+                  htmlFor="phone"
                   className="block text-[#D8F209] text-[clamp(13px,3vw,14px)] font-medium mb-2"
                 >
                   Phone *
@@ -254,8 +253,8 @@ export default function ContactSection() {
 
               {/* Message Field */}
               <div>
-                <label 
-                  htmlFor="message" 
+                <label
+                  htmlFor="message"
                   className="block text-[#D8F209] text-[clamp(13px,3vw,14px)] font-medium mb-2"
                 >
                   Message
@@ -292,8 +291,8 @@ export default function ContactSection() {
                            focus:ring-2 focus:ring-[#D8F209]/40 focus:ring-offset-0
                            cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 />
-                <label 
-                  htmlFor="acceptTerms" 
+                <label
+                  htmlFor="acceptTerms"
                   className="text-[#FBFFDE]/70 text-[clamp(13px,3vw,14px)] cursor-pointer"
                 >
                   I accept the{' '}

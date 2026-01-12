@@ -1,10 +1,10 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  LayoutDashboard, 
-  Globe, 
-  MessageSquare, 
+import {
+  LayoutDashboard,
+  Globe,
+  MessageSquare,
   BarChart3,
   TrendingUp,
   Users,
@@ -24,13 +24,13 @@ import { useState } from 'react';
 export default function DesignShowcase() {
   return (
     <section className="relative bg-[#1E1E1E] py-20 lg:py-32 overflow-hidden">
-      
+
       {/* Subtle Background Glow */}
       <div className="absolute top-1/2 right-1/4 w-[600px] h-[600px] bg-[#D8F209]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32 z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left Side - Text Content (4 columns) */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -112,7 +112,7 @@ function DashboardDemo() {
     <div className="relative">
       {/* Dashboard Window */}
       <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 overflow-hidden shadow-2xl">
-        
+
         {/* Window Header */}
         <div className="flex items-center justify-between px-4 py-3 bg-[#1A1A1A] border-b border-[#D8F209]/10">
           <div className="flex items-center gap-2">
@@ -125,10 +125,10 @@ function DashboardDemo() {
         </div>
 
         {/* Dashboard Content */}
-        <div className="flex h-[600px]">
-          
+        <div className="flex flex-col md:flex-row h-auto min-h-[600px] md:h-[600px]">
+
           {/* Sidebar */}
-          <div className="w-20 bg-[#0D0D0D] border-r border-[#D8F209]/10 py-8 flex flex-col items-center gap-6">
+          <div className="w-full md:w-20 bg-[#0D0D0D] border-b md:border-b-0 md:border-r border-[#D8F209]/10 py-4 md:py-8 flex flex-row md:flex-col items-center justify-between md:justify-start gap-4 md:gap-6 px-6 md:px-0">
             {sidebarItems.map((item) => {
               const Icon = item.icon;
               return (
@@ -137,11 +137,10 @@ function DashboardDemo() {
                   onClick={() => setActiveTab(item.name)}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative p-3 rounded-xl transition-all duration-200 ${
-                    activeTab === item.name
+                  className={`relative p-3 rounded-xl transition-all duration-200 ${activeTab === item.name
                       ? 'bg-[#D8F209]/20 text-[#D8F209]'
                       : 'text-[#FBFFDE]/40 hover:text-[#FBFFDE]/70 hover:bg-[#1A1A1A]'
-                  }`}
+                    }`}
                 >
                   <Icon className="w-6 h-6" />
                   {activeTab === item.name && (
@@ -208,7 +207,7 @@ function DashboardView() {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {stats.map((stat, index) => {
           const Icon = stat.icon;
           return (
@@ -220,7 +219,7 @@ function DashboardView() {
               className="bg-[#1A1A1A] rounded-xl p-5 border border-[#D8F209]/10"
             >
               <div className="flex items-start justify-between mb-4">
-                <div 
+                <div
                   className="p-2.5 rounded-lg"
                   style={{ backgroundColor: `${stat.color}20` }}
                 >
@@ -244,7 +243,7 @@ function DashboardView() {
             <option>Last 30 days</option>
           </select>
         </div>
-        
+
         <div className="flex items-end gap-3 h-48">
           {[65, 45, 80, 55, 90, 70, 85, 60, 75, 95, 70, 88].map((height, index) => (
             <motion.div
@@ -256,7 +255,7 @@ function DashboardView() {
             />
           ))}
         </div>
-        
+
         <div className="flex justify-between mt-3 px-1">
           {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map((month) => (
             <span key={month} className="text-[#FBFFDE]/30 text-xs">{month}</span>
@@ -275,10 +274,10 @@ function WebsiteBuilderView() {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.3 }}
-      className="flex h-full"
+      className="flex flex-col md:flex-row h-full"
     >
       {/* Tools Sidebar */}
-      <div className="w-64 bg-[#0D0D0D] border-r border-[#D8F209]/10 p-6">
+      <div className="w-full md:w-64 bg-[#0D0D0D] border-b md:border-b-0 md:border-r border-[#D8F209]/10 p-6">
         <h4 className="text-white font-semibold mb-6">Elements</h4>
         <div className="space-y-2">
           {[
@@ -344,14 +343,14 @@ function ChatView() {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.3 }}
-      className="flex h-full"
+      className="flex flex-col md:flex-row h-full"
     >
       {/* Conversations List */}
-      <div className="w-80 bg-[#0D0D0D] border-r border-[#D8F209]/10">
+      <div className="w-full md:w-80 bg-[#0D0D0D] border-b md:border-b-0 md:border-r border-[#D8F209]/10">
         <div className="p-4">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#FBFFDE]/40" />
-            <input 
+            <input
               type="text"
               placeholder="Search conversations..."
               className="w-full bg-[#1A1A1A] text-[#FBFFDE]/70 pl-10 pr-4 py-2.5 rounded-lg text-sm border border-[#D8F209]/10 focus:border-[#D8F209]/30 outline-none"
@@ -363,9 +362,8 @@ function ChatView() {
             <motion.div
               key={i}
               whileHover={{ x: 4 }}
-              className={`p-4 rounded-lg cursor-pointer transition-all ${
-                i === 0 ? 'bg-[#D8F209]/10 border border-[#D8F209]/20' : 'hover:bg-[#1A1A1A]'
-              }`}
+              className={`p-4 rounded-lg cursor-pointer transition-all ${i === 0 ? 'bg-[#D8F209]/10 border border-[#D8F209]/20' : 'hover:bg-[#1A1A1A]'
+                }`}
             >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#D8F209] to-[#D8F209]/60 flex items-center justify-center text-[#1E1E1E] font-bold">
@@ -424,7 +422,7 @@ function ChatView() {
         {/* Input */}
         <div className="p-6 border-t border-[#D8F209]/10">
           <div className="flex items-center gap-3">
-            <input 
+            <input
               type="text"
               placeholder="Type a message..."
               className="flex-1 bg-[#1A1A1A] text-white px-4 py-3 rounded-xl border border-[#D8F209]/10 focus:border-[#D8F209]/30 outline-none"
@@ -450,8 +448,8 @@ function AnalyticsView() {
       className="p-8 h-full overflow-auto"
     >
       <h3 className="text-white font-bold text-2xl mb-8">Analytics Overview</h3>
-      
-      <div className="grid grid-cols-2 gap-6">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Traffic Sources */}
         <div className="bg-[#1A1A1A] rounded-xl p-6 border border-[#D8F209]/10">
           <h4 className="text-white font-semibold mb-6">Traffic Sources</h4>

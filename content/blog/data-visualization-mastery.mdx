@@ -1,0 +1,86 @@
+---
+title: "Data Visualization Mastery: Choosing the Right Chart"
+excerpt: "A guide to selecting the perfect visualization for your data, ensuring clarity and impact."
+category: "Design"
+author: "Marcus Johnson"
+date: "22 Jan 2026"
+readTime: "14 min read"
+image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+---
+
+# Data Visualization Mastery: Choosing the Right Chart
+
+Data is only as good as its presentation. You might have the most accurate predictive model in the world, but if you display the results in a cluttered, confusing pie chart, your insights will be lost.
+
+Choosing the right chart type is not an aesthetic choice—it is a communication choice. This guide outlines the framework for making that choice effectively.
+
+## The Chart Selection Framework
+
+Before opening your design tool, ask: **"What relationship am I trying to show?"**
+
+### 1. Comparison
+When comparing values across categories.
+- **Bar Chart**: Best for discrete categories (e.g., Sales by Region). The human eye compares lengths very accurately.
+- **Line Chart**: Best for continuous data (e.g., Stock price over time). It shows trends and acceleration.
+
+### 2. Composition
+When showing parts of a whole.
+- **Stacked Bar**: Good for showing total + breakdown (e.g., Total Revenue, split by product).
+- **Pie/Donut**: Use sparingly! Only effective for 2-5 distinct categories. If you have 20 slices, it becomes unreadable.
+
+<Callout type="warning">
+**Avoid Pie Charts** for complex data. It is difficult for the human brain to compare angles and areas accurately. A sorted bar chart is almost always clearer.
+</Callout>
+
+### 3. Distribution
+- **Histogram**: Shows frequency distribution (e.g., "Number of users by age group").
+- **Box and Whisker**: Essential for statistical analysis. It shows the median, quartiles, and outliers at a glance.
+
+## Accessibility in Data Visualization
+
+Accessibility is often an afterthought in data viz, but it's crucial. 1 in 12 men are color blind. Reliance on color alone to distinguish data is a failure of design.
+
+**Best Practices:**
+1.  **Direct Labeling**: Instead of a legend, place the label directly next to the line or bar.
+2.  **Patterns**: Use hatched lines, dots, or texture differences in addition to color.
+3.  **Contrast**: Ensure text on top of bars meets WCAG AA standards.
+
+## Interactive Elements: Beyond Static Images
+
+Static charts are dead. Modern visualizations allow specific exploration (drill-down).
+
+**Hover States**: Show exact values on hover. A tooltip should provide context, not just the number.
+**Filtering**: Allow users to toggle series on/off.
+
+```tsx
+// Tooltip interaction example in Recharts
+<Tooltip 
+  content={({ active, payload }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-white p-4 shadow-lg rounded border">
+          <p className="font-bold">{payload[0].payload.name}</p>
+          <p className="text-blue-600">
+            value: {payload[0].value.toLocaleString()}
+          </p>
+          <p className="text-xs text-gray-500">
+            +5% from last month
+          </p>
+        </div>
+      );
+    }
+    return null;
+  }}
+/>
+```
+
+## Storytelling with Data
+
+Data visualization is a narrative structure.
+1.  **The Setup**: Contextual text explaining what we are looking at.
+2.  **The Conflict**: The data showing a problem (e.g., a dip in revenue).
+3.  **The Resolution**: Annotations explaining *why* it happened (e.g., "Server Outage" marker on the chart).
+
+## Conclusion
+
+Good data visualization is invisible. It removes the cognitive load of interpreting numbers, allowing the user to see the *reality* behind the data instantly. It turns "10,432 vs 8,200" into "We are winning."
