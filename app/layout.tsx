@@ -27,8 +27,10 @@ export const metadata: Metadata = {
   creator: "The Ladder",
   publisher: "The Ladder",
   icons: {
-    icon: '/techlogo.png',
-    shortcut: '/techlogo.png',
+    icon: [
+      { url: '/ladder.svg', type: 'image/svg+xml' },
+      { url: '/techlogo.png', type: 'image/png' }
+    ],
     apple: '/techlogo.png',
   },
   formatDetection: {
