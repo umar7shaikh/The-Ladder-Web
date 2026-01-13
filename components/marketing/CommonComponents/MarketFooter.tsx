@@ -126,16 +126,16 @@ export default function MarketFooter() {
               <Link href="/marketing/services/seo" className="text-[#FFE000] text-sm hover:text-[#E6CA00] transition-colors duration-300">
                 SEO
               </Link>
-              <Link href="/marketing/services/social-media" className="text-[#FFE000] text-sm hover:text-[#E6CA00] transition-colors duration-300">
+              <Link href="/marketing/services" className="text-[#FFE000] text-sm hover:text-[#E6CA00] transition-colors duration-300">
                 Social Media Marketing
               </Link>
-              <Link href="/marketing/services/paid-ads" className="text-[#FFE000] text-sm hover:text-[#E6CA00] transition-colors duration-300">
+              <Link href="/marketing/services" className="text-[#FFE000] text-sm hover:text-[#E6CA00] transition-colors duration-300">
                 Paid Advertising
               </Link>
-              <Link href="/marketing/services/content" className="text-[#FFE000] text-sm hover:text-[#E6CA00] transition-colors duration-300">
+              <Link href="/marketing/services" className="text-[#FFE000] text-sm hover:text-[#E6CA00] transition-colors duration-300">
                 Content Marketing
               </Link>
-              <Link href="/marketing/services/branding" className="text-[#FFE000] text-sm hover:text-[#E6CA00] transition-colors duration-300">
+              <Link href="/marketing/services" className="text-[#FFE000] text-sm hover:text-[#E6CA00] transition-colors duration-300">
                 Branding & Design
               </Link>
             </div>
@@ -154,7 +154,7 @@ export default function MarketFooter() {
             </p>
 
             {/* Legal Links */}
-            <div className="flex items-center gap-6">
+            {/* <div className="flex items-center gap-6">
               <Link href="/privacy-policy" className="hover:text-[#E6CA00] transition-colors duration-300">
                 Privacy Policy
               </Link>
@@ -164,7 +164,7 @@ export default function MarketFooter() {
               <Link href="/cookies-settings" className="hover:text-[#E6CA00] transition-colors duration-300">
                 Cookies Settings
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
