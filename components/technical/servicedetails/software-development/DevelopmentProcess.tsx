@@ -345,7 +345,7 @@ export default function DevelopmentProcess() {
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center gap-2 px-8 py-4 bg-[#D8F209] text-[#1E1E1E] font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#D8F209]/30"
           >
-            Start Your Marketing Journey
+            Start Your Journey
             <ArrowRight className="w-5 h-5" />
           </motion.a>
         </motion.div>
