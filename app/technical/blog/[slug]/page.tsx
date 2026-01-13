@@ -103,25 +103,25 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           )}
 
           {/* MDX Content */}
-          <article className="prose prose-invert prose-lg max-w-none
+          <article className="prose prose-invert prose-lg max-w-none overflow-x-hidden
             prose-headings:text-[#D8F209] prose-headings:font-bold
-            prose-h1:text-[clamp(32px,5vw,48px)] prose-h1:mb-6 prose-h1:mt-12
-            prose-h2:text-[clamp(24px,4vw,36px)] prose-h2:mb-4 prose-h2:mt-10
-            prose-h3:text-[clamp(20px,3.5vw,28px)] prose-h3:mb-3 prose-h3:mt-8
-            prose-p:text-[#FBFFDE]/80 prose-p:leading-relaxed prose-p:text-[clamp(15px,3.5vw,18px)] prose-p:mb-6
-            prose-a:text-[#D8F209] prose-a:no-underline hover:prose-a:underline prose-a:transition-all
+            prose-h1:text-[clamp(28px,5vw,48px)] prose-h1:mb-6 prose-h1:mt-12 prose-h1:break-words
+            prose-h2:text-[clamp(22px,4vw,36px)] prose-h2:mb-4 prose-h2:mt-10 prose-h2:break-words
+            prose-h3:text-[clamp(18px,3.5vw,28px)] prose-h3:mb-3 prose-h3:mt-8 prose-h3:break-words
+            prose-p:text-[#FBFFDE]/80 prose-p:leading-relaxed prose-p:text-[clamp(14px,3.5vw,18px)] prose-p:mb-6 prose-p:break-words
+            prose-a:text-[#D8F209] prose-a:no-underline hover:prose-a:underline prose-a:transition-all prose-a:break-words
             prose-strong:text-white prose-strong:font-bold
-            prose-code:text-[#D8F209] prose-code:bg-[#252525] prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono
-            prose-pre:bg-[#0a0a0a] prose-pre:border prose-pre:border-[#333333] prose-pre:rounded-xl prose-pre:p-6 prose-pre:overflow-x-auto prose-pre:my-6
+            prose-code:text-[clamp(11px,2.5vw,13px)] prose-code:text-[#D8F209] prose-code:bg-[#252525] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:break-words
+            prose-pre:bg-[#0a0a0a] prose-pre:border prose-pre:border-[#333333] prose-pre:rounded-xl prose-pre:p-3 md:prose-pre:p-6 prose-pre:overflow-x-auto prose-pre:my-6 prose-pre:text-[clamp(12px,2.5vw,14px)]
             prose-ul:text-[#FBFFDE]/80 prose-ul:my-6 prose-ul:space-y-2
             prose-ol:text-[#FBFFDE]/80 prose-ol:my-6 prose-ol:space-y-2
-            prose-li:marker:text-[#D8F209] prose-li:text-[clamp(15px,3.5vw,17px)] prose-li:leading-relaxed
-            prose-blockquote:border-l-4 prose-blockquote:border-l-[#D8F209] prose-blockquote:text-[#FBFFDE]/70 prose-blockquote:italic prose-blockquote:pl-6 prose-blockquote:py-2
-            prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8
+            prose-li:marker:text-[#D8F209] prose-li:text-[clamp(14px,3.5vw,17px)] prose-li:leading-relaxed prose-li:break-words
+            prose-blockquote:border-l-4 prose-blockquote:border-l-[#D8F209] prose-blockquote:text-[#FBFFDE]/70 prose-blockquote:italic prose-blockquote:pl-4 md:prose-blockquote:pl-6 prose-blockquote:py-2 prose-blockquote:text-[clamp(14px,3.5vw,16px)]
+            prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8 prose-img:w-full prose-img:h-auto
             prose-hr:border-[#333333] prose-hr:my-12
-            prose-table:border-collapse prose-table:w-full prose-table:my-8
-            prose-th:bg-[#252525] prose-th:text-[#D8F209] prose-th:font-bold prose-th:p-4 prose-th:border prose-th:border-[#333333]
-            prose-td:p-4 prose-td:border prose-td:border-[#333333] prose-td:text-[#FBFFDE]/80
+            prose-table:border-collapse prose-table:w-full prose-table:my-8 prose-table:text-sm
+            prose-th:bg-[#252525] prose-th:text-[#D8F209] prose-th:font-bold prose-th:p-2 md:prose-th:p-4 prose-th:border prose-th:border-[#333333] prose-th:text-[clamp(12px,2.5vw,14px)]
+            prose-td:p-2 md:prose-td:p-4 prose-td:border prose-td:border-[#333333] prose-td:text-[#FBFFDE]/80 prose-td:text-[clamp(12px,2.5vw,14px)]
           ">
             <MDXRemote source={post.content} components={components} />
           </article>
