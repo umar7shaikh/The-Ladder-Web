@@ -122,7 +122,7 @@ export default function WhatWeBuild({ cards }: WhatWeBuildProps) {
 
                   {/* Icon Container */}
                   <motion.div
-                    whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                    // whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
                     transition={{ duration: 0.5 }}
                     className="mb-6 relative"
                   >
