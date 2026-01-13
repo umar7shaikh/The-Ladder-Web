@@ -18,13 +18,14 @@ import Project16 from '@/components/portfolio/projects/Project16';
 import ContactSection from '@/components/portfolio/contact/ContactSection';
 
 export default function PortfolioPage() {
+  
   return (
     <div className="bg-black">
       <HeroSection />
       <div id="projects">
-        <DansJamSection />
-        <LowCode />
         <Project3 />
+        <LowCode />
+        <DansJamSection />
         <Project4 />
         <Project5 />
         <Project6 />

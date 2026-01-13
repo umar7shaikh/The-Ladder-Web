@@ -22,9 +22,9 @@ export default function PortfolioPage() {
     <div className="bg-black">
       <HeroSection />
       <div id="projects">
-        <DansJamSection />
-        <LowCode />
         <Project3 />
+        <LowCode />
+        <DansJamSection />
         <Project4 />
         <Project5 />
         <Project6 />
