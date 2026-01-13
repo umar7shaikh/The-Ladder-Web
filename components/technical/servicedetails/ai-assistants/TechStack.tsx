@@ -272,7 +272,7 @@ export default function TechStack() {
                   </div>
                   
                   {/* Performance metrics */}
-                  <div className="mt-8 pt-4 border-t border-[#D8F209]/10 flex justify-around">
+                  {/* <div className="mt-8 pt-4 border-t border-[#D8F209]/10 flex justify-around">
                     <div className="text-center">
                       <div className="text-[#D8F209] text-xl font-bold">+215%</div>
                       <div className="text-[#FBFFDE]/40 text-[10px]">Accuracy gain</div>
@@ -281,7 +281,7 @@ export default function TechStack() {
                       <div className="text-[#D8F209] text-xl font-bold">∞</div>
                       <div className="text-[#FBFFDE]/40 text-[10px]">Learning</div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
