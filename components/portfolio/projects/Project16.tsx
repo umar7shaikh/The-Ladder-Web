@@ -314,7 +314,7 @@ export default function Project16() {
       </section>
 
       {/* DESKTOP: Original 3 Sections */}
-      <div className="hidden lg:block">
+      <div className="hidden lg:block overflow-x-hidden">
         {/* SECTION 1 - ONE IMAGE ON RIGHT */}
         <section className="relative w-full bg-black min-h-dvh">
           <div className="absolute inset-0 opacity-30 pointer-events-none" aria-hidden="true">
