@@ -28,12 +28,12 @@ export default function MarketFooter() {
             <div className="flex flex-col gap-2 text-[#FFE000] text-sm">
               <p className="font-medium">Address:</p>
               <p className="leading-relaxed">
-                The Ladder
+                Pune, Maharashtra, India
               </p>
               
               <p className="font-medium mt-3">Contact:</p>
-              <p>+1 (123) 456-7890</p>
-              <p>contact@theladder.com</p>
+              <p>+91 93258 56501</p>
+              <p>contact@theladder.tech</p>
             </div>
 
             {/* Social Icons */}
