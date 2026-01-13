@@ -24,13 +24,11 @@ import { useState } from 'react';
 export default function DesignShowcase() {
   return (
     <section className="relative bg-[#1E1E1E] py-20 lg:py-32 overflow-hidden">
-
       {/* Subtle Background Glow */}
       <div className="absolute top-1/2 right-1/4 w-[600px] h-[600px] bg-[#D8F209]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-16 xl:px-20 2xl:px-32 z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-
           {/* Left Side - Text Content (4 columns) */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -91,7 +89,6 @@ export default function DesignShowcase() {
           >
             <DashboardDemo />
           </motion.div>
-
         </div>
       </div>
     </section>
@@ -110,61 +107,67 @@ function DashboardDemo() {
 
   return (
     <div className="relative">
-      {/* Dashboard Window */}
-      <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 overflow-hidden shadow-2xl">
-
-        {/* Window Header */}
-        <div className="flex items-center justify-between px-4 py-3 bg-[#1A1A1A] border-b border-[#D8F209]/10">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
-            <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
-            <div className="w-3 h-3 rounded-full bg-[#28CA42]" />
+      {/* DESKTOP VERSION - Hidden on mobile */}
+      <div className="hidden md:block">
+        <div className="relative bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 overflow-hidden shadow-2xl">
+          {/* Window Header */}
+          <div className="flex items-center justify-between px-4 py-3 bg-[#1A1A1A] border-b border-[#D8F209]/10">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
+              <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
+              <div className="w-3 h-3 rounded-full bg-[#28CA42]" />
+            </div>
+            <span className="text-[#FBFFDE]/40 text-xs font-mono">{activeTab.toLowerCase()}.theladder.app</span>
+            <div className="w-20" />
           </div>
-          <span className="text-[#FBFFDE]/40 text-xs font-mono">{activeTab.toLowerCase()}.theladder.app</span>
-          <div className="w-20" />
-        </div>
 
-        {/* Dashboard Content */}
-        <div className="flex flex-col md:flex-row h-auto min-h-[600px] md:h-[600px]">
-
-          {/* Sidebar */}
-          <div className="w-full md:w-20 bg-[#0D0D0D] border-b md:border-b-0 md:border-r border-[#D8F209]/10 py-4 md:py-8 flex flex-row md:flex-col items-center justify-between md:justify-start gap-4 md:gap-6 px-6 md:px-0">
-            {sidebarItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <motion.button
-                  key={item.name}
-                  onClick={() => setActiveTab(item.name)}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`relative p-3 rounded-xl transition-all duration-200 ${activeTab === item.name
-                      ? 'bg-[#D8F209]/20 text-[#D8F209]'
-                      : 'text-[#FBFFDE]/40 hover:text-[#FBFFDE]/70 hover:bg-[#1A1A1A]'
+          {/* Dashboard Content */}
+          <div className="flex h-[600px]">
+            {/* Sidebar */}
+            <div className="w-20 bg-[#0D0D0D] border-r border-[#D8F209]/10 py-8 flex flex-col items-center gap-6">
+              {sidebarItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <motion.button
+                    key={item.name}
+                    onClick={() => setActiveTab(item.name)}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`relative p-3 rounded-xl transition-all duration-200 ${
+                      activeTab === item.name
+                        ? 'bg-[#D8F209]/20 text-[#D8F209]'
+                        : 'text-[#FBFFDE]/40 hover:text-[#FBFFDE]/70 hover:bg-[#1A1A1A]'
                     }`}
-                >
-                  <Icon className="w-6 h-6" />
-                  {activeTab === item.name && (
-                    <motion.div
-                      layoutId="activeTab"
-                      className="absolute inset-0 bg-[#D8F209]/10 rounded-xl -z-10 border border-[#D8F209]/30"
-                      transition={{ type: 'spring', duration: 0.5 }}
-                    />
-                  )}
-                </motion.button>
-              );
-            })}
-          </div>
+                  >
+                    <Icon className="w-6 h-6" />
+                    {activeTab === item.name && (
+                      <motion.div
+                        layoutId="activeTab"
+                        className="absolute inset-0 bg-[#D8F209]/10 rounded-xl -z-10 border border-[#D8F209]/30"
+                        transition={{ type: 'spring', duration: 0.5 }}
+                      />
+                    )}
+                  </motion.button>
+                );
+              })}
+            </div>
 
-          {/* Main Content Area */}
-          <div className="flex-1 bg-[#0D0D0D]">
-            <AnimatePresence mode="wait">
-              {activeTab === 'Dashboard' && <DashboardView key="dashboard" />}
-              {activeTab === 'Website' && <WebsiteBuilderView key="website" />}
-              {activeTab === 'Chat' && <ChatView key="chat" />}
-              {activeTab === 'Analytics' && <AnalyticsView key="analytics" />}
-            </AnimatePresence>
+            {/* Main Content Area */}
+            <div className="flex-1 bg-[#0D0D0D] overflow-hidden">
+              <AnimatePresence mode="wait">
+                {activeTab === 'Dashboard' && <DashboardView key="dashboard" />}
+                {activeTab === 'Website' && <WebsiteBuilderView key="website" />}
+                {activeTab === 'Chat' && <ChatView key="chat" />}
+                {activeTab === 'Analytics' && <AnalyticsView key="analytics" />}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* MOBILE VERSION - Simplified cards showcase */}
+      <div className="md:hidden">
+        <MobileShowcase />
       </div>
 
       {/* Glow Effect */}
@@ -173,7 +176,168 @@ function DashboardDemo() {
   );
 }
 
-// Dashboard View
+// Simplified Mobile Showcase
+function MobileShowcase() {
+  return (
+    <div className="space-y-4">
+      {/* Dashboard Preview Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6 overflow-hidden"
+      >
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-2 bg-[#D8F209]/20 rounded-lg">
+            <LayoutDashboard className="w-5 h-5 text-[#D8F209]" />
+          </div>
+          <h3 className="text-white font-semibold text-lg">Analytics Dashboard</h3>
+        </div>
+        
+        {/* Mini stats */}
+        <div className="grid grid-cols-2 gap-3 mb-4">
+          {[
+            { label: 'Revenue', value: '$48.5K', icon: DollarSign, color: '#28CA42' },
+            { label: 'Users', value: '2,847', icon: Users, color: '#D8F209' }
+          ].map((stat, i) => (
+            <div key={i} className="bg-[#1A1A1A] rounded-lg p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <stat.icon className="w-4 h-4" style={{ color: stat.color }} />
+                <span className="text-[#FBFFDE]/50 text-xs">{stat.label}</span>
+              </div>
+              <div className="text-white font-bold text-xl">{stat.value}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Mini chart */}
+        <div className="flex items-end gap-1.5 h-20 bg-[#1A1A1A] rounded-lg p-3">
+          {[40, 60, 45, 70, 55, 80, 65, 75].map((height, i) => (
+            <motion.div
+              key={i}
+              initial={{ height: 0 }}
+              animate={{ height: `${height}%` }}
+              transition={{ duration: 0.8, delay: i * 0.05 }}
+              className="flex-1 bg-gradient-to-t from-[#D8F209] to-[#D8F209]/40 rounded-t"
+            />
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Chat Preview Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 }}
+        className="bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6 overflow-hidden"
+      >
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-2 bg-[#3B82F6]/20 rounded-lg">
+            <MessageSquare className="w-5 h-5 text-[#3B82F6]" />
+          </div>
+          <h3 className="text-white font-semibold text-lg">Chat Application</h3>
+        </div>
+
+        {/* Chat preview */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-3 p-3 bg-[#1A1A1A] rounded-lg">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#D8F209] to-[#D8F209]/60 flex items-center justify-center text-[#1E1E1E] font-bold">
+              S
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-white font-medium text-sm">Sarah Chen</div>
+              <div className="text-[#FBFFDE]/50 text-xs truncate">Hey! How is the project...</div>
+            </div>
+            <div className="w-2 h-2 bg-[#28CA42] rounded-full" />
+          </div>
+
+          <div className="flex justify-end">
+            <div className="bg-[#D8F209] text-[#1E1E1E] rounded-2xl px-4 py-2 max-w-[80%]">
+              <p className="text-sm">Great! Just finished the design.</p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Website Builder Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+        className="bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6 overflow-hidden"
+      >
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-2 bg-[#A855F7]/20 rounded-lg">
+            <Globe className="w-5 h-5 text-[#A855F7]" />
+          </div>
+          <h3 className="text-white font-semibold text-lg">Website Builder</h3>
+        </div>
+
+        {/* Builder preview */}
+        <div className="bg-white rounded-lg p-4 space-y-3">
+          <div className="h-6 bg-gradient-to-r from-[#D8F209]/20 to-transparent rounded" />
+          <div className="h-16 bg-gray-100 rounded flex items-center justify-center">
+            <Globe className="w-8 h-8 text-gray-300" />
+          </div>
+          <div className="space-y-2">
+            <div className="h-3 bg-gray-200 rounded w-3/4" />
+            <div className="h-3 bg-gray-200 rounded w-1/2" />
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="h-12 bg-gray-100 rounded" />
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Analytics Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3 }}
+        className="bg-[#0D0D0D] rounded-xl border border-[#D8F209]/20 p-6 overflow-hidden"
+      >
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-2 bg-[#3B82F6]/20 rounded-lg">
+            <BarChart3 className="w-5 h-5 text-[#3B82F6]" />
+          </div>
+          <h3 className="text-white font-semibold text-lg">Analytics View</h3>
+        </div>
+
+        {/* Traffic sources */}
+        <div className="space-y-3">
+          {[
+            { source: 'Direct', value: 45, color: '#D8F209' },
+            { source: 'Social', value: 30, color: '#3B82F6' },
+            { source: 'Search', value: 25, color: '#A855F7' },
+          ].map((item, i) => (
+            <div key={i}>
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-[#FBFFDE]/70 text-sm">{item.source}</span>
+                <span className="text-white font-semibold text-sm">{item.value}%</span>
+              </div>
+              <div className="h-2 bg-[#1A1A1A] rounded-full overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: `${item.value}%` }}
+                  transition={{ duration: 1, delay: i * 0.2 }}
+                  className="h-full rounded-full"
+                  style={{ backgroundColor: item.color }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+// Desktop Dashboard View (unchanged)
 function DashboardView() {
   const stats = [
     { label: 'Total Revenue', value: '$48,574', change: '+12.5%', icon: DollarSign, color: '#28CA42' },
@@ -266,7 +430,7 @@ function DashboardView() {
   );
 }
 
-// Website Builder View
+// Desktop Website Builder View (unchanged)
 function WebsiteBuilderView() {
   return (
     <motion.div
@@ -274,10 +438,10 @@ function WebsiteBuilderView() {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.3 }}
-      className="flex flex-col md:flex-row h-full"
+      className="flex h-full"
     >
       {/* Tools Sidebar */}
-      <div className="w-full md:w-64 bg-[#0D0D0D] border-b md:border-b-0 md:border-r border-[#D8F209]/10 p-6">
+      <div className="w-64 bg-[#0D0D0D] border-r border-[#D8F209]/10 p-6">
         <h4 className="text-white font-semibold mb-6">Elements</h4>
         <div className="space-y-2">
           {[
@@ -329,7 +493,7 @@ function WebsiteBuilderView() {
   );
 }
 
-// Chat View
+// Desktop Chat View (unchanged)
 function ChatView() {
   const messages = [
     { user: 'Sarah Chen', message: 'Hey! How is the project coming along?', time: '2:30 PM', isOwn: false },
@@ -343,10 +507,10 @@ function ChatView() {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.3 }}
-      className="flex flex-col md:flex-row h-full"
+      className="flex h-full"
     >
       {/* Conversations List */}
-      <div className="w-full md:w-80 bg-[#0D0D0D] border-b md:border-b-0 md:border-r border-[#D8F209]/10">
+      <div className="w-80 bg-[#0D0D0D] border-r border-[#D8F209]/10">
         <div className="p-4">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#FBFFDE]/40" />
@@ -362,8 +526,9 @@ function ChatView() {
             <motion.div
               key={i}
               whileHover={{ x: 4 }}
-              className={`p-4 rounded-lg cursor-pointer transition-all ${i === 0 ? 'bg-[#D8F209]/10 border border-[#D8F209]/20' : 'hover:bg-[#1A1A1A]'
-                }`}
+              className={`p-4 rounded-lg cursor-pointer transition-all ${
+                i === 0 ? 'bg-[#D8F209]/10 border border-[#D8F209]/20' : 'hover:bg-[#1A1A1A]'
+              }`}
             >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#D8F209] to-[#D8F209]/60 flex items-center justify-center text-[#1E1E1E] font-bold">
@@ -437,7 +602,7 @@ function ChatView() {
   );
 }
 
-// Analytics View
+// Desktop Analytics View (unchanged)
 function AnalyticsView() {
   return (
     <motion.div
