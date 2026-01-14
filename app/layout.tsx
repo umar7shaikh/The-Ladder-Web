@@ -26,13 +26,6 @@ export const metadata: Metadata = {
   authors: [{ name: "The Ladder" }],
   creator: "The Ladder",
   publisher: "The Ladder",
-  icons: {
-    icon: [
-      { url: '/ladder.svg', type: 'image/svg+xml' },
-      { url: '/techlogo.png', type: 'image/png' }
-    ],
-    apple: '/techlogo.png',
-  },
   formatDetection: {
     email: false,
     address: false,
@@ -85,6 +78,43 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "name": "The Ladder",
+                  "url": "https://theladder.com",
+                  "logo": "https://theladder.com/icon.svg",
+                  "sameAs": [
+                    "https://twitter.com/theladder"
+                  ],
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "",
+                    "contactType": "customer service"
+                  }
+                },
+                {
+                  "@type": "WebSite",
+                  "name": "The Ladder",
+                  "url": "https://theladder.com",
+                  "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                      "@type": "EntryPoint",
+                      "urlTemplate": "https://theladder.com/search?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                  }
+                }
+              ]
+            })
+          }}
+        />
       </body>
     </html>
   );
