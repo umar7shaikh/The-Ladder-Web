@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   authors: [{ name: "The Ladder" }],
   creator: "The Ladder",
   publisher: "The Ladder",
+  icons: {
+    icon: "/ladder.svg",
+  },
   formatDetection: {
     email: false,
     address: false,
