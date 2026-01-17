@@ -1,0 +1,23 @@
+{
+  "name": "The Ladder - Digital Marketing & Technical Solutions",
+  "short_name": "The Ladder",
+  "description": "Premium digital marketing and technical solutions for business growth",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1E1E1E",
+  "theme_color": "#D8F209",
+  "icons": [
+    {
+      "src": "/ladder-icon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/ladder-icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

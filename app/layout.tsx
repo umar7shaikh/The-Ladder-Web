@@ -28,7 +28,9 @@ export const metadata: Metadata = {
   publisher: "The Ladder",
   icons: {
     icon: "/ladder-icon.svg",
+    apple: "/ladder-icon.svg",
   },
+  manifest: "/manifest.json",
   formatDetection: {
     email: false,
     address: false,
